@@ -11,7 +11,7 @@ interface ApplicationFormProps {
   onClearSelectedRole?: () => void;
 }
 
-const QUICK_CITIES = ['Indore', 'Bhopal', 'Raipur', 'Jabalpur', 'Gwalior', 'Nagpur'];
+const QUICK_CITIES = ['Bhopal', 'Indore', 'Jabalpur', 'Gwalior', 'Raipur', 'Ujjain'];
 
 const QUICK_QUALIFICATIONS = [
   { label: '12th Pass', value: '12th Pass' },
@@ -396,9 +396,10 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                     <option value="">-- Select Preferred Role --</option>
                     {selectedRoleFromCard &&
                       ![
+                        'Work From Home Tele-Caller (Fixed Salary + High Incentive)',
                         'Work From Home Data Entry Operator (Rs. 25,000/mo)',
                         'Customer Support Executive (Rs. 23,000 - 30,000/mo)',
-                        'Exam Invigilator & Assessment Coordinator',
+                        'Campus Drive Coordinator & Invigilator',
                         'Warehouse Associate & Logistics Supervisor',
                         'Junior IT Desktop & Network Support',
                         'HR Recruiter & Talent Acquisition Trainee',
@@ -406,23 +407,26 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                       ].includes(selectedRoleFromCard) && (
                         <option value={selectedRoleFromCard}>{selectedRoleFromCard}</option>
                       )}
+                    <option value="Work From Home Tele-Caller (Fixed Salary + High Incentive)">
+                      Work From Home Tele-Caller (Fixed Salary + High Incentive)
+                    </option>
                     <option value="Work From Home Data Entry Operator (Rs. 25,000/mo)">
                       Work From Home Data Entry Operator (Rs. 25,000/mo - Laptop compulsory)
                     </option>
                     <option value="Customer Support Executive (Rs. 23,000 - 30,000/mo)">
                       Customer Support Executive (Rs. 23,000 - 30,000/mo)
                     </option>
-                    <option value="Exam Invigilator & Assessment Coordinator">
-                      Exam Invigilator & Assessment Coordinator (Rs. 18,000 - 24,000/mo)
+                    <option value="Campus Drive Coordinator & Invigilator">
+                      Campus Drive Coordinator &amp; Invigilator (Rs. 18,000 - 25,000/mo)
                     </option>
                     <option value="Warehouse Associate & Logistics Supervisor">
-                      Warehouse Associate & Logistics Supervisor (Rs. 20,000 - 26,000/mo)
+                      Warehouse Associate &amp; Logistics Supervisor (Rs. 20,000 - 26,000/mo)
                     </option>
                     <option value="Junior IT Desktop & Network Support">
-                      Junior IT Desktop & Network Support (Rs. 28,000 - 35,000/mo)
+                      Junior IT Desktop &amp; Network Support (Rs. 28,000 - 35,000/mo)
                     </option>
                     <option value="HR Recruiter & Talent Acquisition Trainee">
-                      HR Recruiter & Talent Acquisition Trainee (Rs. 22,000 - 28,000/mo)
+                      HR Recruiter &amp; Talent Acquisition Trainee (Rs. 22,000 - 28,000/mo)
                     </option>
                     <option value="Open to Any Suitable Role (Based on Interview)">
                       Open to Any Suitable Role (Based on Interview)

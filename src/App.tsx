@@ -1,5 +1,5 @@
 /**
- * KGB Group (Knowledge Gurukul / Placement India)
+ * KGB Group - Knowledge Gurukul (Bhopal)
  * High-Converting Single Page Landing Page
  *
  * @license Apache-2.0
@@ -9,7 +9,9 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TrustStrip } from './components/TrustStrip';
+import { CertificationsSection } from './components/CertificationsSection';
 import { FeaturedJobs } from './components/FeaturedJobs';
+import { CampusGallerySection } from './components/CampusGallerySection';
 import { CollegePartnership } from './components/CollegePartnership';
 import { ApplicationForm } from './components/ApplicationForm';
 import { TestimonialsSection } from './components/TestimonialsSection';
@@ -46,7 +48,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans pb-14 sm:pb-0">
-      {/* 1. Navbar */}
+      {/* 1. Top Bar & Navbar */}
       <Navbar onApplyClick={scrollToApply} />
 
       <main className="flex-1">
@@ -56,35 +58,43 @@ export default function App() {
           onExploreJobsClick={scrollToJobs}
         />
 
-        {/* 3. Trust & Accreditation Strip */}
-        <TrustStrip />
+        {/* 3. About & Trust Strip */}
+        <div id="about">
+          <TrustStrip />
+        </div>
 
-        {/* 4. Featured Job Openings */}
+        {/* 4. Official Accreditation & Government Recognition (ISO 9001:2015 & MSME Udyam) */}
+        <CertificationsSection />
+
+        {/* 5. Active Job Openings Section (Featuring Work From Home Tele-Caller) */}
         <FeaturedJobs onSelectRoleForApply={handleSelectRoleForApply} />
 
-        {/* 5. Institutional & Campus Placement Partnership */}
+        {/* 6. Real Campus Drives & Facility Gallery (4-Column Authentic Photo Grid) */}
+        <CampusGallerySection />
+
+        {/* 7. Institutional & Campus Placement Partnership */}
         <CollegePartnership />
 
-        {/* 6. Lead Generation Application Form */}
+        {/* 8. High-Converting Lead Generation Application Form */}
         <ApplicationForm
           selectedRoleFromCard={selectedRoleForForm}
           onClearSelectedRole={handleClearSelectedRole}
         />
 
-        {/* 7. Placed Candidate Testimonials */}
+        {/* 9. Placed Candidate Testimonials */}
         <TestimonialsSection />
 
-        {/* 8. FAQs Section */}
+        {/* 10. FAQs Section */}
         <FaqSection />
       </main>
 
-      {/* 9. Footer */}
+      {/* 11. Footer */}
       <Footer />
 
-      {/* 10. Sticky / Floating WhatsApp */}
+      {/* 12. Sticky / Floating WhatsApp */}
       <FloatingWhatsApp />
 
-      {/* 11. Mobile Sticky Action Bar */}
+      {/* 13. Mobile Sticky Action Bar */}
       <MobileQuickBar onApplyClick={scrollToApply} />
     </div>
   );

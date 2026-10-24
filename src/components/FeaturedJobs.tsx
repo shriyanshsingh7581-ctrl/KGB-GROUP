@@ -18,6 +18,8 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
     return matchesFilter && matchesSearch;
   });
 
+  const featuredTelecaller = JOB_OPENINGS[0];
+
   return (
     <section id="jobs" className="scroll-mt-24 py-12 sm:py-16 lg:py-24 bg-slate-50 relative">
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
@@ -26,14 +28,122 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
         <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-[11px] sm:text-xs uppercase tracking-wider border border-blue-200 mb-2.5">
             <i className="fa-solid fa-briefcase text-xs"></i>
-            <span>Current Vacancies &bull; Batch 2026-2027</span>
+            <span>Active Job Openings &bull; Bhopal &amp; Central India</span>
           </div>
           <h2 className="font-display text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Featured Job Openings
+            Active Job Openings &amp; Hiring Drives
           </h2>
           <p className="mt-2 text-slate-600 text-xs sm:text-base leading-relaxed">
-            Verified direct corporate opportunities with guaranteed salary structures and fast-track joining. Tap any role to apply in 60 seconds.
+            Direct corporate &amp; Work From Home opportunities verified by Knowledge Gurukul Bhopal (KGB). Zero registration charges.
           </p>
+        </div>
+
+        {/* Featured Spotlight Banner: Work From Home Tele-Caller with telecaller-hiring.jpg */}
+        <div className="mb-8 sm:mb-10 bg-linear-to-r from-slate-900 via-blue-950 to-slate-900 rounded-3xl border-2 border-amber-400/70 shadow-xl overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            {/* Left Image Column: telecaller-hiring.jpg */}
+            <div className="lg:col-span-5 relative min-h-[220px] sm:min-h-[260px] bg-slate-800 overflow-hidden flex items-center justify-center">
+              <img
+                src={featuredTelecaller.posterImage || 'telecaller-hiring.jpg'}
+                alt="Work From Home Tele-Caller Job Opening Poster - KGB Bhopal"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (featuredTelecaller.fallbackPosterImage && !target.src.includes(featuredTelecaller.fallbackPosterImage)) {
+                    target.src = featuredTelecaller.fallbackPosterImage;
+                  }
+                }}
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
+              <div className="absolute top-3 left-3 flex flex-wrap items-center gap-1.5">
+                <span className="px-3 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-[10px] sm:text-xs uppercase tracking-wider shadow-md">
+                  <i className="fa-solid fa-fire mr-1"></i>Featured Opening
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-emerald-500/90 text-white font-bold text-[10px] sm:text-xs">
+                  Immediate Joining
+                </span>
+              </div>
+              <div className="absolute bottom-3 left-3 right-3 text-white">
+                <span className="text-[11px] font-bold text-amber-300 block">
+                  <i className="fa-solid fa-location-dot mr-1"></i>Zone 1, MP Nagar, Bhopal / Remote WFH
+                </span>
+                <p className="font-display font-black text-base sm:text-lg leading-tight">
+                  Work From Home Tele-Caller (Male / Female)
+                </p>
+              </div>
+            </div>
+
+            {/* Right Details Column */}
+            <div className="lg:col-span-7 p-5 sm:p-7 lg:p-8 text-white flex flex-col justify-between space-y-4">
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                    <i className="fa-solid fa-headset mr-1.5"></i>Knowledge Gurukul Bhopal &bull; Direct Hiring
+                  </span>
+                  <span className="text-xs bg-white/10 border border-white/15 px-3 py-1 rounded-full font-bold text-emerald-300">
+                    110 Active Seats
+                  </span>
+                </div>
+
+                <h3 className="font-display text-xl sm:text-3xl font-black text-white">
+                  Work From Home Tele-Caller — High Incentive + Fixed Salary
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
+                  Ideal for college students, freshers, graduates, and homemakers looking for flexible part-time or full-time tele-counseling roles from home or our Zone 1, MP Nagar Bhopal office.
+                </p>
+
+                {/* Highlight Pills */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4">
+                  <div className="bg-slate-800/90 border border-slate-700 p-3 rounded-2xl">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Compensation</span>
+                    <span className="font-display font-extrabold text-sm sm:text-base text-amber-400">
+                      Fixed Salary + High Incentive
+                    </span>
+                  </div>
+                  <div className="bg-slate-800/90 border border-slate-700 p-3 rounded-2xl">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Shift Timings</span>
+                    <span className="font-display font-extrabold text-sm sm:text-base text-white">
+                      Flexible Timings
+                    </span>
+                  </div>
+                  <div className="bg-slate-800/90 border border-slate-700 p-3 rounded-2xl">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Office / Center</span>
+                    <span className="font-display font-extrabold text-sm sm:text-base text-emerald-300">
+                      Zone 1, MP Nagar Bhopal
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div className="text-xs text-slate-300">
+                  <span className="text-slate-400 block text-[11px]">Direct Tele-Caller HR Helpline:</span>
+                  <a href="tel:+917987683263" className="font-extrabold text-amber-400 text-sm hover:underline">
+                    <i className="fa-solid fa-phone mr-1.5"></i>+91 7987683263
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-2.5">
+                  <button
+                    onClick={() => onSelectRoleForApply('Work From Home Tele-Caller')}
+                    className="cursor-pointer flex-1 sm:flex-initial px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2"
+                  >
+                    <i className="fa-solid fa-file-pen"></i>
+                    <span>Apply for Tele-Caller</span>
+                  </button>
+                  <a
+                    href="https://wa.me/917987683263?text=Hi%20KGB%20Group%20Bhopal,%20I%20want%20to%20apply%20for%20the%20Work%20From%20Home%20Tele-Caller%20opening."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5"
+                  >
+                    <i className="fa-brands fa-whatsapp text-base"></i>
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Mobile-Friendly Filter & Search Bar */}
@@ -82,7 +192,7 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
               }`}
             >
               <i className="fa-solid fa-clipboard-user text-xs"></i>
-              <span>Invigilators & Warehouse</span>
+              <span>Coordinator &amp; Invigilator</span>
             </button>
             <button
               onClick={() => setActiveFilter('tech')}
@@ -93,7 +203,7 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
               }`}
             >
               <i className="fa-solid fa-code text-xs"></i>
-              <span>IT & Tech Support</span>
+              <span>IT &amp; Tech Support</span>
             </button>
           </div>
 
@@ -102,7 +212,7 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
             <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
             <input
               type="search"
-              placeholder="Search role or city (Indore, Bhopal...)"
+              placeholder="Search role or city (Bhopal, Indore...)"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-9 pr-3 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"
@@ -144,7 +254,7 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
                 <div className="mt-3 p-3 rounded-xl bg-linear-to-r from-amber-500/12 via-amber-500/5 to-transparent border border-amber-500/25">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">Monthly Salary</span>
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">Monthly Compensation</span>
                       <span className="font-display font-black text-base sm:text-xl text-slate-900 flex items-center gap-1">
                         <i className="fa-solid fa-indian-rupee-sign text-sm sm:text-base text-amber-500"></i>
                         <span>{job.salary.replace(/₹\s*/g, '')}</span>
@@ -180,7 +290,7 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
                 {/* Key Eligibility / Requirements */}
                 <div className="mt-3.5 pt-3 border-t border-slate-100">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">
-                    Eligibility & Key Requirements:
+                    Eligibility &amp; Key Requirements:
                   </span>
                   <ul className="space-y-1.5">
                     {job.requirements.map((req, index) => (
@@ -205,7 +315,7 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
 
                 <a
                   href={`https://wa.me/917987683263?text=${encodeURIComponent(
-                    `Hi KGB Group, I am interested in applying for: ${job.title}. Please share details.`
+                    `Hi KGB Group Bhopal, I am interested in applying for: ${job.title}. Please share interview details.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -237,39 +347,6 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
             </button>
           </div>
         )}
-
-        {/* Counselor Banner */}
-        <div className="mt-8 sm:mt-12 bg-linear-to-r from-blue-950 via-slate-900 to-slate-900 rounded-2xl p-5 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-xl border border-blue-800/40">
-          <div className="space-y-1 text-center md:text-left">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
-              Free Placement Counseling
-            </span>
-            <h3 className="font-display font-bold text-lg sm:text-2xl">
-              Confused which role matches your qualification?
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Connect with KGB Group’s placement officers for a free profile check and instant interview slot booking.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:flex items-center gap-2.5 w-full md:w-auto shrink-0">
-            <a
-              href="tel:+917987683263"
-              className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm shadow-md transition-all"
-            >
-              <i className="fa-solid fa-phone"></i>
-              <span>Call Helpline</span>
-            </a>
-            <a
-              href="https://wa.me/917987683263?text=Hi%20KGB%20Group,%20I%20need%20career%20counseling%20for%20suitable%20roles."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm transition-all"
-            >
-              <i className="fa-brands fa-whatsapp text-base"></i>
-              <span>WhatsApp HR</span>
-            </a>
-          </div>
-        </div>
 
       </div>
     </section>

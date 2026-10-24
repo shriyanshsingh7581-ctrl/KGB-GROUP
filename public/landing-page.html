@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KGB Group | Knowledge Gurukul & Placement India</title>
-  <meta name="description" content="Your Trust. Our Commitment. | Great Careers Start Here! Official Training & Placement Partner for Engineering & Management Colleges across Central India. 1,00,000+ candidates trained and placed." />
-  <meta property="og:title" content="KGB Group | Knowledge Gurukul & Placement India" />
-  <meta property="og:description" content="Official Training & Placement Partner across Central India. Apply for top MNC & WFH careers today." />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <title>KGB Group - Knowledge Gurukul (Bhopal) | ISO 9001:2015 &amp; MSME Certified Training &amp; Placement</title>
+  <meta name="description" content="Knowledge Gurukul Bhopal (KGB Group) — ISO 9001:2015 Certified (QMP202604878) &amp; Govt. Udyam MSME Registered (UDYAM-MP-10-0162140) Training &amp; Placement Network in Central India." />
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,856 +20,833 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            brand: {
-              navy: '#0F172A',
-              blue: '#1E3A8A',
-              gold: '#F59E0B',
-              amber: '#D97706'
-            }
-          },
           fontFamily: {
-            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-            display: ['Outfit', 'Plus Jakarta Sans', 'sans-serif']
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              800: '#1E3A8A',
+              900: '#0F172A',
+              950: '#090E1A',
+            },
+            gold: {
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+            }
           }
         }
       }
     }
   </script>
 
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-      50% { box-shadow: 0 0 0 14px rgba(245, 158, 11, 0); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .img-fallback {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #fbbf24;
     }
-    .animate-pulse-glow { animation: pulseGlow 2.5s infinite; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-400 selection:text-slate-900 pb-16 sm:pb-0">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-amber-400 selection:text-slate-950 pb-14 sm:pb-0">
 
-  <!-- Top Announcement Strip -->
-  <div class="bg-slate-900 text-slate-100 text-xs py-1.5 px-4 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div className="flex items-center gap-2">
-        <span class="inline-flex items-center gap-1 bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full font-semibold text-[11px] border border-amber-500/40">
-          <i class="fa-solid fa-certificate text-[10px] text-amber-400"></i> ISO 9001:2015 & MSME Registered
-        </span>
-        <span class="hidden sm:inline text-slate-300 ml-2">
-          Official Placement Partner for Central India Engineering & Management Colleges
-        </span>
-      </div>
-
-      <div class="flex items-center gap-4 text-xs font-medium">
-        <a href="tel:+917987683263" class="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition-colors">
-          <i class="fa-solid fa-phone-volume text-xs"></i>
-          <span>Helpline: +91 7987683263</span>
-        </a>
-        <span class="text-slate-600 hidden md:inline">|</span>
-        <a href="https://wa.me/917987683263?text=Hi%20KGB%20Group%20Knowledge%20Gurukul,%20I%20want%20to%20inquire%20about%20job%20placements." target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors">
-          <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>WhatsApp Chat</span>
-        </a>
+  <!-- 1. TOP BAR & STICKY HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <!-- Top Verification & Contact Strip -->
+    <div class="bg-slate-900 text-slate-100 text-[11px] sm:text-xs py-1.5 px-3 sm:px-6 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <span class="inline-flex items-center gap-1 bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] border border-amber-500/40 shrink-0">
+            <i class="fa-solid fa-certificate text-amber-400"></i>
+            <span>ISO 9001:2015 &amp; MSME UDYAM</span>
+          </span>
+          <span class="hidden md:inline-flex items-center gap-1.5 text-slate-300 truncate">
+            <i class="fa-solid fa-location-dot text-amber-400"></i>
+            <span>Zone 1, MP Nagar, Bhopal</span>
+          </span>
+          <span class="text-slate-700 hidden lg:inline">|</span>
+          <a href="mailto:kgbbhopal01@gmail.com" class="hidden lg:inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors">
+            <i class="fa-solid fa-envelope text-amber-400"></i>
+            <span>kgbbhopal01@gmail.com</span>
+          </a>
+        </div>
+        <div class="flex items-center gap-3 shrink-0 font-semibold">
+          <a href="tel:+917987683263" class="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 transition-colors">
+            <i class="fa-solid fa-phone-volume"></i>
+            <span>+91 7987683263</span>
+          </a>
+          <span class="text-slate-600 hidden sm:inline">|</span>
+          <a href="https://wa.me/917987683263?text=Hi%20KGB%20Group%20Knowledge%20Gurukul%20Bhopal,%20I%20want%20to%20inquire%20about%20job%20placements." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>WhatsApp Helpline</span>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Navbar -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <!-- Brand Logo / Name -->
-        <a href="#" class="flex items-center gap-3 group">
-          <div class="relative w-12 h-12 rounded-xl overflow-hidden border border-amber-400/30 bg-amber-50/50 shadow-sm p-1 flex items-center justify-center transition-transform group-hover:scale-105">
-            <img src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg" alt="Knowledge Gurukul Logo" class="w-full h-full object-contain" />
+    <!-- Main Navigation Bar -->
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <!-- Brand Logo -->
+        <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-amber-400/50 bg-white shadow-sm p-0.5 flex items-center justify-center shrink-0">
+            <img
+              src="kgb-logo.jpg"
+              alt="KGB Group - Knowledge Gurukul (Bhopal)"
+              onerror="this.onerror=null; this.src='/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg';"
+              class="w-full h-full object-contain rounded-lg img-fallback"
+            />
           </div>
-          <div class="flex flex-col">
+          <div class="flex flex-col min-w-0">
             <div class="flex items-center gap-1.5">
-              <span class="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900">
+              <span class="font-display font-black text-base sm:text-xl tracking-tight text-slate-900 leading-none">
                 KGB <span class="text-amber-500">GROUP</span>
               </span>
-              <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
-                Govt. MSME
+              <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 shrink-0">
+                <i class="fa-solid fa-circle-check text-emerald-600 mr-0.5"></i>Verified
               </span>
             </div>
-            <span class="text-[11px] sm:text-xs font-semibold text-slate-600 -mt-0.5 tracking-wide">
-              Knowledge Gurukul &bull; Placement India
+            <span class="text-[10px] sm:text-xs font-semibold text-slate-600 mt-0.5 truncate">
+              Knowledge Gurukul (Bhopal)
             </span>
           </div>
         </a>
 
-        <!-- Desktop Quick Links -->
-        <nav class="hidden lg:flex items-center gap-7">
-          <a href="#jobs" class="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1.5">
-            <i class="fa-solid fa-briefcase text-xs text-amber-500"></i>
-            <span>Featured Jobs</span>
+        <!-- Desktop Links: Home, About, Certifications, Openings, Campus Drives, Registration Form -->
+        <nav class="hidden lg:flex items-center gap-6">
+          <a href="#home" class="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-800 transition-colors">Home</a>
+          <a href="#about" class="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-800 transition-colors">About</a>
+          <a href="#certifications" class="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-800 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-award text-amber-500"></i>
+            <span>Certifications</span>
           </a>
-          <a href="#training" class="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1.5">
-            <i class="fa-solid fa-graduation-cap text-xs text-blue-600"></i>
-            <span>Training</span>
+          <a href="#openings" class="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-800 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-briefcase text-blue-700"></i>
+            <span>Openings</span>
           </a>
-          <a href="#colleges" class="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1.5">
-            <i class="fa-solid fa-building-columns text-xs text-emerald-600"></i>
-            <span>Colleges</span>
+          <a href="#campus-drives" class="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-800 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-camera text-emerald-600"></i>
+            <span>Campus Drives</span>
           </a>
-          <a href="#trust" class="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1.5">
-            <i class="fa-solid fa-shield-halved text-xs text-indigo-600"></i>
-            <span>Accreditations</span>
-          </a>
-          <a href="#contact" class="text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1.5">
-            <i class="fa-solid fa-envelope text-xs text-slate-500"></i>
-            <span>Contact</span>
-          </a>
+          <a href="#registration" class="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-800 transition-colors">Registration Form</a>
         </nav>
 
-        <!-- Direct Call Button & CTA -->
-        <div class="hidden sm:flex items-center gap-3">
-          <a href="tel:+917987683263" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all">
-            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <i class="fa-solid fa-phone text-blue-700"></i>
+        <!-- Direct Call & Apply CTA -->
+        <div class="hidden sm:flex items-center gap-2.5">
+          <a href="tel:+917987683263" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <i class="fa-solid fa-phone text-blue-800"></i>
             <span>+91 7987683263</span>
           </a>
-
-          <a href="#apply" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold text-slate-900 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 transition-all shadow-sm">
-            <i class="fa-solid fa-paper-plane text-slate-900"></i>
+          <a href="#registration" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 shadow-sm transition-all">
+            <i class="fa-solid fa-paper-plane"></i>
             <span>Apply Now</span>
           </a>
         </div>
 
-        <!-- Mobile Menu Toggle -->
-        <div class="flex items-center gap-2 lg:hidden">
-          <a href="tel:+917987683263" class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">
+        <!-- Mobile Menu Button -->
+        <div class="flex items-center gap-1.5 sm:hidden">
+          <a href="tel:+917987683263" class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-blue-800 border border-blue-200" aria-label="Call Helpline">
             <i class="fa-solid fa-phone text-sm"></i>
           </a>
-          <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none">
-            <i class="fa-solid fa-bars text-xl"></i>
+          <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-slate-100 text-slate-800 border border-slate-200" aria-label="Open Menu">
+            <i class="fa-solid fa-bars text-base"></i>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobileDrawer" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-lg">
-      <a href="#jobs" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100">
-        <i class="fa-solid fa-briefcase text-amber-500 w-5"></i>
-        <span>Featured Job Openings</span>
-      </a>
-      <a href="#training" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100">
-        <i class="fa-solid fa-graduation-cap text-blue-600 w-5"></i>
-        <span>Training & Grooming</span>
-      </a>
-      <a href="#colleges" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100">
-        <i class="fa-solid fa-building-columns text-emerald-600 w-5"></i>
-        <span>Engineering & Management Colleges</span>
-      </a>
-      <a href="#trust" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100">
-        <i class="fa-solid fa-shield-halved text-indigo-600 w-5"></i>
-        <span>ISO 9001 & MSME Accreditations</span>
-      </a>
-      <a href="#contact" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-100">
-        <i class="fa-solid fa-phone text-amber-600 w-5"></i>
-        <span>Contact & Helpline (+91 7987683263)</span>
-      </a>
-      <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
-        <a href="#apply" class="w-full text-center py-3 rounded-lg text-sm font-bold text-slate-900 bg-amber-400 hover:bg-amber-500 shadow-sm">
-          <i class="fa-solid fa-paper-plane mr-1.5"></i> Apply for Job Openings (Free)
-        </a>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-3.5 pt-3 pb-5 space-y-3 shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-800">
+        <a href="#home" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-house text-slate-600"></i>Home</a>
+        <a href="#about" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-building-columns text-indigo-600"></i>About</a>
+        <a href="#certifications" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-award text-amber-500"></i>Certifications</a>
+        <a href="#openings" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-briefcase text-blue-600"></i>Openings</a>
+        <a href="#campus-drives" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-camera text-emerald-600"></i>Campus Drives</a>
+        <a href="#registration" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-file-pen text-amber-600"></i>Registration Form</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-blue-950 text-white pt-10 pb-16 lg:pt-16 lg:pb-24">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+  <main>
+    <!-- 2. HERO SECTION -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-blue-950 text-white pt-8 pb-14 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-24">
+      <div class="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Left Content -->
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-amber-400/40 text-amber-300 text-xs font-semibold">
+              <span class="h-2 w-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span>ISO 9001:2015 (QMP202604878) &bull; UDYAM-MP-10-0162140</span>
+            </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        <!-- Left Column -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold backdrop-blur-sm">
-            <span class="flex h-2 w-2 rounded-full bg-amber-400 animate-ping"></span>
-            <i class="fa-solid fa-handshake-angle text-amber-400"></i>
-            <span>Your Trust. Our Commitment. | Great Careers Start Here!</span>
+            <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+              Empowering Careers Through <span class="text-amber-400">Central India's Leading Training &amp; Placement Network</span>
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl">
+              Official Training &amp; Placement Partner for AICTE-approved Engineering &amp; Management Colleges (MBA/BBA affiliated with Barkatullah University, Bhopal) and Govt. of India MSME Skill &amp; Startup Initiatives.
+            </p>
+
+            <!-- Key Highlights Grid -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="bg-slate-800/75 border border-slate-700 p-3.5 rounded-2xl flex items-start gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                  <h3 class="text-xs sm:text-sm font-bold text-white">WFH Tele-Caller &amp; DEO</h3>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Fixed salary + high incentives, flexible timings.</p>
+                </div>
+              </div>
+              <div class="bg-slate-800/75 border border-slate-700 p-3.5 rounded-2xl flex items-start gap-3">
+                <div class="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div>
+                  <h3 class="text-xs sm:text-sm font-bold text-white">CEDMAP &amp; Campus Drives</h3>
+                  <p class="text-[11px] text-slate-400 mt-0.5">1,00,000+ candidates trained &amp; placed.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTAs: Apply for Jobs & Verify Credentials -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              <a href="#registration" class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl font-extrabold text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-500 text-sm sm:text-base shadow-lg shadow-amber-500/25 transition-all">
+                <span>Apply for Jobs</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+              <a href="#certifications" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 text-sm transition-all">
+                <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                <span>Verify Credentials</span>
+              </a>
+            </div>
           </div>
 
-          <h1 class="font-display text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight leading-tight sm:leading-none text-white">
-            Launch High-Paying <br class="hidden sm:inline" />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-200">
-              WFH & Top MNC Careers
-            </span>
-            in Central India
-          </h1>
+          <!-- Right Card: Bhopal Head Office & Active Drives -->
+          <div class="lg:col-span-5">
+            <div class="bg-slate-800/95 border border-amber-400/40 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Bhopal HQ &bull; Active Hiring
+                </span>
+                <span class="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-md font-bold">100% Verified</span>
+              </div>
 
-          <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-            KGB Group (Knowledge Gurukul / Placement India) connects job seekers, fresh graduates, and college students to verified corporate hiring drives with guaranteed guidance.
+              <div class="space-y-2.5 text-xs">
+                <a href="#openings" class="block bg-slate-900/80 hover:bg-slate-900 p-3 rounded-xl border border-amber-400/40 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-white block">Work From Home Tele-Caller</span>
+                    <span class="text-[11px] text-amber-300">Zone 1, MP Nagar Bhopal / Remote</span>
+                  </div>
+                  <span class="font-extrabold text-amber-400">Fixed + Incentive</span>
+                </a>
+                <a href="#openings" class="block bg-slate-900/80 hover:bg-slate-900 p-3 rounded-xl border border-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-white block">Data Entry Operator (WFH)</span>
+                    <span class="text-[11px] text-slate-400">Laptop/Desktop Required</span>
+                  </div>
+                  <span class="font-extrabold text-amber-400"><i class="fa-solid fa-indian-rupee-sign text-[10px] mr-0.5"></i>25,000/mo</span>
+                </a>
+                <a href="#openings" class="block bg-slate-900/80 hover:bg-slate-900 p-3 rounded-xl border border-slate-700 flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-white block">Customer Support Executive</span>
+                    <span class="text-[11px] text-slate-400">Voice &amp; Blended Process</span>
+                  </div>
+                  <span class="font-extrabold text-emerald-300"><i class="fa-solid fa-indian-rupee-sign text-[10px] mr-0.5"></i>23k - 30k/mo</span>
+                </a>
+              </div>
+
+              <div class="bg-amber-500/10 p-3.5 rounded-2xl border border-amber-500/30 flex items-center justify-between">
+                <div class="text-xs">
+                  <span class="text-amber-300 font-bold block">Direct Placement Helpline:</span>
+                  <span class="text-white font-extrabold">+91 7987683263</span>
+                </div>
+                <a href="tel:+917987683263" class="px-4 py-2 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs hover:bg-amber-300">Call Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT STRIP -->
+    <section id="about" class="py-8 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="font-display font-black text-xl sm:text-2xl text-slate-900">ISO 9001:2015</div>
+          <div class="text-xs text-slate-600 font-semibold mt-0.5">Cert No: QMP202604878</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="font-display font-black text-xl sm:text-2xl text-blue-900">MSME UDYAM</div>
+          <div class="text-xs text-slate-600 font-semibold mt-0.5">UDYAM-MP-10-0162140</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="font-display font-black text-xl sm:text-2xl text-emerald-700">1,00,000+</div>
+          <div class="text-xs text-slate-600 font-semibold mt-0.5">Candidates Trained &amp; Placed</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="font-display font-black text-xl sm:text-2xl text-amber-600">150+ Colleges</div>
+          <div class="text-xs text-slate-600 font-semibold mt-0.5">Central India Partner Network</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OFFICIAL ACCREDITATION & GOVERNMENT RECOGNITION -->
+    <section id="certifications" class="scroll-mt-24 py-12 sm:py-16 lg:py-20 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-bold text-xs uppercase tracking-wider border border-emerald-200 mb-2.5">
+            <i class="fa-solid fa-shield-check text-emerald-600"></i>
+            <span>Official Accreditation &amp; Government Recognition</span>
+          </div>
+          <h2 class="font-display text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Verified ISO 9001:2015 &amp; Govt. of India MSME Credentials
+          </h2>
+          <p class="mt-2 text-slate-600 text-xs sm:text-base">
+            Knowledge Gurukul Bhopal (KGB) is an officially certified organization at Zone I, MP Nagar, Bhopal. Click any certificate card below to inspect full credentials.
           </p>
-
-          <!-- Bullet Points of Key Benefits -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-            <div class="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl">
-              <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i class="fa-solid fa-house-laptop text-sm"></i>
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-white">Verified Work From Home (WFH)</h4>
-                <p class="text-xs text-slate-400">Genuine data entry & support jobs with <i class="fa-solid fa-indian-rupee-sign text-[10px] text-amber-400"></i>25,000/mo fixed pay.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl">
-              <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i class="fa-solid fa-building text-sm"></i>
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-white">Tier-1 MNC Direct Hiring</h4>
-                <p class="text-xs text-slate-400">Customer care, IT desktop support, logistics & HR roles.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i class="fa-solid fa-indian-rupee-sign text-sm"></i>
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-white">High Salary Packages</h4>
-                <p class="text-xs text-slate-400"><i class="fa-solid fa-indian-rupee-sign text-[10px] text-emerald-400"></i>23,000 to <i class="fa-solid fa-indian-rupee-sign text-[10px] text-emerald-400"></i>35,000/mo starting salary + PF, medical.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl">
-              <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i class="fa-solid fa-chalkboard-user text-sm"></i>
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-white">100% Free Training & Grooming</h4>
-                <p class="text-xs text-slate-400">Resume review, mock interviews, and confidence building.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-4 pt-3">
-            <a href="#apply" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-bold text-slate-900 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-500 text-sm sm:text-base shadow-lg shadow-amber-500/25 transition-all">
-              <span>Apply for Jobs Now (Free)</span>
-              <i class="fa-solid fa-arrow-right text-sm"></i>
-            </a>
-
-            <a href="#jobs" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-slate-200 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-sm sm:text-base transition-all">
-              <i class="fa-solid fa-briefcase text-amber-400 text-sm"></i>
-              <span>Explore Open Roles</span>
-            </a>
-
-            <a href="https://wa.me/917987683263?text=Hi%20KGB%20Group,%20I%20want%20to%20apply%20for%20vacancies." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl font-semibold text-emerald-300 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/40 text-sm transition-all">
-              <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
-              <span>Quick WhatsApp</span>
-            </a>
-          </div>
-
-          <div class="pt-2 flex items-center gap-2 text-xs text-slate-400">
-            <div class="flex text-amber-400 text-xs">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-            </div>
-            <span>Over 1,00,000+ candidates trained and placed across Central India</span>
-          </div>
         </div>
 
-        <!-- Right Column Card -->
-        <div class="lg:col-span-5">
-          <div class="bg-gradient-to-b from-slate-800/90 to-slate-900/95 border border-amber-400/40 rounded-2xl p-6 sm:p-7 shadow-2xl backdrop-blur-md">
-            <div class="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-5">
-              <div class="flex items-center gap-2">
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
-                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Active Hiring Drive 2026-2027</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <!-- Card 1: ISO 9001:2015 Certificate (iso-certificate.jpg) -->
+          <div class="bg-slate-50 rounded-3xl border-2 border-slate-200 hover:border-amber-400 transition-all shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="bg-slate-900 text-white px-5 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-ribbon text-amber-400"></i>
+                  <span class="font-display font-bold text-xs sm:text-sm uppercase tracking-wider">Quality Management System</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-bold">Active &amp; Verified</span>
               </div>
-              <span class="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-md font-semibold">
-                Zero Registration Fee
-              </span>
-            </div>
 
-            <div class="flex items-center gap-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-700/70 mb-5">
-              <img src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg" alt="Knowledge Gurukul Official Emblem" class="w-16 h-16 object-contain rounded-lg bg-white p-1 shadow-md" />
-              <div>
-                <h3 class="font-display font-bold text-base text-white">Knowledge Gurukul</h3>
-                <p class="text-xs text-amber-400 font-semibold">Central India Training & Placement Wing</p>
-                <p class="text-[11px] text-slate-400 mt-0.5">Govt. MSME & ISO 9001:2015 Approved Process</p>
-              </div>
-            </div>
-
-            <div class="space-y-3 mb-5">
-              <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                  <i class="fa-solid fa-laptop text-amber-400 text-base"></i>
-                  <div>
-                    <div class="text-xs font-semibold text-white">WFH Data Entry Operator</div>
-                    <div class="text-[11px] text-slate-400">85 openings &bull; Laptop compulsory</div>
+              <div class="p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                <!-- Thumbnail Preview: iso-certificate.jpg -->
+                <div class="sm:col-span-5 cursor-pointer group relative rounded-2xl overflow-hidden border-2 border-slate-200 bg-white shadow-sm aspect-[3/4] flex items-center justify-center" onclick="openCertModal('iso-certificate.jpg', '/assets/aistudio/202604878_KNOWLEDGE_GURUKUL_BHOPAL__KGB__9001_TQC_page-0001_29febc48.jpg', 'ISO 9001:2015 Certificate — QMP202604878')">
+                  <img
+                    src="iso-certificate.jpg"
+                    alt="ISO 9001:2015 Certificate - Knowledge Gurukul Bhopal (KGB) QMP202604878"
+                    onerror="this.onerror=null; this.src='/assets/aistudio/202604878_KNOWLEDGE_GURUKUL_BHOPAL__KGB__9001_TQC_page-0001_29febc48.jpg';"
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300 rounded-xl img-fallback"
+                  />
+                  <div class="absolute inset-0 bg-slate-900/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-3 py-1.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs shadow-md">
+                      <i class="fa-solid fa-magnifying-glass-plus mr-1"></i>Click to Preview
+                    </span>
                   </div>
                 </div>
-                <span class="text-xs font-bold text-amber-400"><i class="fa-solid fa-indian-rupee-sign text-[10px]"></i>25,000/mo</span>
+
+                <!-- Details -->
+                <div class="sm:col-span-7 space-y-3">
+                  <div>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 block">Target Quality Certifications &bull; UKASL</span>
+                    <h3 class="font-display font-black text-lg sm:text-xl text-slate-900">ISO 9001:2015 Certified</h3>
+                  </div>
+
+                  <div class="bg-white p-3.5 rounded-2xl border border-slate-200 space-y-1.5 text-xs">
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Certificate No:</span>
+                      <span class="font-mono font-black text-slate-900 bg-amber-100 px-2 py-0.5 rounded">QMP202604878</span>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Client ID:</span>
+                      <span class="font-mono font-bold text-slate-800">202604878</span>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Location:</span>
+                      <span class="font-semibold text-slate-800">Zone I, MP Nagar, Bhopal - 462023</span>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Validity:</span>
+                      <span class="font-semibold text-emerald-700">18.04.2026 to 17.04.2029</span>
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    <strong>Certified Scope:</strong> Educational Institutions, Campus Program MBA &amp; BBA Approved by AICTE &amp; Affiliated by Barkatullah University Bhopal.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-600"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Verified Bhopal Credential</span>
+              <button type="button" onclick="openCertModal('iso-certificate.jpg', '/assets/aistudio/202604878_KNOWLEDGE_GURUKUL_BHOPAL__KGB__9001_TQC_page-0001_29febc48.jpg', 'ISO 9001:2015 Certificate — QMP202604878')" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-blue-900 text-white font-bold text-xs transition-colors">
+                <i class="fa-solid fa-eye text-amber-400 mr-1"></i>Preview Certificate
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Udyam MSME Certificate (udyam-certificate.jpg) -->
+          <div class="bg-slate-50 rounded-3xl border-2 border-slate-200 hover:border-amber-400 transition-all shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="bg-slate-900 text-white px-5 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-landmark text-amber-400"></i>
+                  <span class="font-display font-bold text-xs sm:text-sm uppercase tracking-wider">Ministry of MSME &bull; Govt. of India</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-bold">Active &amp; Verified</span>
               </div>
 
-              <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                  <i class="fa-solid fa-headset text-blue-400 text-base"></i>
-                  <div>
-                    <div class="text-xs font-semibold text-white">Customer Support Executive</div>
-                    <div class="text-[11px] text-slate-400">120 openings &bull; Voice & Blended</div>
+              <div class="p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                <!-- Thumbnail Preview: udyam-certificate.jpg -->
+                <div class="sm:col-span-5 cursor-pointer group relative rounded-2xl overflow-hidden border-2 border-slate-200 bg-white shadow-sm aspect-[3/4] flex items-center justify-center" onclick="openCertModal('udyam-certificate.jpg', '/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png', 'Udyam Registration Certificate — UDYAM-MP-10-0162140')">
+                  <img
+                    src="udyam-certificate.jpg"
+                    alt="Udyam Registration Certificate - UDYAM-MP-10-0162140 Knowledge Gurukul Bhopal"
+                    onerror="this.onerror=null; this.src='/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png';"
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300 rounded-xl img-fallback"
+                  />
+                  <div class="absolute inset-0 bg-slate-900/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-3 py-1.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs shadow-md">
+                      <i class="fa-solid fa-magnifying-glass-plus mr-1"></i>Click to Preview
+                    </span>
                   </div>
                 </div>
-                <span class="text-xs font-bold text-blue-300"><i class="fa-solid fa-indian-rupee-sign text-[10px]"></i>23k - 30k/mo</span>
-              </div>
 
-              <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                  <i class="fa-solid fa-clipboard-check text-purple-400 text-base"></i>
+                <!-- Details -->
+                <div class="sm:col-span-7 space-y-3">
                   <div>
-                    <div class="text-xs font-semibold text-white">Exam Invigilators / Warehouse</div>
-                    <div class="text-[11px] text-slate-400">150+ openings &bull; Central India</div>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 block">Govt. of India &bull; MSME Registration</span>
+                    <h3 class="font-display font-black text-lg sm:text-xl text-slate-900">Udyam Registered Enterprise</h3>
+                  </div>
+
+                  <div class="bg-white p-3.5 rounded-2xl border border-slate-200 space-y-1.5 text-xs">
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Udyam Reg. No:</span>
+                      <span class="font-mono font-black text-slate-900 bg-amber-100 px-2 py-0.5 rounded">UDYAM-MP-10-0162140</span>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Enterprise Name:</span>
+                      <span class="font-bold text-slate-800">KNOWLEDGE GURUKUL BHOPAL</span>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Registered Office:</span>
+                      <span class="font-semibold text-slate-800">Zone I, MP Nagar, Near Anand Namkeen</span>
+                    </div>
+                    <div class="flex justify-between gap-2">
+                      <span class="text-slate-500">Incorporation:</span>
+                      <span class="font-semibold text-emerald-700">02/01/2023 (Services)</span>
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    <strong>Approved NIC Services:</strong> Academic tutoring, educational support services, and corporate skill placement programs across Madhya Pradesh.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-600"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>Govt. Portal Verified</span>
+              <button type="button" onclick="openCertModal('udyam-certificate.jpg', '/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png', 'Udyam Registration Certificate — UDYAM-MP-10-0162140')" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-blue-900 text-white font-bold text-xs transition-colors">
+                <i class="fa-solid fa-eye text-amber-400 mr-1"></i>Preview Certificate
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ACTIVE JOB OPENINGS SECTION -->
+    <section id="openings" class="scroll-mt-24 py-12 sm:py-16 lg:py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-wider border border-blue-200 mb-2.5">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Immediate Hiring &bull; Bhopal &amp; Central India</span>
+          </div>
+          <h2 class="font-display text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Active Job Openings
+          </h2>
+          <p class="mt-2 text-slate-600 text-xs sm:text-base">
+            Direct Work From Home and corporate roles verified by Knowledge Gurukul Bhopal. Select any opening to apply online.
+          </p>
+        </div>
+
+        <!-- Featured Opening Card: Work From Home Tele-Caller (telecaller-hiring.jpg) -->
+        <div class="mb-8 sm:mb-10 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 rounded-3xl border-2 border-amber-400 shadow-xl overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-5 relative min-h-[240px] bg-slate-800 overflow-hidden">
+              <img
+                src="telecaller-hiring.jpg"
+                alt="Work From Home Tele-Caller Job Poster - Knowledge Gurukul Bhopal"
+                onerror="this.onerror=null; this.src='/assets/aistudio/IMG-20261024-WA0020_b250fc32.jpg';"
+                class="w-full h-full object-cover object-center img-fallback"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow">
+                  <i class="fa-solid fa-fire mr-1"></i>Featured Opening
+                </span>
+              </div>
+              <div class="absolute bottom-3 left-3 right-3 text-white">
+                <span class="text-xs font-bold text-amber-300"><i class="fa-solid fa-location-dot mr-1"></i>Zone 1, MP Nagar, Bhopal / Remote</span>
+                <h3 class="font-display font-black text-lg">Work From Home Tele-Caller</h3>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7 p-5 sm:p-8 text-white flex flex-col justify-between space-y-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">Knowledge Gurukul Bhopal &bull; Urgent Hiring</span>
+                <h3 class="font-display text-xl sm:text-3xl font-black">Work From Home Tele-Caller</h3>
+                <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                  Handle student &amp; candidate tele-counseling, inquiry follow-ups, and interview scheduling. Open to freshers, college students, graduates, and homemakers.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                  <div class="bg-slate-800/90 border border-slate-700 p-3 rounded-2xl">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block">Compensation</span>
+                    <span class="font-display font-extrabold text-sm text-amber-400">High Incentive + Fixed Salary</span>
+                  </div>
+                  <div class="bg-slate-800/90 border border-slate-700 p-3 rounded-2xl">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block">Work Schedule</span>
+                    <span class="font-display font-extrabold text-sm text-white">Flexible Timings</span>
+                  </div>
+                  <div class="bg-slate-800/90 border border-slate-700 p-3 rounded-2xl">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block">Location</span>
+                    <span class="font-display font-extrabold text-sm text-emerald-300">Bhopal Center / Remote</span>
                   </div>
                 </div>
-                <span class="text-xs font-bold text-emerald-400">Immediate</span>
+              </div>
+
+              <div class="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                <div class="text-xs">
+                  <span class="text-slate-400 block">Direct Helpline:</span>
+                  <a href="tel:+917987683263" class="font-extrabold text-amber-400 text-sm">+91 7987683263</a>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <button type="button" onclick="selectRoleAndScroll('Work From Home Tele-Caller')" class="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs sm:text-sm shadow">
+                    Apply for Tele-Caller
+                  </button>
+                  <a href="https://wa.me/917987683263?text=Hi%20KGB%20Bhopal,%20I%20want%20to%20apply%20for%20Work%20From%20Home%20Tele-Caller." target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm">
+                    <i class="fa-brands fa-whatsapp mr-1"></i>WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
-
-            <div class="bg-amber-500/10 p-3 rounded-xl border border-amber-500/30 text-center">
-              <p class="text-xs text-slate-300 mb-2 font-medium">Have questions? Call or WhatsApp our counselors:</p>
-              <div class="flex items-center justify-center gap-3">
-                <a href="tel:+917987683263" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-400 text-slate-900 font-bold text-xs hover:bg-amber-300 transition-colors">
-                  <i class="fa-solid fa-phone"></i>
-                  <span>Call +91 7987683263</span>
-                </a>
-                <a href="https://wa.me/917987683263" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-500 transition-colors">
-                  <i class="fa-brands fa-whatsapp"></i>
-                  <span>WhatsApp</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust & Accreditation Strip -->
-  <section id="trust" class="relative -mt-6 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-      <!-- Card 1: ISO 9001 -->
-      <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-200 hover:border-amber-400 transition-all">
-        <div class="flex items-center gap-3.5 mb-3">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0">
-            <i class="fa-solid fa-certificate text-2xl"></i>
-          </div>
-          <div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600 block">Quality Benchmark</span>
-            <h3 class="font-display font-extrabold text-base text-slate-900">ISO 9001 Certified</h3>
-          </div>
-        </div>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          Standardized Quality Management in skill development, candidate evaluation, and corporate placement execution.
-        </p>
-        <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-          <i class="fa-solid fa-circle-check text-emerald-500"></i>
-          <span>Certified Operational Standards</span>
-        </div>
-      </div>
-
-      <!-- Card 2: MSME -->
-      <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-200 hover:border-blue-500 transition-all">
-        <div class="flex items-center gap-3.5 mb-3">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center shrink-0">
-            <i class="fa-solid fa-landmark-flag text-2xl"></i>
-          </div>
-          <div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600 block">Govt. Startup Mission</span>
-            <h3 class="font-display font-extrabold text-base text-slate-900">MSME Registered</h3>
-          </div>
-        </div>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          Registered under Ministry of Micro, Small and Medium Enterprises & Govt. Startup initiatives for youth careers.
-        </p>
-        <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-          <i class="fa-solid fa-circle-check text-emerald-500"></i>
-          <span>Official Government Recognition</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Central India College Partner -->
-      <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-200 hover:border-emerald-500 transition-all">
-        <div class="flex items-center gap-3.5 mb-3">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
-            <i class="fa-solid fa-building-columns text-2xl"></i>
-          </div>
-          <div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-600 block">Campus Empanelled</span>
-            <h3 class="font-display font-extrabold text-base text-slate-900">Central India Partner</h3>
-          </div>
-        </div>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          Official Training & Placement Partner for leading Engineering, Management & Polytechnic Colleges across Central India.
-        </p>
-        <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-          <i class="fa-solid fa-circle-check text-emerald-500"></i>
-          <span>450+ Partner Institutions</span>
-        </div>
-      </div>
-
-      <!-- Card 4: 1,00,000+ Placed -->
-      <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-200 hover:border-indigo-500 transition-all">
-        <div class="flex items-center gap-3.5 mb-3">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center shrink-0">
-            <i class="fa-solid fa-users-rays text-2xl"></i>
-          </div>
-          <div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-600 block">Proven Track Record</span>
-            <h3 class="font-display font-extrabold text-base text-slate-900">1,00,000+ Placed</h3>
-          </div>
-        </div>
-        <p class="text-xs text-slate-600 leading-relaxed">
-          Over one lakh candidates trained and successfully placed in verified domestic and multinational corporate roles.
-        </p>
-        <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-          <i class="fa-solid fa-circle-check text-emerald-500"></i>
-          <span>Verified Offer Letters</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Job Openings Section -->
-  <section id="jobs" class="py-16 lg:py-24 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-wider border border-blue-200 mb-3">
-          <i class="fa-solid fa-briefcase text-xs"></i>
-          <span>Current Vacancies &bull; Batch 2026-2027</span>
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Featured Job Openings
-        </h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-          Verified direct corporate opportunities with guaranteed salary structures and prompt onboarding. Choose your role and apply now.
-        </p>
-      </div>
-
-      <!-- Job Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Job 1: WFH Data Entry Operator -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all p-6 flex flex-col justify-between hover:border-amber-400">
-          <div>
-            <div class="flex items-start justify-between gap-2 mb-3">
-              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 border border-amber-300">
-                <i class="fa-solid fa-house-laptop mr-1"></i> 100% Work From Home
-              </span>
-              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-red-50 text-red-700 border border-red-200">
-                Urgent
-              </span>
-            </div>
-            <h3 class="font-display font-bold text-lg text-slate-900">
-              Work From Home Data Entry Operator
-            </h3>
-            
-            <div class="mt-3 p-3 rounded-xl bg-amber-50/60 border border-amber-200/80">
-              <span class="text-xs text-slate-500 block">Monthly Salary</span>
-              <span class="font-display font-black text-xl text-slate-900 flex items-center gap-1">
-                <i class="fa-solid fa-indian-rupee-sign text-amber-500 text-base"></i>
-                <span>25,000 / month</span>
-              </span>
-              <span class="text-[11px] text-amber-800 font-semibold block mt-0.5">Laptop compulsory &bull; Fixed Salary</span>
-            </div>
-
-            <ul class="mt-4 space-y-2 text-xs text-slate-700">
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
-                <span>Personal Laptop / Desktop with internet is compulsory</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
-                <span>Eligibility: 12th Pass, Any Graduate, Freshers & Experienced</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
-                <span>Typing speed 30+ WPM with basic MS Excel familiarity</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="#apply" onclick="selectRole('Work From Home Data Entry Operator (₹25,000/mo)')" class="flex-1 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-900 text-white text-xs font-bold text-center transition-colors">
-              Apply Now
-            </a>
-            <a href="https://wa.me/917987683263?text=Hi%20KGB%20Group,%20I%20want%20to%20apply%20for%20WFH%20Data%20Entry%20Operator." target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold">
-              <i class="fa-brands fa-whatsapp text-base"></i>
-            </a>
           </div>
         </div>
 
-        <!-- Job 2: Customer Support Executive -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all p-6 flex flex-col justify-between hover:border-blue-400">
-          <div>
-            <div class="flex items-start justify-between gap-2 mb-3">
-              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
-                <i class="fa-solid fa-headset mr-1"></i> MNC Corporate
-              </span>
-              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
-                120 Vacancies
-              </span>
-            </div>
-            <h3 class="font-display font-bold text-lg text-slate-900">
-              Customer Support Executive (Voice & Blended)
-            </h3>
-            
-            <div class="mt-3 p-3 rounded-xl bg-blue-50/60 border border-blue-200/80">
-              <span class="text-xs text-slate-500 block">Monthly Salary Range</span>
-              <span class="font-display font-black text-xl text-slate-900 flex items-center gap-1">
-                <i class="fa-solid fa-indian-rupee-sign text-blue-600 text-base"></i>
-                <span>23,000 - 30,000 / month</span>
-              </span>
-              <span class="text-[11px] text-blue-800 font-semibold block mt-0.5">+ Cab / Travel & Night Shift Allowances</span>
-            </div>
-
-            <ul class="mt-4 space-y-2 text-xs text-slate-700">
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                <span>Fluent Hindi / Conversational English communication</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                <span>Location: Indore, Bhopal, Raipur & Hybrid hubs</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-blue-600 mt-0.5"></i>
-                <span>Eligibility: Undergraduates & Graduates (Any Stream)</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="#apply" onclick="selectRole('Customer Support Executive (₹23,000 - ₹30,000/mo)')" class="flex-1 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-900 text-white text-xs font-bold text-center transition-colors">
-              Apply Now
-            </a>
-            <a href="https://wa.me/917987683263?text=Hi%20KGB%20Group,%20I%20want%20to%20apply%20for%20Customer%20Support%20Executive." target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold">
-              <i class="fa-brands fa-whatsapp text-base"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Job 3: Exam Invigilators & Warehouse Associates -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all p-6 flex flex-col justify-between hover:border-emerald-400">
-          <div>
-            <div class="flex items-start justify-between gap-2 mb-3">
-              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
-                <i class="fa-solid fa-clipboard-user mr-1"></i> Testing & Supply Chain
-              </span>
-              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">
-                Immediate Joining
-              </span>
-            </div>
-            <h3 class="font-display font-bold text-lg text-slate-900">
-              Exam Invigilators & Warehouse Associates
-            </h3>
-            
-            <div class="mt-3 p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/80">
-              <span class="text-xs text-slate-500 block">Monthly Compensation</span>
-              <span class="font-display font-black text-xl text-slate-900 flex items-center gap-1">
-                <i class="fa-solid fa-indian-rupee-sign text-emerald-600 text-base"></i>
-                <span>18,000 - 26,000 / month</span>
-              </span>
-              <span class="text-[11px] text-emerald-800 font-semibold block mt-0.5">Or daily duty honorarium + PF/ESIC</span>
-            </div>
-
-            <ul class="mt-4 space-y-2 text-xs text-slate-700">
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                <span>Exam centers across MP & CG; Warehouse hubs across Central India</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                <span>Eligibility: 10th / 12th / ITI / Any Graduate / Teachers</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
-                <span>Disciplined work culture and prompt scheduled disbursements</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="#apply" onclick="selectRole('Exam Invigilator & Assessment Coordinator')" class="flex-1 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-900 text-white text-xs font-bold text-center transition-colors">
-              Apply Now
-            </a>
-            <a href="https://wa.me/917987683263?text=Hi%20KGB%20Group,%20I%20want%20to%20apply%20for%20Invigilator%20or%20Warehouse%20roles." target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold">
-              <i class="fa-brands fa-whatsapp text-base"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Lead Generation Application Form -->
-  <section id="apply" class="py-16 lg:py-24 bg-white relative border-t border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 font-bold text-xs uppercase tracking-wider border border-amber-300 mb-3">
-          <i class="fa-solid fa-file-signature text-xs text-amber-600"></i>
-          <span>Official Candidate Registration</span>
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Fast-Track Job Application Form
-        </h2>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
-          Register directly with KGB Group’s placement pool. Our team verifies your profile and schedules your interview within 24 hours.
-        </p>
-      </div>
-
-      <!-- Confirmation Notice (Initially Hidden) -->
-      <div id="successNotice" class="hidden bg-emerald-50 rounded-3xl p-6 sm:p-10 border-2 border-emerald-400 text-center space-y-5 mb-8 shadow-xl">
-        <div class="w-16 h-16 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mx-auto text-3xl shadow-md">
-          <i class="fa-solid fa-circle-check"></i>
-        </div>
-        <h3 class="font-display font-extrabold text-2xl text-slate-900">Application Submitted Successfully!</h3>
-        <p class="text-sm text-slate-600">Your application reference code is: <strong id="refCode" class="font-mono text-blue-900 text-lg"></strong></p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a id="whatsappForwardBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition-all inline-flex items-center gap-2">
-            <i class="fa-brands fa-whatsapp text-lg"></i>
-            <span>Confirm on Official WhatsApp (+91 7987683263)</span>
-          </a>
-          <button onclick="resetAppForm()" class="px-4 py-3 rounded-xl bg-slate-200 text-slate-800 font-bold text-sm">
-            Submit Another
-          </button>
-        </div>
-      </div>
-
-      <!-- Active Form Card -->
-      <div id="formContainer" class="bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl">
-        <form id="leadApplicationForm" class="space-y-5" onsubmit="handleFormSubmit(event)">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <!-- Full Name -->
+        <!-- 3 Core Job Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          <!-- Card 2: Data Entry Operator -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all p-5 sm:p-6 flex flex-col justify-between">
             <div>
-              <label for="f_name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Full Name <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                <input id="f_name" type="text" required placeholder="e.g. Rahul Sharma" class="w-full pl-9 pr-3 py-3 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400/20 focus:border-amber-500" />
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[11px] font-bold uppercase px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200">Work From Home</span>
+                <span class="text-[11px] font-bold text-slate-600">Laptop/Desktop Required</span>
               </div>
+              <h3 class="font-display font-extrabold text-lg text-slate-900">Data Entry Operator</h3>
+              <div class="mt-3 p-3 rounded-xl bg-amber-50/70 border border-amber-200">
+                <span class="text-[10px] uppercase font-bold text-slate-500 block">Monthly Salary</span>
+                <span class="font-display font-black text-xl text-slate-900"><i class="fa-solid fa-indian-rupee-sign text-amber-500 mr-1"></i>25,000 / month</span>
+              </div>
+              <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span>Laptop or Desktop with internet connection required</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span>Basic MS Excel, Word &amp; 30+ WPM typing speed</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-500 mt-1"></i><span>12th Pass / Any Graduate (Freshers welcome)</span></li>
+              </ul>
             </div>
+            <button type="button" onclick="selectRoleAndScroll('Data Entry Operator')" class="mt-5 w-full py-3 rounded-xl bg-slate-900 hover:bg-blue-900 text-white font-extrabold text-xs sm:text-sm transition-colors">
+              Apply for Data Entry
+            </button>
+          </div>
 
-            <!-- Phone Number -->
+          <!-- Card 3: Customer Support Executive -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all p-5 sm:p-6 flex flex-col justify-between">
             <div>
-              <label for="f_phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                WhatsApp / Phone Number <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-500">+91</span>
-                <input id="f_phone" type="tel" required maxlength="12" placeholder="7987683263" class="w-full pl-12 pr-3 py-3 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400/20 focus:border-amber-500" />
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[11px] font-bold uppercase px-2.5 py-1 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">MNC / Corporate</span>
+                <span class="text-[11px] font-bold text-emerald-700">120 Seats</span>
               </div>
+              <h3 class="font-display font-extrabold text-lg text-slate-900">Customer Support Executive</h3>
+              <div class="mt-3 p-3 rounded-xl bg-blue-50/70 border border-blue-200">
+                <span class="text-[10px] uppercase font-bold text-slate-500 block">Monthly Salary</span>
+                <span class="font-display font-black text-xl text-slate-900"><i class="fa-solid fa-indian-rupee-sign text-blue-600 mr-1"></i>23,000 - 30,000 / mo</span>
+              </div>
+              <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-600 mt-1"></i><span>Good communication in Hindi &amp; basic English</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-600 mt-1"></i><span>Voice, chat &amp; blended customer care processes</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-blue-600 mt-1"></i><span>Bhopal, Indore &amp; hybrid center placements</span></li>
+              </ul>
+            </div>
+            <button type="button" onclick="selectRoleAndScroll('Customer Support Executive')" class="mt-5 w-full py-3 rounded-xl bg-slate-900 hover:bg-blue-900 text-white font-extrabold text-xs sm:text-sm transition-colors">
+              Apply for Customer Support
+            </button>
+          </div>
+
+          <!-- Card 4: Campus Drive Coordinator & Invigilator -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all p-5 sm:p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[11px] font-bold uppercase px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">Campus &amp; Exams</span>
+                <span class="text-[11px] font-bold text-emerald-700">Immediate Joining</span>
+              </div>
+              <h3 class="font-display font-extrabold text-lg text-slate-900">Campus Drive Coordinator &amp; Invigilator</h3>
+              <div class="mt-3 p-3 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                <span class="text-[10px] uppercase font-bold text-slate-500 block">Monthly Compensation</span>
+                <span class="font-display font-black text-xl text-slate-900"><i class="fa-solid fa-indian-rupee-sign text-emerald-600 mr-1"></i>18,000 - 25,000 / mo</span>
+              </div>
+              <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span>Manage candidate registration queues &amp; CBT exam halls</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span>Coordinate college placement drives at CEDMAP &amp; campuses</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><span>Any Graduate / Post Graduate / MBA / BBA</span></li>
+              </ul>
+            </div>
+            <button type="button" onclick="selectRoleAndScroll('Campus Drive Coordinator & Invigilator')" class="mt-5 w-full py-3 rounded-xl bg-slate-900 hover:bg-blue-900 text-white font-extrabold text-xs sm:text-sm transition-colors">
+              Apply for Coordinator Role
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. REAL CAMPUS DRIVES & FACILITY GALLERY (4-COLUMN GRID) -->
+    <section id="campus-drives" class="scroll-mt-24 py-12 sm:py-16 lg:py-20 bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 text-amber-300 font-bold text-xs uppercase tracking-wider border border-amber-500/30 mb-3">
+            <i class="fa-solid fa-camera-retro text-amber-400"></i>
+            <span>Verified Campus Drives &amp; Infrastructure</span>
+          </div>
+          <h2 class="font-display text-2xl sm:text-4xl font-black text-white tracking-tight">
+            Real Placement Drives &amp; Student Facilities in Central India
+          </h2>
+          <p class="mt-2 text-slate-300 text-xs sm:text-base">
+            Lakhs of candidates trained, verified, and placed across reputed organizations
+          </p>
+        </div>
+
+        <!-- 4 Authentic Photo Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          <!-- Photo 1: campus-drive-cedmap.jpg -->
+          <div class="bg-slate-800 rounded-2xl border border-slate-700 hover:border-amber-400 overflow-hidden shadow-lg transition-all flex flex-col justify-between group">
+            <div class="relative h-56 bg-slate-950 overflow-hidden">
+              <img
+                src="campus-drive-cedmap.jpg"
+                alt="Mega Recruitment Drive at CEDMAP Center"
+                onerror="this.onerror=null; this.src='/assets/aistudio/IMG-20261024-WA0022_d60fc357.jpg';"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-t-2xl img-fallback"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-950/85 text-amber-300 text-[10px] font-bold border border-amber-400/30">
+                CEDMAP Recruitment Drive
+              </span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-display font-bold text-base text-white">Mega Recruitment Drive at CEDMAP Center</h3>
+              <p class="text-xs text-slate-300 mt-1">Large-scale campus recruitment crowd at CEDMAP center in Bhopal.</p>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <!-- Highest Qualification -->
-            <div>
-              <label for="f_qualification" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Highest Qualification <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <i class="fa-solid fa-graduation-cap absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                <select id="f_qualification" required class="w-full pl-9 pr-8 py-3 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400/20 focus:border-amber-500 appearance-none">
-                  <option value="">-- Select Highest Qualification --</option>
-                  <option value="12th Pass">12th Standard Pass</option>
-                  <option value="Diploma / Polytechnic">Diploma / Polytechnic</option>
+          <!-- Photo 2: candidate-queue.jpg -->
+          <div class="bg-slate-800 rounded-2xl border border-slate-700 hover:border-amber-400 overflow-hidden shadow-lg transition-all flex flex-col justify-between group">
+            <div class="relative h-56 bg-slate-950 overflow-hidden">
+              <img
+                src="candidate-queue.jpg"
+                alt="Candidate Screening & Reception Queue"
+                onerror="this.onerror=null; this.src='/assets/aistudio/IMG-20261024-WA0021_503c800d.jpg';"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-t-2xl img-fallback"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-950/85 text-emerald-300 text-[10px] font-bold border border-emerald-400/30">
+                Registration &amp; Screening
+              </span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-display font-bold text-base text-white">Candidate Screening &amp; Reception Queue</h3>
+              <p class="text-xs text-slate-300 mt-1">Systematic document verification and candidate reception queue.</p>
+            </div>
+          </div>
+
+          <!-- Photo 3: interview-hall.jpg -->
+          <div class="bg-slate-800 rounded-2xl border border-slate-700 hover:border-amber-400 overflow-hidden shadow-lg transition-all flex flex-col justify-between group">
+            <div class="relative h-56 bg-slate-950 overflow-hidden">
+              <img
+                src="interview-hall.jpg"
+                alt="Formal Campus Interview & Panel Assessment"
+                onerror="this.onerror=null; this.src='/assets/aistudio/IMG-20261024-WA0023_68054791.jpg';"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-t-2xl img-fallback"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-950/85 text-blue-300 text-[10px] font-bold border border-blue-400/30">
+                HR Panel Assessment
+              </span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-display font-bold text-base text-white">Formal Campus Interview &amp; Panel Assessment</h3>
+              <p class="text-xs text-slate-300 mt-1">Corporate interview hall with direct HR screening and assessment.</p>
+            </div>
+          </div>
+
+          <!-- Photo 4: training-crowd.jpg -->
+          <div class="bg-slate-800 rounded-2xl border border-slate-700 hover:border-amber-400 overflow-hidden shadow-lg transition-all flex flex-col justify-between group">
+            <div class="relative h-56 bg-slate-950 overflow-hidden">
+              <img
+                src="training-crowd.jpg"
+                alt="Orientation & Training Session"
+                onerror="this.onerror=null; this.src='/assets/aistudio/IMG-20261024-WA0020_b250fc32.jpg';"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-t-2xl img-fallback"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-950/85 text-amber-300 text-[10px] font-bold border border-amber-400/30">
+                Pre-Placement Orientation
+              </span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-display font-bold text-base text-white">Orientation &amp; Training Session</h3>
+              <p class="text-xs text-slate-300 mt-1">Student orientation and career grooming session by KGB trainers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. HIGH-CONVERTING LEAD GENERATION APPLICATION FORM -->
+    <section id="registration" class="scroll-mt-24 py-12 sm:py-16 lg:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 font-bold text-xs uppercase tracking-wider border border-amber-300 mb-2.5">
+            <i class="fa-solid fa-bolt text-amber-600"></i>
+            <span>Direct HR Registration &bull; Zero Fee</span>
+          </div>
+          <h2 class="font-display text-2xl sm:text-4xl font-black text-slate-900">
+            Candidate Registration &amp; Job Application Form
+          </h2>
+          <p class="mt-2 text-slate-600 text-xs sm:text-base">
+            Submit your details below for immediate interview scheduling at our Zone 1, MP Nagar, Bhopal center or via telephonic round.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-lg">
+          <form id="lead-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="fullName" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Full Name *</label>
+                <input id="fullName" name="fullName" type="text" required placeholder="Enter your full name" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-amber-500" />
+              </div>
+              <div>
+                <label for="phone" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">WhatsApp / Phone Number *</label>
+                <input id="phone" name="phone" type="tel" inputmode="numeric" required placeholder="10-digit mobile number" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-amber-500" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="qualification" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Highest Qualification *</label>
+                <select id="qualification" name="qualification" required class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-amber-500">
+                  <option value="">-- Select Qualification --</option>
+                  <option value="12th Pass">12th Pass (Higher Secondary)</option>
                   <option value="B.Tech / B.E">B.Tech / B.E (Engineering)</option>
-                  <option value="BCA / B.Sc (IT/CS)">BCA / B.Sc (IT / CS)</option>
-                  <option value="B.Com / BBA / BA">B.Com / BBA / BA / General</option>
-                  <option value="MBA / PGDM">MBA / PGDM (Management)</option>
-                  <option value="Post Graduate / Others">Post Graduate / Others</option>
+                  <option value="MBA / BBA">MBA / BBA (Management)</option>
+                  <option value="BCA / B.Sc IT">BCA / B.Sc (IT / CS)</option>
+                  <option value="B.Com / BA / B.Sc">B.Com / BA / B.Sc Graduate</option>
+                  <option value="Diploma / ITI">Diploma / Polytechnic / ITI</option>
                 </select>
-                <i class="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
               </div>
-            </div>
-
-            <!-- Preferred Role -->
-            <div>
-              <label for="f_role" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Preferred Job Role <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <i class="fa-solid fa-briefcase absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                <select id="f_role" required class="w-full pl-9 pr-8 py-3 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400/20 focus:border-amber-500 appearance-none">
+              <div>
+                <label for="preferredRole" class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Preferred Job Role *</label>
+                <select id="preferredRole" name="preferredRole" required class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-amber-500">
                   <option value="">-- Select Preferred Role --</option>
-                  <option value="Work From Home Data Entry Operator (₹25,000/mo)">Work From Home Data Entry Operator (₹25,000/mo)</option>
-                  <option value="Customer Support Executive (₹23,000 - ₹30,000/mo)">Customer Support Executive (₹23,000 - ₹30,000/mo)</option>
-                  <option value="Exam Invigilator & Assessment Coordinator">Exam Invigilator & Assessment Coordinator</option>
-                  <option value="Warehouse Associate & Logistics Supervisor">Warehouse Associate & Logistics Supervisor</option>
-                  <option value="Open to Any Suitable Role">Open to Any Suitable Role</option>
+                  <option value="Work From Home Tele-Caller">Work From Home Tele-Caller (Fixed + High Incentive)</option>
+                  <option value="Data Entry Operator">Data Entry Operator (Rs. 25,000/month)</option>
+                  <option value="Customer Support Executive">Customer Support Executive (Rs. 23,000 - 30,000/month)</option>
+                  <option value="Campus Drive Coordinator & Invigilator">Campus Drive Coordinator &amp; Invigilator</option>
                 </select>
-                <i class="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
               </div>
             </div>
-          </div>
 
-          <!-- Laptop check -->
-          <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-400/30 flex items-start gap-3">
-            <input id="f_laptop" type="checkbox" class="mt-1 w-4 h-4 text-amber-500 rounded border-slate-300 focus:ring-amber-400" />
-            <label for="f_laptop" class="text-xs text-slate-800 leading-normal cursor-pointer">
-              <strong class="font-bold text-slate-900 block">I possess a working Laptop / Desktop computer with internet connectivity.</strong>
-              <span class="text-slate-600">Compulsory for Work From Home (WFH) Data Entry & remote positions.</span>
-            </label>
-          </div>
-
-          <!-- Submit Button -->
-          <button type="submit" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-display font-extrabold text-base tracking-wide shadow-lg shadow-amber-500/20 hover:shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer">
-            <i class="fa-solid fa-paper-plane text-slate-900"></i>
-            <span>Submit Free Application & Get Recruiter Call</span>
-          </button>
-
-          <p class="text-center text-[11px] text-slate-500">
-            <i class="fa-solid fa-shield-halved text-emerald-600 mr-1"></i>
-            100% Free Candidate Assistance &bull; ISO 9001 Process &bull; Direct Placement Partner
-          </p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact" class="bg-slate-950 text-slate-400 text-xs border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10">
-        <!-- Brand Info -->
-        <div class="lg:col-span-6 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-white p-1 overflow-hidden shadow-sm shrink-0">
-              <img src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg" alt="Knowledge Gurukul Logo" class="w-full h-full object-contain" />
-            </div>
-            <div>
-              <span class="font-display font-black text-xl text-white tracking-tight">
-                KGB <span class="text-amber-400">GROUP</span>
-              </span>
-              <p class="text-[11px] text-amber-300 font-semibold">Knowledge Gurukul &bull; Placement India</p>
-            </div>
-          </div>
-          <p class="text-xs text-slate-300 leading-relaxed max-w-md">
-            "Your Trust. Our Commitment. | Great Careers Start Here!" <br />
-            ISO 9001:2015 Certified & MSME Registered under Govt. Startup Mission. Official Training & Placement Partner for Engineering & Management Colleges across Central India.
-          </p>
-        </div>
-
-        <!-- Helpline & Support -->
-        <div class="lg:col-span-6 space-y-3">
-          <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider">Direct Placement Helpline</h4>
-          <div class="space-y-2.5 text-xs text-slate-300">
-            <a href="tel:+917987683263" class="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-400/50 transition-colors text-amber-400">
-              <i class="fa-solid fa-phone-volume text-sm"></i>
-              <div>
-                <span class="text-[10px] text-slate-400 block">Candidate & College Helpline</span>
-                <span class="font-bold text-sm">+91 7987683263</span>
-              </div>
-            </a>
-            <a href="https://wa.me/917987683263" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 p-2.5 rounded-xl bg-emerald-950/50 border border-emerald-900/60 hover:border-emerald-500/50 transition-colors text-emerald-400">
-              <i class="fa-brands fa-whatsapp text-lg"></i>
-              <div>
-                <span class="text-[10px] text-slate-400 block">WhatsApp Chat Desk</span>
-                <span class="font-bold text-sm">+91 7987683263</span>
-              </div>
-            </a>
-          </div>
+            <button type="submit" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-display font-black text-sm sm:text-base shadow-lg transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Submit Application &amp; Connect on WhatsApp</span>
+            </button>
+          </form>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-[11px] text-slate-500">
-        <p>&copy; 2026 KGB Group (Knowledge Gurukul / Placement India). All Rights Reserved.</p>
-        <p>ISO 9001:2015 Certified &bull; Govt. MSME Registered Unit</p>
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 text-xs border-t border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <span class="font-display font-black text-xl text-white">KGB <span class="text-amber-400">GROUP</span></span>
+        <p class="text-amber-300 font-semibold mt-0.5">Knowledge Gurukul Bhopal (KGB)</p>
+        <p class="mt-2 text-slate-400">ISO 9001:2015 Certified (QMP202604878) &amp; Govt. of India MSME Udyam Registered (UDYAM-MP-10-0162140).</p>
+      </div>
+      <div>
+        <h4 class="font-display font-bold text-white text-sm uppercase mb-2">Registered Office</h4>
+        <p class="text-slate-300">Zone I, MP Nagar, Near Anand Namkeen, Bhopal - 462023, Madhya Pradesh, India</p>
+        <p class="mt-2 text-amber-400 font-bold"><i class="fa-solid fa-envelope mr-1.5"></i>kgbbhopal01@gmail.com</p>
+      </div>
+      <div>
+        <h4 class="font-display font-bold text-white text-sm uppercase mb-2">Helpline &amp; Support</h4>
+        <a href="tel:+917987683263" class="block text-base font-extrabold text-amber-400">+91 7987683263</a>
+        <a href="https://wa.me/917987683263" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-2 px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Sticky WhatsApp Button -->
-  <div class="fixed bottom-20 sm:bottom-6 right-5 sm:right-6 z-50">
-    <a href="https://wa.me/917987683263?text=Hi%20KGB%20Group%20Knowledge%20Gurukul,%20I%20am%20interested%20in%20applying%20for%20job%20openings." target="_blank" rel="noopener noreferrer" class="relative group w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all" aria-label="Chat on WhatsApp">
-      <span class="absolute -inset-1 rounded-full bg-emerald-400/40 animate-ping pointer-events-none"></span>
-      <i class="fa-brands fa-whatsapp text-3xl"></i>
-      <span class="absolute top-0 right-0 w-4 h-4 bg-amber-400 text-slate-950 font-black text-[9px] rounded-full border-2 border-white flex items-center justify-center">1</span>
-    </a>
+  <!-- CERTIFICATE PREVIEW MODAL -->
+  <div id="cert-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeCertModal()">
+    <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+      <div class="px-5 py-3.5 bg-slate-900 text-white flex items-center justify-between">
+        <h3 id="cert-modal-title" class="font-display font-bold text-sm sm:text-base">Official Certificate Preview</h3>
+        <button type="button" onclick="closeCertModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-4 bg-slate-100 max-h-[75vh] overflow-auto flex justify-center">
+        <img id="cert-modal-img" src="" alt="Certificate Preview" class="max-h-[68vh] w-auto object-contain rounded-xl border border-slate-300 bg-white" />
+      </div>
+    </div>
   </div>
 
-  <!-- Mobile Sticky Bottom Quick Bar -->
-  <div class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2.5 sm:hidden shadow-lg flex items-center gap-2">
-    <a href="tel:+917987683263" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm">
-      <i class="fa-solid fa-phone text-amber-400 text-xs"></i>
-      <span>Call Helpline</span>
-    </a>
-    <a href="#apply" class="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-sm">
-      <i class="fa-solid fa-paper-plane text-xs"></i>
-      <span>Apply Online</span>
-    </a>
-    <a href="https://wa.me/917987683263" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
-      <i class="fa-brands fa-whatsapp text-lg"></i>
-    </a>
-  </div>
-
-  <!-- Client-Side Form & Navigation Interaction Script -->
+  <!-- SCRIPTS -->
   <script>
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const drawer = document.getElementById('mobileDrawer');
-    if (menuBtn && drawer) {
-      menuBtn.addEventListener('click', () => {
-        drawer.classList.toggle('hidden');
-      });
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     }
 
-    function selectRole(roleName) {
-      const select = document.getElementById('f_role');
-      if (select) {
-        select.value = roleName;
-      }
-      if (roleName.includes('Data Entry')) {
-        const laptop = document.getElementById('f_laptop');
-        if (laptop) laptop.checked = true;
-      }
+    function openCertModal(primarySrc, fallbackSrc, title) {
+      const modal = document.getElementById('cert-modal');
+      const img = document.getElementById('cert-modal-img');
+      const titleEl = document.getElementById('cert-modal-title');
+      titleEl.textContent = title;
+      img.onerror = function() {
+        this.onerror = null;
+        this.src = fallbackSrc;
+      };
+      img.src = primarySrc;
+      modal.classList.remove('hidden');
     }
 
-    function handleFormSubmit(e) {
+    function closeCertModal() {
+      document.getElementById('cert-modal').classList.add('hidden');
+    }
+
+    function selectRoleAndScroll(role) {
+      const select = document.getElementById('preferredRole');
+      if (select) select.value = role;
+      document.getElementById('registration').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('lead-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('f_name').value.trim();
-      const phone = document.getElementById('f_phone').value.trim();
-      const qual = document.getElementById('f_qualification').value;
-      const role = document.getElementById('f_role').value;
-      const laptop = document.getElementById('f_laptop').checked;
-
-      const randomNum = Math.floor(1000 + Math.random() * 9000);
-      const code = 'KGB-' + (name.slice(0, 3).toUpperCase() || 'CAN') + '-' + randomNum;
-
-      document.getElementById('refCode').innerText = code;
-      
-      const textMsg = encodeURIComponent(
-        `*New Application - KGB Group Knowledge Gurukul*\nRef ID: ${code}\nName: ${name}\nPhone: ${phone}\nQualification: ${qual}\nRole: ${role}\nLaptop Available: ${laptop ? 'Yes (WFH Ready)' : 'No'}\n\nPlease guide me with the next interview round!`
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const qual = document.getElementById('qualification').value;
+      const role = document.getElementById('preferredRole').value;
+      const msg = encodeURIComponent(
+        `Hi KGB Group Bhopal, I have registered online:\nName: ${name}\nPhone: ${phone}\nQualification: ${qual}\nPreferred Role: ${role}`
       );
-      document.getElementById('whatsappForwardBtn').href = `https://wa.me/917987683263?text=${textMsg}`;
-
-      document.getElementById('formContainer').classList.add('hidden');
-      document.getElementById('successNotice').classList.remove('hidden');
-      document.getElementById('successNotice').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function resetAppForm() {
-      document.getElementById('leadApplicationForm').reset();
-      document.getElementById('formContainer').classList.remove('hidden');
-      document.getElementById('successNotice').classList.add('hidden');
-    }
+      window.open(`https://wa.me/917987683263?text=${msg}`, '_blank');
+    });
   </script>
 </body>
 </html>

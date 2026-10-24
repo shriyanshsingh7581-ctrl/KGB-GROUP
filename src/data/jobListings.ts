@@ -11,22 +11,49 @@ export interface JobOpening {
   highlightBadge: string;
   isUrgent?: boolean;
   isWFH?: boolean;
+  isFeaturedPoster?: boolean;
+  posterImage?: string;
+  fallbackPosterImage?: string;
   requirements: string[];
   description: string;
 }
 
 export const JOB_OPENINGS: JobOpening[] = [
   {
+    id: 'wfh-telecaller',
+    title: 'Work From Home Tele-Caller',
+    category: 'wfh',
+    categoryLabel: 'Featured WFH / Hybrid',
+    salary: '₹18,000 - ₹28,000 / month',
+    salaryNote: 'High Incentive + Fixed Monthly Salary',
+    location: 'Zone 1, MP Nagar, Bhopal / Remote WFH',
+    timing: 'Flexible Timings (Part-time / Full-time)',
+    openings: 110,
+    highlightBadge: 'High Incentive + Fixed Salary',
+    isUrgent: true,
+    isWFH: true,
+    isFeaturedPoster: true,
+    posterImage: 'telecaller-hiring.jpg',
+    fallbackPosterImage: '/assets/aistudio/IMG-20261024-WA0020_b250fc32.jpg',
+    requirements: [
+      'Clear communication skills in Hindi (Basic English is a plus)',
+      'Smartphone / Headset required; work from home or Bhopal MP Nagar center',
+      'Flexible shift options for college students, freshers & homemakers',
+      'Direct Helpline for Instant Interview: +91 7987683263'
+    ],
+    description: 'Connect with prospective students and job applicants for counseling, admission inquiries, and interview scheduling with fixed salary plus lucrative daily/weekly incentives.'
+  },
+  {
     id: 'wfh-data-entry',
-    title: 'Work From Home Data Entry Operator',
+    title: 'Data Entry Operator (Work From Home)',
     category: 'wfh',
     categoryLabel: 'Work From Home',
     salary: '₹25,000 / month',
     salaryNote: 'Fixed Monthly + Accuracy Bonus',
-    location: '100% Remote / Pan-India',
+    location: '100% Remote / Bhopal & Central India',
     timing: 'Flexible Shifts (Full-time / Part-time)',
     openings: 85,
-    highlightBadge: 'Laptop / PC Compulsory',
+    highlightBadge: 'Laptop / Desktop Required',
     isUrgent: true,
     isWFH: true,
     requirements: [
@@ -39,13 +66,13 @@ export const JOB_OPENINGS: JobOpening[] = [
   },
   {
     id: 'customer-support',
-    title: 'Customer Support Executive (Voice & Blended)',
+    title: 'Customer Support Executive',
     category: 'office',
     categoryLabel: 'MNC BPO / Corporate',
     salary: '₹23,000 - ₹30,000 / month',
-    salaryNote: '+ Night Shift Allowance + Free Cab / Travel',
-    location: 'Indore, Bhopal, Raipur & Hybrid Options',
-    timing: 'Rotational Day / Evening Shifts',
+    salaryNote: '+ Performance Bonus + Cab / Shift Allowance',
+    location: 'Bhopal, Indore, Raipur & Hybrid',
+    timing: 'Day / Rotational Shifts',
     openings: 120,
     highlightBadge: 'MNC Hiring Drive',
     isUrgent: true,
@@ -55,26 +82,26 @@ export const JOB_OPENINGS: JobOpening[] = [
       'Basic computer navigation and keyboard literacy',
       'Eligibility: Undergraduates, Graduates (Any stream), Freshers welcome'
     ],
-    description: 'Assist customers with queries, order tracking, and support over incoming voice calls, emails, and live chat for leading national brands.'
+    description: 'Assist customers with queries, service requests, and support over incoming voice calls, emails, and live chat for leading national brands.'
   },
   {
-    id: 'exam-invigilator',
-    title: 'Exam Invigilators & Assessment Coordinators',
+    id: 'campus-coordinator-invigilator',
+    title: 'Campus Drive Coordinator & Invigilator',
     category: 'field',
-    categoryLabel: 'Government & National Exams',
-    salary: '₹18,000 - ₹24,000 / month',
-    salaryNote: 'Or Rs. 800 - 1,200 / day duty honorarium',
-    location: 'Central India Examination Centers (MP & CG)',
-    timing: 'Day Shifts / Weekend Schedules',
-    openings: 60,
-    highlightBadge: 'Govt. / IT Test Centers',
+    categoryLabel: 'Institutional & Exam Drives',
+    salary: '₹18,000 - ₹25,000 / month',
+    salaryNote: 'Fixed Salary or Per-Drive Honorarium + TA/DA',
+    location: 'Bhopal (CEDMAP / MP Nagar) & Partner Colleges',
+    timing: 'Day Shifts / Campus Drive Schedules',
+    openings: 65,
+    highlightBadge: 'College & Exam Centers',
     requirements: [
-      'Candidate identity verification, biometric recording & seating arrangement',
-      'Strict adherence to exam protocol, confidentiality and time schedules',
-      'Eligibility: Any Graduate, Post Graduate or B.Ed / College Teachers',
-      'Disciplined, honest, and highly observant personality'
+      'Coordinate candidate registration queues, biometric verification & exam hall discipline',
+      'Assist HR panels during mega campus placement drives across Central India',
+      'Eligibility: Any Graduate, Post Graduate, MBA/BBA or College Coordinators',
+      'Disciplined, punctual, and strong crowd management skills'
     ],
-    description: 'Supervise online computer-based tests (CBT) and competitive examination halls across recognized institutions and university partner centers.'
+    description: 'Supervise online computer-based tests (CBT), competitive exam centers, and mega campus recruitment drives at CEDMAP and partner engineering colleges.'
   },
   {
     id: 'warehouse-associate',
@@ -82,8 +109,8 @@ export const JOB_OPENINGS: JobOpening[] = [
     category: 'field',
     categoryLabel: 'Logistics & Supply Chain',
     salary: '₹20,000 - ₹26,000 / month',
-    salaryNote: '+ PF + ESIC Medical + Performance Incentives',
-    location: 'Indore, Jabalpur, Raipur, Nagpur Hubs',
+    salaryNote: '+ PF + ESIC Medical + Attendance Bonus',
+    location: 'Bhopal, Indore, Jabalpur, Raipur Hubs',
     timing: 'Standard Shift Rotations',
     openings: 90,
     highlightBadge: 'Immediate Joining',
@@ -102,7 +129,7 @@ export const JOB_OPENINGS: JobOpening[] = [
     categoryLabel: 'Engineering & IT',
     salary: '₹28,000 - ₹35,000 / month',
     salaryNote: 'Direct Corporate Payroll',
-    location: 'Indore / Bhopal / Hybrid',
+    location: 'Bhopal / Indore / Hybrid',
     timing: 'Standard Corporate Hours',
     openings: 45,
     highlightBadge: 'Special for Tech Graduates',
@@ -110,27 +137,8 @@ export const JOB_OPENINGS: JobOpening[] = [
       'Basic Windows OS, networking protocols (LAN/Wi-Fi/DNS), hardware assembly',
       'Troubleshooting peripheral devices, printer, software installations',
       'Eligibility: B.Tech / B.E (CS/IT/EC), BCA, B.Sc IT or 3-Yr Diploma',
-      'Freshers trained by Knowledge Gurukul given high priority'
+      'Freshers trained by Knowledge Gurukul Bhopal given high priority'
     ],
     description: 'Maintain corporate IT assets, assist employees with system setups, software updates, and basic network troubleshooting.'
-  },
-  {
-    id: 'hr-recruiter',
-    title: 'HR Recruiter & Talent Sourcing Trainee',
-    category: 'office',
-    categoryLabel: 'Corporate HR',
-    salary: '₹22,000 - ₹28,000 / month',
-    salaryNote: '+ High Placement Incentive per hire',
-    location: 'Head Office (Central India)',
-    timing: 'Monday to Saturday (9:30 AM - 6:30 PM)',
-    openings: 25,
-    highlightBadge: 'Campus Favorite',
-    requirements: [
-      'Excellent interpersonal communication & telephone presence',
-      'Screening resumes, shortlisting candidates, scheduling interviews',
-      'Eligibility: MBA HR, BBA, Any Graduate with good persuasion skills',
-      'Full recruitment lifecycle training provided by KGB Group'
-    ],
-    description: 'Source talented candidates across partner colleges and portals, coordinate interview drives, and help youth secure corporate placements.'
   }
 ];
