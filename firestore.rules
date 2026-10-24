@@ -75,6 +75,43 @@ service cloud.firestore {
       data.createdAt is timestamp;
     }
 
+    function isValidPoster(data) {
+      return data.keys().hasAll(['title', 'imageUrl', 'createdAt', 'serverCreatedAt']) &&
+        data.keys().hasOnly(['title', 'imageUrl', 'createdAt', 'serverCreatedAt']) &&
+        data.title is string && data.title.size() >= 2 && data.title.size() <= 150 &&
+        data.imageUrl is string && data.imageUrl.size() >= 10 && data.imageUrl.size() <= 500 &&
+        data.createdAt is int &&
+        data.serverCreatedAt is timestamp;
+    }
+
+    function isValidDynamicJob(data) {
+      return data.keys().hasAll([
+        'title',
+        'salary',
+        'jobType',
+        'location',
+        'qualifications',
+        'createdAt',
+        'serverCreatedAt'
+      ]) &&
+      data.keys().hasOnly([
+        'title',
+        'salary',
+        'jobType',
+        'location',
+        'qualifications',
+        'createdAt',
+        'serverCreatedAt'
+      ]) &&
+      data.title is string && data.title.size() >= 2 && data.title.size() <= 150 &&
+      data.salary is string && data.salary.size() >= 2 && data.salary.size() <= 100 &&
+      data.jobType is string && data.jobType.size() <= 30 && data.jobType in ['WFH', 'Office', 'Hybrid'] &&
+      data.location is string && data.location.size() >= 2 && data.location.size() <= 120 &&
+      data.qualifications is string && data.qualifications.size() >= 2 && data.qualifications.size() <= 250 &&
+      data.createdAt is int &&
+      data.serverCreatedAt is timestamp;
+    }
+
     // 3. Admins Collection
     match /admins/{adminId} {
       allow get: if isSignedIn() && isValidId(adminId) && (request.auth.uid == adminId || isAdmin());
@@ -84,17 +121,14 @@ service cloud.firestore {
 
     // 4. Candidate Applications Collection
     match /applications/{applicationId} {
-      // PII Protection: Only verified HR Admins can read or list candidate applications
       allow get: if isAdmin() && isValidId(applicationId);
       allow list: if isAdmin() && resource.data.status in ['New', 'Contacted', 'Shortlisted', 'Placed'];
 
-      // Public Candidate Submission: Strictly validated schema, initial status 'New', and server timestamp
       allow create: if isValidId(applicationId) &&
         isValidApplication(incoming()) &&
         incoming().status == 'New' &&
         incoming().createdAt == request.time;
 
-      // Admin Status Update: Action-based update with immutable fields
       allow update: if isValidApplication(incoming()) &&
         isValidId(applicationId) &&
         isAdmin() &&
@@ -103,6 +137,28 @@ service cloud.firestore {
         incoming().diff(existing()).affectedKeys().hasOnly(['status', 'notes']);
 
       allow delete: if isAdmin() && isValidId(applicationId);
+    }
+
+    // 5. Public Announcements & Hiring Posters Collection
+    match /posters/{posterId} {
+      allow get: if isValidId(posterId);
+      allow list: if resource.data.createdAt > 0;
+      allow create: if isValidId(posterId) &&
+        isValidPoster(incoming()) &&
+        incoming().serverCreatedAt == request.time;
+      allow update: if false;
+      allow delete: if isValidId(posterId);
+    }
+
+    // 6. Dynamic Job Openings Collection
+    match /jobs/{jobId} {
+      allow get: if isValidId(jobId);
+      allow list: if resource.data.jobType in ['WFH', 'Office', 'Hybrid'];
+      allow create: if isValidId(jobId) &&
+        isValidDynamicJob(incoming()) &&
+        incoming().serverCreatedAt == request.time;
+      allow update: if false;
+      allow delete: if isValidId(jobId);
     }
   }
 }

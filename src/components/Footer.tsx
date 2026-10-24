@@ -181,10 +181,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdminPortal }) => {
               type="button"
               onClick={onOpenAdminPortal}
               className="cursor-pointer inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-amber-400 border border-slate-800 transition-colors font-semibold"
-              title="Open HR Admin Lead Management Portal"
+              title="Open Staff / Admin Portal"
             >
               <i className="fa-solid fa-lock text-[10px]"></i>
-              <span>Admin Portal</span>
+              <span>Staff / Admin Portal</span>
             </button>
           </div>
         </div>

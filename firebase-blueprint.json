@@ -76,6 +76,90 @@
         "createdAt"
       ]
     },
+    "Poster": {
+      "title": "Poster",
+      "description": "A dynamic announcement or hiring poster uploaded by HR Admin via Cloudinary.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Poster headline or announcement title",
+          "minLength": 2,
+          "maxLength": 150
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Cloudinary secure image URL",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Epoch timestamp in milliseconds"
+        },
+        "serverCreatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        }
+      },
+      "required": ["title", "imageUrl", "createdAt", "serverCreatedAt"]
+    },
+    "DynamicJob": {
+      "title": "DynamicJob",
+      "description": "A dynamically created job vacancy added by HR Admin.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Job title",
+          "minLength": 2,
+          "maxLength": 150
+        },
+        "salary": {
+          "type": "string",
+          "description": "Salary package details",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "jobType": {
+          "type": "string",
+          "description": "Work arrangement type",
+          "enum": ["WFH", "Office", "Hybrid"],
+          "maxLength": 30
+        },
+        "location": {
+          "type": "string",
+          "description": "Job location",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "qualifications": {
+          "type": "string",
+          "description": "Required qualifications",
+          "minLength": 2,
+          "maxLength": 250
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Epoch timestamp in milliseconds"
+        },
+        "serverCreatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        }
+      },
+      "required": [
+        "title",
+        "salary",
+        "jobType",
+        "location",
+        "qualifications",
+        "createdAt",
+        "serverCreatedAt"
+      ]
+    },
     "AdminUser": {
       "title": "AdminUser",
       "description": "Authorized HR administrator record.",
@@ -99,7 +183,15 @@
   "firestore": {
     "/applications/{applicationId}": {
       "schema": { "$ref": "#/entities/Application" },
-      "description": "Stores candidate applications submitted via the public registration form and managed by HR admins."
+      "description": "Stores candidate applications submitted via the public registration form."
+    },
+    "/posters/{posterId}": {
+      "schema": { "$ref": "#/entities/Poster" },
+      "description": "Stores dynamic announcement and hiring posters uploaded via Cloudinary."
+    },
+    "/jobs/{jobId}": {
+      "schema": { "$ref": "#/entities/DynamicJob" },
+      "description": "Stores dynamically added job openings."
     },
     "/admins/{adminId}": {
       "schema": { "$ref": "#/entities/AdminUser" },

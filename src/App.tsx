@@ -1,12 +1,13 @@
 /**
  * KGB Group - Knowledge Gurukul (Bhopal)
- * High-Converting Single Page Landing Page + Firebase HR Admin Portal
+ * High-Converting Single Page Landing Page + Cloudinary & Firebase Admin Portal
  *
  * @license Apache-2.0
  */
 
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
+import { AnnouncementsSection } from './components/AnnouncementsSection';
 import { Hero } from './components/Hero';
 import { TrustStrip } from './components/TrustStrip';
 import { CertificationsSection } from './components/CertificationsSection';
@@ -51,55 +52,61 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans pb-14 sm:pb-0">
       {/* 1. Top Bar & Navbar */}
-      <Navbar onApplyClick={scrollToApply} />
+      <Navbar
+        onApplyClick={scrollToApply}
+        onOpenAdminPortal={() => setIsAdminModalOpen(true)}
+      />
 
       <main className="flex-1">
-        {/* 2. Hero Section */}
+        {/* 2. Top Prominent Announcements & Posters Section (Dynamic) */}
+        <AnnouncementsSection onApplyClick={scrollToApply} />
+
+        {/* 3. Hero Section */}
         <Hero
           onApplyClick={scrollToApply}
           onExploreJobsClick={scrollToJobs}
         />
 
-        {/* 3. About & Trust Strip */}
+        {/* 4. About & Trust Strip */}
         <div id="about">
           <TrustStrip />
         </div>
 
-        {/* 4. Official Accreditation & Government Recognition (ISO 9001:2015 & MSME Udyam) */}
+        {/* 5. Official Accreditation & Government Recognition (ISO 9001:2015 & MSME Udyam) */}
         <CertificationsSection />
 
-        {/* 5. Active Job Openings Section (Featuring Work From Home Tele-Caller) */}
+        {/* 6. Active Job Openings Section (Hybrid Static + Dynamic Firebase Jobs) */}
         <FeaturedJobs onSelectRoleForApply={handleSelectRoleForApply} />
 
-        {/* 6. Real Campus Drives & Facility Gallery (4-Column Authentic Photo Grid) */}
+        {/* 7. Real Campus Drives & Facility Gallery (4-Column Authentic Photo Grid) */}
         <CampusGallerySection />
 
-        {/* 7. Institutional & Campus Placement Partnership */}
+        {/* 8. Institutional & Campus Placement Partnership */}
         <CollegePartnership />
 
-        {/* 8. High-Converting Lead Generation Application Form */}
+        {/* 9. High-Converting Lead Generation Application Form */}
         <ApplicationForm
           selectedRoleFromCard={selectedRoleForForm}
           onClearSelectedRole={handleClearSelectedRole}
         />
 
-        {/* 9. Placed Candidate Testimonials */}
+        {/* 10. Placed Candidate Testimonials */}
         <TestimonialsSection />
 
-        {/* 10. FAQs Section */}
+        {/* 11. FAQs Section */}
         <FaqSection />
       </main>
 
-      {/* 11. Footer with Discreet Admin Portal Button */}
+      {/* 12. Footer with Discreet Staff / Admin Portal Button */}
       <Footer onOpenAdminPortal={() => setIsAdminModalOpen(true)} />
 
-      {/* 12. Sticky / Floating WhatsApp */}
+      {/* 13. Sticky / Floating WhatsApp */}
       <FloatingWhatsApp />
 
-      {/* 13. Mobile Sticky Action Bar */}
+      {/* 14. Mobile Sticky Action Bar */}
       <MobileQuickBar onApplyClick={scrollToApply} />
 
-      {/* 14. Password-Protected Admin Portal & Real-Time Lead Management Modal */}
+      {/* 15. Password-Protected 3-Tab Admin Portal Modal */}
       <AdminPortalModal
         isOpen={isAdminModalOpen}
         onClose={() => setIsAdminModalOpen(false)}
