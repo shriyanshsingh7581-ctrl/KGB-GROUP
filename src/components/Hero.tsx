@@ -7,28 +7,28 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onApplyClick, onExploreJobsClick }) => {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-slate-900 via-slate-900 to-blue-950 text-white pt-10 pb-16 lg:pt-16 lg:pb-24">
+    <section className="relative overflow-hidden bg-linear-to-b from-slate-900 via-slate-900 to-blue-950 text-white pt-6 pb-12 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24">
       {/* Background Decorative Pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
+      <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-12 items-center">
           
-          {/* Left Column: Core Value Proposition & Headings */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Core Value Proposition */}
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             
-            {/* Tagline & Accreditation Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold backdrop-blur-xs">
-              <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-ping"></span>
-              <i className="fa-solid fa-handshake-angle text-amber-400"></i>
-              <span>Your Trust. Our Commitment. | Great Careers Start Here!</span>
+            {/* Tagline Pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/90 border border-amber-400/35 text-amber-300 text-[11px] sm:text-sm font-semibold shadow-xs">
+              <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-ping shrink-0"></span>
+              <i className="fa-solid fa-handshake-angle text-amber-400 shrink-0"></i>
+              <span className="truncate">Your Trust. Our Commitment. | Great Careers Start Here!</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight leading-tight sm:leading-none text-white">
-              Launch High-Paying <br className="hidden sm:inline" />
+            {/* Mobile-Proportioned Main Headline */}
+            <h1 className="font-display text-[28px] leading-[1.15] sm:text-5xl lg:text-5xl font-black tracking-tight text-white">
+              Launch High-Paying{' '}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-400 via-amber-300 to-yellow-200">
                 WFH & Top MNC Careers
               </span>{' '}
@@ -36,203 +36,216 @@ export const Hero: React.FC<HeroProps> = ({ onApplyClick, onExploreJobsClick }) 
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-              KGB Group (Knowledge Gurukul / Placement India) connects job seekers, fresh graduates, and college students to verified corporate hiring drives with guaranteed guidance.
+            <p className="text-slate-300 text-xs sm:text-base lg:text-lg max-w-2xl leading-relaxed">
+              KGB Group (Knowledge Gurukul / Placement India) connects job seekers, freshers, and college students to verified corporate hiring drives with 100% free placement support.
             </p>
 
-            {/* Bullet Points of Key Benefits */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl backdrop-blur-xs">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+            {/* 2x2 Compact Benefit Grid on Mobile & Desktop */}
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 pt-1">
+              <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3 bg-slate-800/70 border border-slate-700/70 p-3 rounded-2xl backdrop-blur-xs">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
                   <i className="fa-solid fa-house-laptop text-sm"></i>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white">Verified Work From Home (WFH)</h4>
-                  <p className="text-xs text-slate-400">
-                    Genuine data entry & support jobs with <i className="fa-solid fa-indian-rupee-sign text-[10px] text-amber-400"></i>25,000/mo fixed pay.
+                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">Verified WFH Roles</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-snug">
+                    Data entry & support at <i className="fa-solid fa-indian-rupee-sign text-[9px] text-amber-400"></i>25,000/mo fixed.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl backdrop-blur-xs">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3 bg-slate-800/70 border border-slate-700/70 p-3 rounded-2xl backdrop-blur-xs">
+                <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
                   <i className="fa-solid fa-building text-sm"></i>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white">Tier-1 MNC Direct Hiring</h4>
-                  <p className="text-xs text-slate-400">Customer care, IT desktop support, logistics & HR roles.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl backdrop-blur-xs">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                  <i className="fa-solid fa-indian-rupee-sign text-sm"></i>
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white">High Salary Packages</h4>
-                  <p className="text-xs text-slate-400">
-                    <i className="fa-solid fa-indian-rupee-sign text-[10px] text-emerald-400"></i>23,000 to <i className="fa-solid fa-indian-rupee-sign text-[10px] text-emerald-400"></i>35,000/mo starting salary + PF, medical, bonuses.
+                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">Tier-1 MNC Hiring</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-snug">
+                    Customer care, IT support, logistics & HR.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl backdrop-blur-xs">
-                <div className="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3 bg-slate-800/70 border border-slate-700/70 p-3 rounded-2xl backdrop-blur-xs">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-indian-rupee-sign text-sm"></i>
+                </div>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">High Packages</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-snug">
+                    <i className="fa-solid fa-indian-rupee-sign text-[9px] text-emerald-400"></i>23k to <i className="fa-solid fa-indian-rupee-sign text-[9px] text-emerald-400"></i>35k/mo + PF & incentives.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3 bg-slate-800/70 border border-slate-700/70 p-3 rounded-2xl backdrop-blur-xs">
+                <div className="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
                   <i className="fa-solid fa-chalkboard-user text-sm"></i>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white">100% Free Training & Grooming</h4>
-                  <p className="text-xs text-slate-400">Resume review, mock interviews, and confidence building.</p>
+                  <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">Free Grooming</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-snug">
+                    Resume polish & mock interview prep.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-3">
+            {/* Mobile-First Thumb-Friendly CTA Stack */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 pt-1">
               <button
                 onClick={onApplyClick}
-                className="cursor-pointer inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-bold text-slate-900 bg-linear-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-500 text-sm sm:text-base shadow-lg shadow-amber-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="cursor-pointer w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-extrabold text-slate-950 bg-linear-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-500 text-sm sm:text-base shadow-lg shadow-amber-500/25 active:scale-[0.99] transition-all"
               >
                 <span>Apply for Jobs Now (Free)</span>
-                <i className="fa-solid fa-arrow-right text-sm"></i>
+                <i className="fa-solid fa-arrow-right text-xs"></i>
               </button>
 
-              <button
-                onClick={onExploreJobsClick}
-                className="cursor-pointer inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-slate-200 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-sm sm:text-base transition-all"
-              >
-                <i className="fa-solid fa-briefcase text-amber-400 text-sm"></i>
-                <span>Explore Open Roles</span>
-              </button>
+              <div className="grid grid-cols-2 sm:flex items-center gap-2.5">
+                <button
+                  onClick={onExploreJobsClick}
+                  className="cursor-pointer inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 rounded-2xl font-bold text-slate-100 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-xs sm:text-sm active:scale-[0.99] transition-all"
+                >
+                  <i className="fa-solid fa-briefcase text-amber-400 text-xs"></i>
+                  <span>Open Roles</span>
+                </button>
 
-              <a
-                href="https://wa.me/917987683263?text=Hi%20KGB%20Group,%20I%20want%20to%20apply%20for%20the%20WFH%20or%20MNC%20job%20vacancies."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl font-semibold text-emerald-300 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/40 text-sm transition-all"
-              >
-                <i className="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
-                <span>Quick WhatsApp</span>
-              </a>
+                <a
+                  href="https://wa.me/917987683263?text=Hi%20KGB%20Group,%20I%20want%20to%20apply%20for%20the%20WFH%20or%20MNC%20job%20vacancies."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 rounded-2xl font-bold text-emerald-300 bg-emerald-950/70 hover:bg-emerald-900/70 border border-emerald-500/40 text-xs sm:text-sm active:scale-[0.99] transition-all"
+                >
+                  <i className="fa-brands fa-whatsapp text-base text-emerald-400"></i>
+                  <span>WhatsApp HR</span>
+                </a>
+              </div>
             </div>
 
-            {/* Verified Candidate Mini Strip */}
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-400">
-              <div className="flex -space-x-2 overflow-hidden">
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-amber-500 text-slate-900 font-bold border-2 border-slate-900 text-xs">RK</span>
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold border-2 border-slate-900 text-xs">PS</span>
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white font-bold border-2 border-slate-900 text-xs">AT</span>
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-purple-500 text-white font-bold border-2 border-slate-900 text-xs">+1L</span>
+            {/* Verified Candidate Rating Strip */}
+            <div className="pt-1 flex items-center gap-3 text-xs text-slate-300">
+              <div className="flex -space-x-2 overflow-hidden shrink-0">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-500 text-slate-950 font-extrabold border-2 border-slate-900 text-[10px]">RK</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-500 text-white font-extrabold border-2 border-slate-900 text-[10px]">PS</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500 text-white font-extrabold border-2 border-slate-900 text-[10px]">+1L</span>
               </div>
-              <div className="flex items-center gap-1.5 text-slate-300 font-medium">
-                <div className="flex text-amber-400 text-xs">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <span>4.9/5 Rating from 1,00,000+ Trained & Placed Candidates</span>
+              <div className="text-[11px] sm:text-xs text-slate-300 font-medium leading-tight">
+                <span className="text-amber-400 font-bold">
+                  <i className="fa-solid fa-star text-[10px] mr-1"></i>4.9/5
+                </span>{' '}
+                from <strong className="text-white">1,00,000+</strong> Trained & Placed Candidates
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Highlight Card with Knowledge Gurukul Logo */}
+          {/* Right Column: Live Hiring Drive Spotlight Card */}
           <div className="lg:col-span-5">
-            <div className="relative bg-linear-to-b from-slate-800/90 to-slate-900/95 border border-amber-400/40 rounded-2xl p-6 sm:p-7 shadow-2xl backdrop-blur-md">
+            <div className="relative bg-linear-to-b from-slate-800/95 to-slate-900/95 border border-amber-400/40 rounded-3xl p-4 sm:p-6 shadow-2xl backdrop-blur-md">
               {/* Top Accent Ribbon */}
-              <div className="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-5">
+              <div className="flex items-center justify-between border-b border-slate-700/80 pb-3 mb-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
-                  <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Active Hiring Drive 2026-2027</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider">Active Hiring Drive 2026-27</span>
                 </div>
-                <span className="text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-md font-semibold">
-                  Zero Registration Fee
+                <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-md font-bold">
+                  Zero Fee
                 </span>
               </div>
 
               {/* Logo Emblem Centerpiece */}
-              <div className="flex items-center gap-4 bg-slate-950/50 p-3.5 rounded-xl border border-slate-700/70 mb-5">
+              <div className="flex items-center gap-3.5 bg-slate-950/60 p-3 rounded-2xl border border-slate-700/70 mb-4">
                 <img
                   src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg"
                   alt="Knowledge Gurukul Official Emblem"
-                  className="w-16 h-16 object-contain rounded-lg bg-white p-1 shadow-md"
+                  className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl bg-white p-1 shadow-md shrink-0"
                 />
-                <div>
-                  <h3 className="font-display font-bold text-base text-white">Knowledge Gurukul</h3>
-                  <p className="text-xs text-amber-400 font-semibold">Central India Training & Placement Wing</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">Govt. MSME & ISO 9001:2015 Approved Process</p>
+                <div className="min-w-0">
+                  <h3 className="font-display font-bold text-sm sm:text-base text-white truncate">Knowledge Gurukul</h3>
+                  <p className="text-[11px] sm:text-xs text-amber-400 font-semibold truncate">Central India Placement Wing</p>
+                  <p className="text-[10px] sm:text-[11px] text-slate-400 mt-0.5">Govt. MSME & ISO 9001:2015 Certified</p>
                 </div>
               </div>
 
               {/* Immediate Vacancies Counter Box */}
-              <div className="space-y-3 mb-5">
-                <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <i className="fa-solid fa-laptop text-amber-400 text-base"></i>
-                    <div>
-                      <div className="text-xs font-semibold text-white">WFH Data Entry Operator</div>
-                      <div className="text-[11px] text-slate-400">85 openings &bull; Laptop compulsory</div>
+              <div className="space-y-2.5 mb-4">
+                <div
+                  onClick={onApplyClick}
+                  className="cursor-pointer bg-slate-800/70 hover:bg-slate-800 p-3 rounded-xl border border-slate-700/60 flex items-center justify-between gap-2 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0">
+                      <i className="fa-solid fa-laptop text-sm"></i>
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-white truncate">WFH Data Entry Operator</div>
+                      <div className="text-[10px] text-slate-400">85 seats &bull; Laptop compulsory</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-xs font-bold text-amber-400">
-                      <i className="fa-solid fa-indian-rupee-sign text-[10px] mr-0.5"></i>25,000/mo
-                    </span>
-                  </div>
+                  <span className="text-xs font-extrabold text-amber-400 shrink-0">
+                    <i className="fa-solid fa-indian-rupee-sign text-[10px] mr-0.5"></i>25,000/mo
+                  </span>
                 </div>
 
-                <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <i className="fa-solid fa-headset text-blue-400 text-base"></i>
-                    <div>
-                      <div className="text-xs font-semibold text-white">Customer Support Executive</div>
-                      <div className="text-[11px] text-slate-400">120 openings &bull; Voice & Blended</div>
+                <div
+                  onClick={onApplyClick}
+                  className="cursor-pointer bg-slate-800/70 hover:bg-slate-800 p-3 rounded-xl border border-slate-700/60 flex items-center justify-between gap-2 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/15 text-blue-400 flex items-center justify-center shrink-0">
+                      <i className="fa-solid fa-headset text-sm"></i>
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-white truncate">Customer Support Executive</div>
+                      <div className="text-[10px] text-slate-400">120 seats &bull; Voice & Blended</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-xs font-bold text-blue-300">
-                      <i className="fa-solid fa-indian-rupee-sign text-[10px] mr-0.5"></i>23k - 30k/mo
-                    </span>
-                  </div>
+                  <span className="text-xs font-extrabold text-blue-300 shrink-0">
+                    <i className="fa-solid fa-indian-rupee-sign text-[10px] mr-0.5"></i>23k-30k/mo
+                  </span>
                 </div>
 
-                <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <i className="fa-solid fa-clipboard-check text-purple-400 text-base"></i>
-                    <div>
-                      <div className="text-xs font-semibold text-white">Exam Invigilators / Warehouse</div>
-                      <div className="text-[11px] text-slate-400">150+ openings &bull; Central India</div>
+                <div
+                  onClick={onApplyClick}
+                  className="cursor-pointer bg-slate-800/70 hover:bg-slate-800 p-3 rounded-xl border border-slate-700/60 flex items-center justify-between gap-2 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-purple-500/15 text-purple-400 flex items-center justify-center shrink-0">
+                      <i className="fa-solid fa-clipboard-check text-sm"></i>
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-white truncate">Invigilators & Warehouse</div>
+                      <div className="text-[10px] text-slate-400">150+ seats &bull; Central India</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-xs font-bold text-emerald-400">Immediate</span>
-                  </div>
+                  <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded shrink-0">
+                    Immediate
+                  </span>
                 </div>
               </div>
 
-              {/* Fast Apply Direct Action Box */}
-              <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent p-3 rounded-xl border border-amber-500/30 text-center">
-                <p className="text-xs text-slate-300 mb-2 font-medium">
-                  Have questions before applying? Call or WhatsApp our counselors:
-                </p>
-                <div className="flex items-center justify-center gap-3">
+              {/* Direct Counselor Contact Strip */}
+              <div className="bg-amber-500/10 p-3 rounded-2xl border border-amber-500/25 flex items-center justify-between gap-2">
+                <div className="text-[11px] text-slate-200 font-medium leading-tight">
+                  <strong className="text-amber-300 block">Direct HR Helpline:</strong>
+                  <span>+91 7987683263</span>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
                   <a
                     href="tel:+917987683263"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-400 text-slate-900 font-bold text-xs hover:bg-amber-300 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs hover:bg-amber-300 transition-colors"
                   >
                     <i className="fa-solid fa-phone"></i>
-                    <span>Call +91 7987683263</span>
+                    <span>Call</span>
                   </a>
                   <a
                     href="https://wa.me/917987683263?text=Hi,%20I%20want%20to%20apply%20for%20KGB%20Group%20placement."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-500 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 text-white font-extrabold text-xs hover:bg-emerald-500 transition-colors"
                   >
                     <i className="fa-brands fa-whatsapp"></i>
-                    <span>WhatsApp</span>
+                    <span>Chat</span>
                   </a>
                 </div>
               </div>
