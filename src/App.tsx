@@ -1,11 +1,11 @@
 /**
  * KGB Group - Knowledge Gurukul (Bhopal)
- * High-Converting Single Page Landing Page + Cloudinary & Firebase Admin Portal
+ * Public Website (/) + Separate Dedicated Admin Portal Route (/admin)
  *
  * @license Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { AnnouncementsSection } from './components/AnnouncementsSection';
 import { Hero } from './components/Hero';
@@ -22,9 +22,49 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileQuickBar } from './components/MobileQuickBar';
 import { AdminPortalModal } from './components/AdminPortalModal';
 
+function checkIsAdminRoute(): boolean {
+  if (typeof window === 'undefined') return false;
+  const path = window.location.pathname.toLowerCase();
+  const hash = window.location.hash.toLowerCase();
+  const searchParams = new URLSearchParams(window.location.search);
+  return (
+    path === '/admin' ||
+    path.startsWith('/admin/') ||
+    hash === '#admin' ||
+    hash === '#/admin' ||
+    searchParams.get('portal') === 'admin' ||
+    searchParams.get('admin') === '1'
+  );
+}
+
 export default function App() {
   const [selectedRoleForForm, setSelectedRoleForForm] = useState<string>('');
-  const [isAdminModalOpen, setIsAdminModalOpen] = useState<boolean>(false);
+  const [isAdminRoute, setIsAdminRoute] = useState<boolean>(checkIsAdminRoute);
+
+  useEffect(() => {
+    const syncRoute = () => setIsAdminRoute(checkIsAdminRoute());
+    window.addEventListener('popstate', syncRoute);
+    window.addEventListener('hashchange', syncRoute);
+    return () => {
+      window.removeEventListener('popstate', syncRoute);
+      window.removeEventListener('hashchange', syncRoute);
+    };
+  }, []);
+
+  // Dedicated Separate Admin Link (/admin or /#admin)
+  if (isAdminRoute) {
+    return (
+      <div className="min-h-screen bg-slate-950 font-sans">
+        <AdminPortalModal
+          isOpen={true}
+          isStandalonePage={true}
+          onClose={() => {
+            window.location.href = '/';
+          }}
+        />
+      </div>
+    );
+  }
 
   const scrollToApply = () => {
     const applyElement = document.getElementById('apply');
@@ -51,11 +91,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans pb-14 sm:pb-0">
-      {/* 1. Top Bar & Navbar */}
-      <Navbar
-        onApplyClick={scrollToApply}
-        onOpenAdminPortal={() => setIsAdminModalOpen(true)}
-      />
+      {/* 1. Top Bar & Navbar (Public Website - No Admin Links) */}
+      <Navbar onApplyClick={scrollToApply} />
 
       <main className="flex-1">
         {/* 2. Top Prominent Announcements & Posters Section (Dynamic) */}
@@ -97,20 +134,14 @@ export default function App() {
         <FaqSection />
       </main>
 
-      {/* 12. Footer with Discreet Staff / Admin Portal Button */}
-      <Footer onOpenAdminPortal={() => setIsAdminModalOpen(true)} />
+      {/* 12. Footer (Public Website - No Admin Links) */}
+      <Footer />
 
       {/* 13. Sticky / Floating WhatsApp */}
       <FloatingWhatsApp />
 
       {/* 14. Mobile Sticky Action Bar */}
       <MobileQuickBar onApplyClick={scrollToApply} />
-
-      {/* 15. Password-Protected 3-Tab Admin Portal Modal */}
-      <AdminPortalModal
-        isOpen={isAdminModalOpen}
-        onClose={() => setIsAdminModalOpen(false)}
-      />
     </div>
   );
 }

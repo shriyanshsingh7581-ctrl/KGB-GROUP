@@ -18,11 +18,16 @@ import {
 interface AdminPortalModalProps {
   isOpen: boolean;
   onClose: () => void;
+  isStandalonePage?: boolean;
 }
 
 const DEFAULT_ADMIN_PIN = 'admin123';
 
-export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onClose }) => {
+export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
+  isOpen,
+  onClose,
+  isStandalonePage = false,
+}) => {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [pinInput, setPinInput] = useState('');
   const [pinError, setPinError] = useState('');
@@ -219,14 +224,20 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 </h3>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={onClose}
-              className="cursor-pointer w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center"
-              aria-label="Close Admin Login"
+            <a
+              href="/"
+              onClick={(e) => {
+                if (!isStandalonePage) {
+                  e.preventDefault();
+                  onClose();
+                }
+              }}
+              className="cursor-pointer px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold flex items-center gap-1.5"
+              title="Go to Public Website"
             >
-              <i className="fa-solid fa-xmark"></i>
-            </button>
+              <i className="fa-solid fa-arrow-left text-[10px]"></i>
+              <span>Website</span>
+            </a>
           </div>
 
           <form onSubmit={handlePinSubmit} className="p-6 space-y-4">
@@ -263,13 +274,18 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
             </div>
 
             <div className="flex items-center gap-2.5 pt-1">
-              <button
-                type="button"
-                onClick={onClose}
-                className="cursor-pointer flex-1 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors"
+              <a
+                href="/"
+                onClick={(e) => {
+                  if (!isStandalonePage) {
+                    e.preventDefault();
+                    onClose();
+                  }
+                }}
+                className="cursor-pointer flex-1 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors text-center"
               >
-                Cancel
-              </button>
+                Back to Website
+              </a>
               <button
                 type="submit"
                 className="cursor-pointer flex-1 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs shadow-sm transition-colors flex items-center justify-center gap-1.5"
@@ -308,7 +324,15 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <a
+                href="/"
+                className="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700 transition-colors"
+              >
+                <i className="fa-solid fa-globe text-amber-400"></i>
+                <span>View Public Website</span>
+              </a>
+
               <button
                 type="button"
                 onClick={() => exportApplicationsToCSV(filteredApplications)}
@@ -324,7 +348,7 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({ isOpen, onCl
                 className="cursor-pointer inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-600/90 hover:bg-red-600 text-white font-bold text-xs transition-colors"
               >
                 <i className="fa-solid fa-right-from-bracket"></i>
-                <span>Close / Logout</span>
+                <span>Lock / Logout</span>
               </button>
             </div>
           </div>

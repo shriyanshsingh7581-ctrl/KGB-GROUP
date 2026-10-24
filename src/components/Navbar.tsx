@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 
 interface NavbarProps {
   onApplyClick: () => void;
-  onOpenAdminPortal?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onApplyClick, onOpenAdminPortal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
-      {/* Top Bar with Contact Helpline, Email, Bhopal Office & Quick Admin Access */}
+      {/* Top Bar with Contact Helpline, Email, Bhopal Office */}
       <div className="bg-slate-900 text-slate-100 text-[11px] sm:text-xs py-1.5 px-3 sm:px-6 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -45,21 +44,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onApplyClick, onOpenAdminPortal 
               href="https://wa.me/917987683263?text=Hi%20KGB%20Group%20Knowledge%20Gurukul%20Bhopal,%20I%20want%20to%20inquire%20about%20job%20placements."
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors"
+              className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               <i className="fa-brands fa-whatsapp text-sm"></i>
               <span>WhatsApp Desk</span>
             </a>
-            <span className="text-slate-600">|</span>
-            <button
-              type="button"
-              onClick={onOpenAdminPortal}
-              className="cursor-pointer inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 border border-slate-700 transition-colors text-[10px] sm:text-[11px]"
-              title="Open HR Admin Lead Management Portal"
-            >
-              <i className="fa-solid fa-lock text-[9px] text-amber-400"></i>
-              <span>Admin Panel</span>
-            </button>
           </div>
         </div>
       </div>
