@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "Application": {
+      "title": "Application",
+      "description": "A candidate job application submitted through the KGB Group landing page.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "Candidate full name",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "description": "Candidate WhatsApp or mobile number",
+          "minLength": 10,
+          "maxLength": 20,
+          "pattern": "^[0-9+\\-\\s]{10,20}$"
+        },
+        "email": {
+          "type": "string",
+          "description": "Candidate email address",
+          "maxLength": 150
+        },
+        "city": {
+          "type": "string",
+          "description": "Candidate city or location",
+          "maxLength": 100
+        },
+        "qualification": {
+          "type": "string",
+          "description": "Highest qualification level",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "role": {
+          "type": "string",
+          "description": "Desired job role",
+          "minLength": 2,
+          "maxLength": 150
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional notes or experience details",
+          "maxLength": 500
+        },
+        "status": {
+          "type": "string",
+          "description": "Application lead status",
+          "enum": ["New", "Contacted", "Shortlisted", "Placed"],
+          "maxLength": 30
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "ISO timestamp string of submission",
+          "minLength": 10,
+          "maxLength": 40
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        }
+      },
+      "required": [
+        "fullName",
+        "phone",
+        "email",
+        "city",
+        "qualification",
+        "role",
+        "notes",
+        "status",
+        "timestamp",
+        "createdAt"
+      ]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized HR administrator record.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Verified administrator email",
+          "minLength": 3,
+          "maxLength": 150
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of admin creation"
+        }
+      },
+      "required": ["email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/applications/{applicationId}": {
+      "schema": { "$ref": "#/entities/Application" },
+      "description": "Stores candidate applications submitted via the public registration form and managed by HR admins."
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Stores authorized HR admin UIDs."
+    }
+  }
+}

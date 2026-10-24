@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenAdminPortal?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAdminPortal }) => {
   return (
     <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -163,16 +167,26 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar with Discreet Admin Portal Lock Button */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-[11px] text-slate-500">
           <p>
             &copy; {new Date().getFullYear()} Knowledge Gurukul Bhopal (KGB Group). All Rights Reserved.
           </p>
-          <p className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <span>ISO 9001:2015 (QMP202604878)</span>
             <span>&bull;</span>
             <span>MSME Udyam: UDYAM-MP-10-0162140</span>
-          </p>
+            <span>&bull;</span>
+            <button
+              type="button"
+              onClick={onOpenAdminPortal}
+              className="cursor-pointer inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-amber-400 border border-slate-800 transition-colors font-semibold"
+              title="Open HR Admin Lead Management Portal"
+            >
+              <i className="fa-solid fa-lock text-[10px]"></i>
+              <span>Admin Portal</span>
+            </button>
+          </div>
         </div>
       </div>
     </footer>

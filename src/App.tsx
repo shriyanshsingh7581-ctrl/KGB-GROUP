@@ -1,6 +1,6 @@
 /**
  * KGB Group - Knowledge Gurukul (Bhopal)
- * High-Converting Single Page Landing Page
+ * High-Converting Single Page Landing Page + Firebase HR Admin Portal
  *
  * @license Apache-2.0
  */
@@ -19,9 +19,11 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileQuickBar } from './components/MobileQuickBar';
+import { AdminPortalModal } from './components/AdminPortalModal';
 
 export default function App() {
   const [selectedRoleForForm, setSelectedRoleForForm] = useState<string>('');
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState<boolean>(false);
 
   const scrollToApply = () => {
     const applyElement = document.getElementById('apply');
@@ -88,14 +90,20 @@ export default function App() {
         <FaqSection />
       </main>
 
-      {/* 11. Footer */}
-      <Footer />
+      {/* 11. Footer with Discreet Admin Portal Button */}
+      <Footer onOpenAdminPortal={() => setIsAdminModalOpen(true)} />
 
       {/* 12. Sticky / Floating WhatsApp */}
       <FloatingWhatsApp />
 
       {/* 13. Mobile Sticky Action Bar */}
       <MobileQuickBar onApplyClick={scrollToApply} />
+
+      {/* 14. Password-Protected Admin Portal & Real-Time Lead Management Modal */}
+      <AdminPortalModal
+        isOpen={isAdminModalOpen}
+        onClose={() => setIsAdminModalOpen(false)}
+      />
     </div>
   );
 }

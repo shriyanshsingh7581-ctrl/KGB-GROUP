@@ -1,0 +1,108 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Primitives & Hardened Helpers
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedAdminEmail() {
+      return isSignedIn() &&
+        request.auth.token.email_verified == true &&
+        (request.auth.token.email == 'shriyanshsingh7581@gmail.com' ||
+         request.auth.token.email == 'kgbbhopal01@gmail.com');
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        isVerifiedAdminEmail() ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidApplication(data) {
+      return data.keys().hasAll([
+        'fullName',
+        'phone',
+        'email',
+        'city',
+        'qualification',
+        'role',
+        'notes',
+        'status',
+        'timestamp',
+        'createdAt'
+      ]) &&
+      data.keys().hasOnly([
+        'fullName',
+        'phone',
+        'email',
+        'city',
+        'qualification',
+        'role',
+        'notes',
+        'status',
+        'timestamp',
+        'createdAt'
+      ]) &&
+      data.fullName is string && data.fullName.size() >= 2 && data.fullName.size() <= 100 &&
+      data.phone is string && data.phone.size() >= 10 && data.phone.size() <= 20 && data.phone.matches('^[0-9+\\-\\s]{10,20}$') &&
+      data.email is string && data.email.size() <= 150 &&
+      data.city is string && data.city.size() <= 100 &&
+      data.qualification is string && data.qualification.size() >= 1 && data.qualification.size() <= 100 &&
+      data.role is string && data.role.size() >= 2 && data.role.size() <= 150 &&
+      data.notes is string && data.notes.size() <= 500 &&
+      data.status is string && data.status.size() <= 30 && data.status in ['New', 'Contacted', 'Shortlisted', 'Placed'] &&
+      data.timestamp is string && data.timestamp.size() >= 10 && data.timestamp.size() <= 40 &&
+      data.createdAt is timestamp;
+    }
+
+    // 3. Admins Collection
+    match /admins/{adminId} {
+      allow get: if isSignedIn() && isValidId(adminId) && (request.auth.uid == adminId || isAdmin());
+      allow list: if false;
+      allow create, update, delete: if false;
+    }
+
+    // 4. Candidate Applications Collection
+    match /applications/{applicationId} {
+      // PII Protection: Only verified HR Admins can read or list candidate applications
+      allow get: if isAdmin() && isValidId(applicationId);
+      allow list: if isAdmin() && resource.data.status in ['New', 'Contacted', 'Shortlisted', 'Placed'];
+
+      // Public Candidate Submission: Strictly validated schema, initial status 'New', and server timestamp
+      allow create: if isValidId(applicationId) &&
+        isValidApplication(incoming()) &&
+        incoming().status == 'New' &&
+        incoming().createdAt == request.time;
+
+      // Admin Status Update: Action-based update with immutable fields
+      allow update: if isValidApplication(incoming()) &&
+        isValidId(applicationId) &&
+        isAdmin() &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().timestamp == existing().timestamp &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['status', 'notes']);
+
+      allow delete: if isAdmin() && isValidId(applicationId);
+    }
+  }
+}
