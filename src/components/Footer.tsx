@@ -2,15 +2,15 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800">
+    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800 pb-6 sm:pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10">
           {/* Brand Info */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-white p-1 overflow-hidden shrink-0">
+              <div className="w-11 h-11 rounded-xl bg-white p-0.5 overflow-hidden shrink-0 border border-amber-400/40">
                 <img
-                  src="kgb-logo.jpg"
+                  src="/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png"
                   alt="KGB Group (Knowledge Gurukul) Logo"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
@@ -33,99 +33,102 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed max-w-md">
-              Madhya Pradesh’s premier ISO 9001:2015 certified &amp; Govt. of India MSME registered educational consultancy and placement organization at Zone-2, MP Nagar, Bhopal.
+              Central India’s most trusted ISO 9001:2015 certified &amp; Govt. of India MSME registered educational consultancy, career development, and placement organization at Zone-2, MP Nagar, Bhopal.
             </p>
 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-300 font-semibold">
-              <span className="text-amber-400">100% Genuine Guidance</span>
+              <span className="text-amber-400">15 Lakh+ Students Guided</span>
               <span aria-hidden="true">·</span>
-              <span className="text-emerald-400">10+ Years of Academic Excellence</span>
+              <span className="text-emerald-400">Former T&amp;P Officers</span>
               <span aria-hidden="true">·</span>
               <span>ISO 9001:2015 (QMP202604878)</span>
             </div>
           </div>
 
-          {/* Quick Navigation */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="font-display font-bold text-white text-sm">
-              Quick Links
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <a href="#home" className="hover:text-amber-400 transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-amber-400 transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
-                  Our Services
-                </a>
-              </li>
-              <li>
-                <a href="#campus-drives" className="hover:text-amber-400 transition-colors">
-                  Seminars &amp; Gallery
-                </a>
-              </li>
-              <li>
-                <a href="#success-stories" className="hover:text-amber-400 transition-colors">
-                  Success Stories
-                </a>
-              </li>
-              <li>
-                <a href="#book-consultation" className="hover:text-amber-400 transition-colors">
-                  Book Consultation
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-amber-400 transition-colors">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Quick Navigation & Key Services in 2-col on Mobile */}
+          <div className="grid grid-cols-2 gap-6 md:contents">
+            {/* Quick Navigation */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="font-display font-bold text-white text-sm">
+                Quick Links
+              </h4>
+              <ul className="space-y-2 text-xs">
+                <li>
+                  <a href="#home" className="hover:text-amber-400 transition-colors">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" className="hover:text-amber-400 transition-colors">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                    Our Services
+                  </a>
+                </li>
+                <li>
+                  <a href="#campus-drives" className="hover:text-amber-400 transition-colors">
+                    Seminars &amp; Gallery
+                  </a>
+                </li>
+                <li>
+                  <a href="#success-stories" className="hover:text-amber-400 transition-colors">
+                    Success Stories
+                  </a>
+                </li>
+                <li>
+                  <a href="#book-consultation" className="hover:text-amber-400 transition-colors">
+                    Book Consultation
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="hover:text-amber-400 transition-colors">
+                    Contact Us
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-          {/* Key Services */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="font-display font-bold text-white text-sm">
-              Key Services
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
-                  Engineering &amp; MBA Admissions
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
-                  Medical, Nursing &amp; Pharmacy
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
-                  Law (BA LLB / BBA LLB)
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
-                  Psychometric Career Counseling
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
-                  Scholarship &amp; Loan Support
-                </a>
-              </li>
-              <li>
-                <a href="#jobs" className="hover:text-amber-400 transition-colors">
-                  Placement Tie-ups &amp; Jobs
-                </a>
-              </li>
-            </ul>
+            {/* Key Services */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="font-display font-bold text-white text-sm">
+                Key Services
+              </h4>
+              <ul className="space-y-2 text-xs">
+                <li>
+                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                    Engineering &amp; MBA Admissions
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                    Medical, Nursing &amp; Pharmacy
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                    Law (BA LLB / BBA LLB)
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                    Psychometric Career Counseling
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                    Scholarship &amp; Loan Support
+                  </a>
+                </li>
+                <li>
+                  <a href="#jobs" className="hover:text-amber-400 transition-colors">
+                    Placement Tie-ups &amp; Jobs
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Official Center Address & Helpline */}

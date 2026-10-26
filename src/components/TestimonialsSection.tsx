@@ -37,45 +37,58 @@ const SUCCESS_STORIES: SuccessStory[] = [
 
 export const TestimonialsSection: React.FC = () => {
   return (
-    <section id="success-stories" className="py-16 sm:py-20 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12">
-          <div className="text-xs font-bold text-blue-900 mb-2">
-            Verified Student &amp; Parent Testimonials · 1,00,000+ Careers Guided
+    <section id="success-stories" className="py-12 sm:py-18 lg:py-20 bg-white border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8 sm:mb-12">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1 rounded-lg mb-2.5">
+              <i className="fa-solid fa-star text-amber-500"></i>
+              <span>Verified Student &amp; Parent Testimonials · 15 Lakh+ Students Guided</span>
+            </div>
+            <h2
+              className="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight"
+              style={{ textWrap: 'balance' }}
+            >
+              Student Admission &amp; Placement Success Stories
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-base mt-2 leading-relaxed">
+              Real outcomes from students and parents across Madhya Pradesh who trusted KGB Group (Knowledge Gurukul) for college admissions, scholarship guidance, and guaranteed placement assistance.
+            </p>
           </div>
-          <h2
-            className="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight"
-            style={{ textWrap: 'balance' }}
-          >
-            Student Admission &amp; Placement Success Stories
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base mt-2.5 leading-relaxed">
-            Real outcomes from students and parents across Madhya Pradesh who trusted KGB Group (Knowledge Gurukul) for college admissions, scholarship guidance, and guaranteed placement assistance.
-          </p>
+          <span className="md:hidden text-[11px] font-bold text-amber-600">
+            Swipe cards →
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Horizontal Snap Carousel on Mobile, 3-Column Grid on Desktop */}
+        <div className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-2">
           {SUCCESS_STORIES.map((story) => (
             <div
               key={story.name}
-              className="rounded-2xl border border-slate-200 bg-slate-50/70 p-6 flex flex-col justify-between"
+              className="snap-start shrink-0 w-[86%] sm:w-[75%] md:w-auto rounded-3xl border border-slate-200/90 bg-slate-50/80 hover:bg-white hover:border-amber-400/60 hover:shadow-lg transition-all p-5 sm:p-6 flex flex-col justify-between"
             >
               <div>
-                <div className="text-xs font-bold text-emerald-700 mb-3">
-                  {story.outcome}
+                <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg mb-3.5">
+                  <i className="fa-solid fa-circle-check text-emerald-600"></i>
+                  <span>{story.outcome}</span>
                 </div>
                 <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
                   &ldquo;{story.quote}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-200/80">
-                <div className="font-display font-bold text-sm text-slate-900">
-                  {story.name}
+              <div className="mt-5 pt-4 border-t border-slate-200/80 flex items-center justify-between gap-2">
+                <div>
+                  <div className="font-display font-bold text-sm text-slate-900">
+                    {story.name}
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                    {story.courseAndCollege}
+                  </div>
                 </div>
-                <div className="text-xs text-slate-500 mt-0.5">
-                  {story.courseAndCollege} · {story.year}
-                </div>
+                <span className="text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md shrink-0">
+                  {story.year}
+                </span>
               </div>
             </div>
           ))}

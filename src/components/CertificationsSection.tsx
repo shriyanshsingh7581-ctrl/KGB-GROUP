@@ -24,7 +24,7 @@ const CERTIFICATES: CertificateDetail[] = [
     subtitle: 'Quality Management Systems Compliance',
     regNumberLabel: 'Certification No.',
     regNumber: 'QMP202604878',
-    imageSrc: '/iso-certificate.jpg',
+    imageSrc: '/assets/aistudio/202604878_KNOWLEDGE_GURUKUL_BHOPAL__KGB__9001_TQC_page-0001_29febc48.jpg',
     fallbackSrc: '/assets/aistudio/202604878_KNOWLEDGE_GURUKUL_BHOPAL__KGB__9001_TQC_page-0001_29febc48.jpg',
     issuedBy: 'Target Quality Certifications (UKASL, UK)',
     validUntil: '18.04.2026 – 17.04.2029',
@@ -45,12 +45,12 @@ const CERTIFICATES: CertificateDetail[] = [
     subtitle: 'KNOWLEDGE GURUKUL BHOPAL (KGB)',
     regNumberLabel: 'Udyam Reg. No.',
     regNumber: 'UDYAM-MP-10-0162140',
-    imageSrc: '/udyam-certificate.jpg',
-    fallbackSrc: '/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png',
+    imageSrc: '/assets/aistudio/udyam_page-0001_bfca635d.jpg',
+    fallbackSrc: '/assets/aistudio/udyam_page-0001_bfca635d.jpg',
     issuedBy: 'Ministry of Micro, Small and Medium Enterprises (Govt. of India)',
     validUntil: 'Incorporated: 02/01/2023 (Active)',
     scopeOrActivity:
-      'Major Activity: SERVICES — NIC 85491 (Academic Tutoring Services), NIC 85499 (Other Educational Services), NIC 85500 (Educational Support Services). Registered at Zone I, MP Nagar, Near Anand Namkeen, Bhopal - 462023.',
+      'Major Activity: SERVICES — NIC 85491 (Academic Tutoring Services), NIC 85499 (Other Educational Services), NIC 85500 (Educational Support Services). Registered at MP Nagar, Bhopal.',
     highlights: [
       { label: 'Udyam Number', value: 'UDYAM-MP-10-0162140' },
       { label: 'Enterprise Type', value: 'Micro (Services)' },
@@ -67,17 +67,17 @@ export const CertificationsSection: React.FC = () => {
   return (
     <section
       id="certifications"
-      className="scroll-mt-24 py-12 sm:py-16 lg:py-24 bg-white border-b border-slate-200 relative"
+      className="scroll-mt-24 py-12 sm:py-16 lg:py-20 bg-white border-b border-slate-200 relative"
     >
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-50 text-amber-800 font-bold text-[11px] sm:text-xs uppercase tracking-wider border border-amber-300 mb-2.5">
             <i className="fa-solid fa-shield-halved text-amber-600"></i>
-            <span>100% Verified Legal & Government Credentials</span>
+            <span>100% Verified Legal &amp; Government Credentials</span>
           </div>
           <h2 className="font-display text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Official Accreditation & Government Recognition
+            Official Accreditation &amp; Government Recognition
           </h2>
           <p className="mt-2.5 text-slate-600 text-xs sm:text-base leading-relaxed">
             Knowledge Gurukul Bhopal (KGB) operates with complete transparency under ISO 9001:2015 Quality Standards and Ministry of MSME (Govt. of India) registration. Tap any certificate to inspect the original document.
@@ -85,7 +85,7 @@ export const CertificationsSection: React.FC = () => {
         </div>
 
         {/* 2-Column Certificate Showcase Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8">
           {CERTIFICATES.map((cert) => (
             <div
               key={cert.id}
@@ -122,24 +122,18 @@ export const CertificationsSection: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setPreviewCert(cert)}
-                      className="cursor-pointer relative w-full aspect-3/4 rounded-2xl overflow-hidden bg-white border-2 border-slate-200 group-hover:border-amber-400 shadow-sm transition-all block text-left"
+                      className="cursor-pointer relative w-full aspect-[4/3] sm:aspect-[3/4] rounded-2xl overflow-hidden bg-white border-2 border-slate-200 group-hover:border-amber-400 shadow-sm transition-all block text-left"
                       aria-label={`View full ${cert.title} document`}
                     >
                       <img
                         src={cert.imageSrc}
-                        onError={(e) => {
-                          const target = e.currentTarget;
-                          if (target.src !== window.location.origin + cert.fallbackSrc) {
-                            target.src = cert.fallbackSrc;
-                          }
-                        }}
                         alt={`${cert.title} - ${cert.regNumber}`}
                         className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-900/10 to-transparent flex items-end p-3">
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-900/10 to-transparent flex items-end p-2.5 sm:p-3">
                         <span className="w-full py-2 px-3 rounded-xl bg-white/95 text-slate-900 font-extrabold text-[11px] flex items-center justify-center gap-1.5 shadow-md">
                           <i className="fa-solid fa-magnifying-glass-plus text-amber-600"></i>
-                          <span>Click to Enlarge Certificate</span>
+                          <span>Tap to Enlarge Certificate</span>
                         </span>
                       </div>
                     </button>
@@ -191,7 +185,7 @@ export const CertificationsSection: React.FC = () => {
               <div className="px-4 sm:px-6 py-3.5 bg-white border-t border-slate-200/80 flex items-center justify-between gap-2">
                 <span className="text-[11px] text-slate-500 font-medium truncate">
                   <i className="fa-solid fa-location-dot text-amber-500 mr-1"></i>
-                  Zone I, MP Nagar, Bhopal - 462023
+                  Zone-2, MP Nagar, Bhopal
                 </span>
                 <button
                   type="button"
@@ -242,12 +236,6 @@ export const CertificationsSection: React.FC = () => {
             <div className="p-3 sm:p-6 overflow-y-auto bg-slate-100 flex-1 flex items-center justify-center">
               <img
                 src={previewCert.imageSrc}
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (target.src !== window.location.origin + previewCert.fallbackSrc) {
-                    target.src = previewCert.fallbackSrc;
-                  }
-                }}
                 alt={previewCert.title}
                 className="max-w-full h-auto rounded-xl shadow-lg border border-slate-300"
               />
@@ -256,7 +244,7 @@ export const CertificationsSection: React.FC = () => {
             {/* Modal Footer */}
             <div className="px-4 sm:px-6 py-3 bg-white border-t border-slate-200 flex items-center justify-between gap-2 text-xs">
               <span className="text-slate-600 font-semibold truncate">
-                Knowledge Gurukul Bhopal (KGB) &bull; Zone I, MP Nagar, Bhopal
+                Knowledge Gurukul Bhopal (KGB) &bull; Zone-2, MP Nagar, Bhopal
               </span>
               <button
                 type="button"
