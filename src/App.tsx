@@ -1,5 +1,6 @@
 /**
- * KGB Group - Knowledge Gurukul (Bhopal)
+ * KGB Group (Knowledge Gurukul)
+ * Educational & Admission Consultancy + Placement Platform
  * Public Website (/) + Separate Dedicated Admin Portal Route (/admin)
  *
  * @license Apache-2.0
@@ -10,13 +11,14 @@ import { Navbar } from './components/Navbar';
 import { AnnouncementsSection } from './components/AnnouncementsSection';
 import { Hero } from './components/Hero';
 import { TrustStrip } from './components/TrustStrip';
+import { ServicesSection } from './components/ServicesSection';
+import { ApplicationForm } from './components/ApplicationForm';
+import { CampusGallerySection } from './components/CampusGallerySection';
 import { CertificationsSection } from './components/CertificationsSection';
 import { FeaturedJobs } from './components/FeaturedJobs';
-import { CampusGallerySection } from './components/CampusGallerySection';
-import { CollegePartnership } from './components/CollegePartnership';
-import { ApplicationForm } from './components/ApplicationForm';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FaqSection } from './components/FaqSection';
+import { ContactMapSection } from './components/ContactMapSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileQuickBar } from './components/MobileQuickBar';
@@ -66,23 +68,25 @@ export default function App() {
     );
   }
 
-  const scrollToApply = () => {
-    const applyElement = document.getElementById('apply');
-    if (applyElement) {
-      applyElement.scrollIntoView({ behavior: 'smooth' });
+  const scrollToBookingEngine = () => {
+    const bookingEl = document.getElementById('book-consultation');
+    if (bookingEl) {
+      bookingEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const scrollToJobs = () => {
-    const jobsElement = document.getElementById('jobs');
-    if (jobsElement) {
-      jobsElement.scrollIntoView({ behavior: 'smooth' });
+  const scrollToColleges = () => {
+    const collegesEl = document.getElementById('colleges') || document.getElementById('services');
+    if (collegesEl) {
+      collegesEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleSelectRoleForApply = (roleTitle: string) => {
-    setSelectedRoleForForm(roleTitle);
-    scrollToApply();
+  const handleBookWithPrefilledCourse = (courseOrService?: string) => {
+    if (courseOrService) {
+      setSelectedRoleForForm(courseOrService);
+    }
+    scrollToBookingEngine();
   };
 
   const handleClearSelectedRole = () => {
@@ -91,57 +95,60 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans pb-14 sm:pb-0">
-      {/* 1. Top Bar & Navbar (Public Website - No Admin Links) */}
-      <Navbar onApplyClick={scrollToApply} />
+      {/* 1. Sticky Header & Navigation */}
+      <Navbar onBookConsultationClick={handleBookWithPrefilledCourse} />
 
       <main className="flex-1">
-        {/* 2. Top Prominent Announcements & Posters Section (Dynamic) */}
-        <AnnouncementsSection onApplyClick={scrollToApply} />
+        {/* 2. Dynamic Announcements & Notices Banner (Synced with Admin 'posters/') */}
+        <AnnouncementsSection onApplyClick={() => handleBookWithPrefilledCourse()} />
 
-        {/* 3. Hero Section */}
+        {/* 3. Visual & Lucrative Hero Section */}
         <Hero
-          onApplyClick={scrollToApply}
-          onExploreJobsClick={scrollToJobs}
+          onBookSlotClick={handleBookWithPrefilledCourse}
+          onExploreCollegesClick={scrollToColleges}
         />
 
-        {/* 4. About & Trust Strip */}
+        {/* 4. About Us & 10+ Years Excellence Strip */}
         <div id="about">
           <TrustStrip />
         </div>
 
-        {/* 5. Official Accreditation & Government Recognition (ISO 9001:2015 & MSME Udyam) */}
-        <CertificationsSection />
+        {/* 5. Key Services (Card Layout) & Explore Top Colleges */}
+        <ServicesSection onSelectServiceForBooking={handleBookWithPrefilledCourse} />
 
-        {/* 6. Active Job Openings Section (Hybrid Static + Dynamic Firebase Jobs) */}
-        <FeaturedJobs onSelectRoleForApply={handleSelectRoleForApply} />
-
-        {/* 7. Real Campus Drives & Facility Gallery (4-Column Authentic Photo Grid) */}
-        <CampusGallerySection />
-
-        {/* 8. Institutional & Campus Placement Partnership */}
-        <CollegePartnership />
-
-        {/* 9. High-Converting Lead Generation Application Form */}
+        {/* 6. Complete Interactive Booking & Consultation Engine */}
         <ApplicationForm
           selectedRoleFromCard={selectedRoleForForm}
           onClearSelectedRole={handleClearSelectedRole}
         />
 
-        {/* 10. Placed Candidate Testimonials */}
+        {/* 7. Image Gallery & Real Proof Section ("Our Seminars, College Drives & Student Achievements") */}
+        <CampusGallerySection />
+
+        {/* 8. Student & Parent Success Stories */}
         <TestimonialsSection />
 
-        {/* 11. FAQs Section */}
+        {/* 9. Official ISO 9001:2015 & MSME Udyam Certifications */}
+        <CertificationsSection />
+
+        {/* 10. Placement Cell & Active Job Openings (Synced with Admin 'jobs/') */}
+        <FeaturedJobs onSelectRoleForApply={handleBookWithPrefilledCourse} />
+
+        {/* 11. Frequently Asked Questions */}
         <FaqSection />
+
+        {/* 12. Location, Contact Us & Integrated Google Map (Zone-2, MP Nagar, Bhopal) */}
+        <ContactMapSection onBookSlotClick={() => handleBookWithPrefilledCourse()} />
       </main>
 
-      {/* 12. Footer (Public Website - No Admin Links) */}
+      {/* 13. Footer */}
       <Footer />
 
-      {/* 13. Sticky / Floating WhatsApp */}
+      {/* 14. Floating WhatsApp Button */}
       <FloatingWhatsApp />
 
-      {/* 14. Mobile Sticky Action Bar */}
-      <MobileQuickBar onApplyClick={scrollToApply} />
+      {/* 15. Mobile Sticky "Call Now" & "Book via WhatsApp" Action Bar */}
+      <MobileQuickBar onApplyClick={() => handleBookWithPrefilledCourse()} />
     </div>
   );
 }

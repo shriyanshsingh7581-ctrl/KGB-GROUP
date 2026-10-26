@@ -1,267 +1,225 @@
 import React, { useState } from 'react';
 
 interface NavbarProps {
-  onApplyClick: () => void;
+  onBookConsultationClick: (prefilledService?: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onBookConsultationClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+
+  const handleServiceSelect = (serviceName: string) => {
+    setServicesDropdownOpen(false);
+    setMobileMenuOpen(false);
+    const servicesEl = document.getElementById('services');
+    if (servicesEl) {
+      servicesEl.scrollIntoView({ behavior: 'smooth' });
+    }
+    onBookConsultationClick(serviceName);
+  };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
-      {/* Top Bar with Contact Helpline, Email, Bhopal Office */}
-      <div className="bg-slate-900 text-slate-100 text-[11px] sm:text-xs py-1.5 px-3 sm:px-6 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-            <span className="inline-flex items-center gap-1 bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] border border-amber-500/40 shrink-0">
-              <i className="fa-solid fa-certificate text-[9px] text-amber-400"></i>
-              <span>ISO 9001:2015 &amp; Udyam MSME</span>
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-6">
+        {/* Zone 1: Brand Identity */}
+        <a
+          href="#home"
+          className="flex items-center gap-3 group shrink-0"
+        >
+          <div className="w-11 h-11 rounded-xl overflow-hidden border border-slate-200 bg-white p-0.5 flex items-center justify-center shrink-0">
+            <img
+              src="kgb-logo.jpg"
+              alt="KGB Group (Knowledge Gurukul)"
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.includes('/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg')) {
+                  target.src = '/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg';
+                }
+              }}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-display font-extrabold text-base sm:text-lg tracking-tight text-slate-900 whitespace-nowrap leading-tight">
+              KGB Group <span className="text-blue-900 font-bold">(Knowledge Gurukul)</span>
             </span>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-slate-300 truncate">
-              <i className="fa-solid fa-location-dot text-amber-400 text-[10px]"></i>
-              <span>Zone 1, MP Nagar, Bhopal (MP)</span>
+            <span className="text-[11px] font-medium text-slate-500 whitespace-nowrap">
+              Empowering Students, Enabling Careers
             </span>
-            <span className="text-slate-700 hidden lg:inline">|</span>
+          </div>
+        </a>
+
+        {/* Zone 2: Primary Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
+          <a
+            href="#home"
+            className="hover:text-blue-900 transition-colors whitespace-nowrap shrink-0"
+          >
+            Home
+          </a>
+          <a
+            href="#about"
+            className="hover:text-blue-900 transition-colors whitespace-nowrap shrink-0"
+          >
+            About Us
+          </a>
+
+          {/* Services Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setServicesDropdownOpen(true)}
+            onMouseLeave={() => setServicesDropdownOpen(false)}
+          >
             <a
-              href="mailto:kgbbhopal01@gmail.com"
-              className="hidden lg:inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-300 transition-colors"
+              href="#services"
+              className="hover:text-blue-900 transition-colors whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 py-2"
             >
-              <i className="fa-solid fa-envelope text-amber-400 text-[10px]"></i>
-              <span>kgbbhopal01@gmail.com</span>
+              <span>Services</span>
+              <i className="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
             </a>
+
+            {servicesDropdownOpen && (
+              <div className="absolute left-0 top-full w-64 bg-white rounded-xl border border-slate-200 shadow-lg py-2 z-50">
+                <button
+                  type="button"
+                  onClick={() => handleServiceSelect('Admission Guidance (Engineering, MBA, Medical, Law)')}
+                  className="w-full text-left px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-900 transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <span>Admissions (Engg, MBA, Medical, Law)</span>
+                  <i className="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleServiceSelect('Career Counseling & Psychometric Assessment')}
+                  className="w-full text-left px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-900 transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <span>Career Guidance &amp; Counseling</span>
+                  <i className="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleServiceSelect('Direct College Placement Tie-ups & Training')}
+                  className="w-full text-left px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-900 transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <span>Placement Support &amp; Training</span>
+                  <i className="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleServiceSelect('Scholarship & Financial Guidance')}
+                  className="w-full text-left px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-900 transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <span>Scholarship &amp; Loan Assistance</span>
+                  <i className="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                </button>
+              </div>
+            )}
           </div>
 
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 font-semibold">
-            <a
-              href="tel:+917987683263"
-              className="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 transition-colors"
-            >
-              <i className="fa-solid fa-phone-volume text-[10px]"></i>
-              <span>+91 7987683263</span>
-            </a>
-            <span className="text-slate-600 hidden sm:inline">|</span>
-            <a
-              href="https://wa.me/917987683263?text=Hi%20KGB%20Group%20Knowledge%20Gurukul%20Bhopal,%20I%20want%20to%20inquire%20about%20job%20placements."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors"
-            >
-              <i className="fa-brands fa-whatsapp text-sm"></i>
-              <span>WhatsApp Desk</span>
-            </a>
-          </div>
+          <a
+            href="#success-stories"
+            className="hover:text-blue-900 transition-colors whitespace-nowrap shrink-0"
+          >
+            Success Stories
+          </a>
+          <a
+            href="#book-consultation"
+            className="hover:text-blue-900 transition-colors whitespace-nowrap shrink-0"
+          >
+            Book Consultation
+          </a>
+          <a
+            href="#contact"
+            className="hover:text-blue-900 transition-colors whitespace-nowrap shrink-0"
+          >
+            Contact Us
+          </a>
+        </nav>
+
+        {/* Zone 3: Highlighted Direct CTA Button */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          <button
+            type="button"
+            onClick={() => onBookConsultationClick()}
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-xs whitespace-nowrap shrink-0 cursor-pointer"
+          >
+            <i className="fa-regular fa-calendar-check"></i>
+            <span>Book Free Consultation</span>
+          </button>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-slate-100 text-slate-800 border border-slate-200 cursor-pointer"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-base`}></i>
+          </button>
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo & Brand Identity */}
-          <a href="#home" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
-            <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-amber-400/40 bg-white shadow-2xs p-0.5 flex items-center justify-center shrink-0 transition-transform group-hover:scale-105">
-              <img
-                src="kgb-logo.jpg"
-                alt="KGB Group - Knowledge Gurukul Bhopal Logo"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.includes('/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg')) {
-                    target.src = '/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg';
-                  }
-                }}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="flex flex-col min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span className="font-display font-black text-base sm:text-xl tracking-tight text-slate-900 leading-none truncate">
-                  KGB <span className="text-amber-500">GROUP</span>
-                </span>
-                <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 shrink-0">
-                  <i className="fa-solid fa-circle-check text-emerald-600 mr-0.5"></i>Verified
-                </span>
-              </div>
-              <span className="text-[10px] sm:text-xs font-semibold text-slate-600 mt-0.5 truncate">
-                Knowledge Gurukul (Bhopal)
-              </span>
-            </div>
-          </a>
-
-          {/* Desktop Navigation Links: Home, About, Certifications, Openings, Campus Drives, Registration Form */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
+      {/* Mobile Navigation Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-5 space-y-3 shadow-lg">
+          <div className="grid grid-cols-2 gap-2 text-xs font-semibold text-slate-800">
             <a
               href="#home"
-              className="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100"
             >
               Home
             </a>
             <a
               href="#about"
-              className="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
-            >
-              About
-            </a>
-            <a
-              href="#certifications"
-              className="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1"
-            >
-              <i className="fa-solid fa-award text-xs text-amber-500"></i>
-              <span>Certifications</span>
-            </a>
-            <a
-              href="#jobs"
-              className="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1"
-            >
-              <i className="fa-solid fa-briefcase text-xs text-blue-600"></i>
-              <span>Openings</span>
-            </a>
-            <a
-              href="#campus-drives"
-              className="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-1"
-            >
-              <i className="fa-solid fa-camera text-xs text-emerald-600"></i>
-              <span>Campus Drives</span>
-            </a>
-            <a
-              href="#apply"
-              className="text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
-            >
-              Registration Form
-            </a>
-          </nav>
-
-          {/* Desktop Action Buttons */}
-          <div className="hidden sm:flex items-center gap-2.5">
-            <a
-              href="tel:+917987683263"
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <i className="fa-solid fa-phone text-blue-700"></i>
-              <span>+91 7987683263</span>
-            </a>
-
-            <button
-              onClick={onApplyClick}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-linear-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 transition-all shadow-sm cursor-pointer"
-            >
-              <i className="fa-solid fa-paper-plane"></i>
-              <span>Apply Now</span>
-            </button>
-          </div>
-
-          {/* Mobile Quick Actions & Menu Toggle */}
-          <div className="flex items-center gap-1.5 sm:hidden">
-            <a
-              href="https://wa.me/917987683263?text=Hi%20KGB%20Group%20Bhopal,%20I%20want%20to%20apply%20for%20job%20openings."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200 active:scale-95 transition-transform"
-              aria-label="WhatsApp +91 7987683263"
-            >
-              <i className="fa-brands fa-whatsapp text-base"></i>
-            </a>
-            <a
-              href="tel:+917987683263"
-              className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-blue-700 border border-blue-200 active:scale-95 transition-transform"
-              aria-label="Call +91 7987683263"
-            >
-              <i className="fa-solid fa-phone text-sm"></i>
-            </a>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-slate-100 text-slate-800 border border-slate-200 active:scale-95 transition-transform"
-              aria-label="Toggle navigation menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-base`}></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* App-Like Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-3 pt-3 pb-5 space-y-3 shadow-xl">
-          <div className="grid grid-cols-2 gap-2">
-            <a
-              href="#home"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-800"
+              className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100"
             >
-              <div className="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center shrink-0">
-                <i className="fa-solid fa-house"></i>
-              </div>
-              <span>Home</span>
+              About Us
             </a>
             <a
-              href="#about"
+              href="#services"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-800"
+              className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100"
             >
-              <div className="w-7 h-7 rounded-lg bg-indigo-500/15 text-indigo-600 flex items-center justify-center shrink-0">
-                <i className="fa-solid fa-building-columns"></i>
-              </div>
-              <span>About</span>
+              Services (Admissions &amp; Career)
             </a>
             <a
-              href="#certifications"
+              href="#success-stories"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-800"
+              className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100"
             >
-              <div className="w-7 h-7 rounded-lg bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
-                <i className="fa-solid fa-award"></i>
-              </div>
-              <span>Certifications</span>
+              Success Stories
             </a>
             <a
-              href="#jobs"
+              href="#book-consultation"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-800"
+              className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100"
             >
-              <div className="w-7 h-7 rounded-lg bg-blue-500/15 text-blue-600 flex items-center justify-center shrink-0">
-                <i className="fa-solid fa-briefcase"></i>
-              </div>
-              <span>Openings</span>
+              Book Consultation
             </a>
             <a
-              href="#campus-drives"
+              href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-800"
+              className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100"
             >
-              <div className="w-7 h-7 rounded-lg bg-emerald-500/15 text-emerald-600 flex items-center justify-center shrink-0">
-                <i className="fa-solid fa-camera"></i>
-              </div>
-              <span>Campus Drives</span>
-            </a>
-            <a
-              href="#apply"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs font-bold text-slate-800"
-            >
-              <div className="w-7 h-7 rounded-lg bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
-                <i className="fa-solid fa-file-pen"></i>
-              </div>
-              <span>Registration Form</span>
+              Contact Us (Zone-2 MP Nagar)
             </a>
           </div>
 
-          <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600 space-y-1">
-            <div><strong className="text-slate-800">Office:</strong> Zone 1, MP Nagar, Near Anand Namkeen, Bhopal</div>
-            <div><strong className="text-slate-800">Email:</strong> kgbbhopal01@gmail.com</div>
-          </div>
-
-          <div className="flex flex-col gap-2 pt-1">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onApplyClick();
-              }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-extrabold text-slate-950 bg-linear-to-r from-amber-400 to-amber-500 shadow-xs"
-            >
-              <i className="fa-solid fa-paper-plane"></i>
-              <span>Apply Online Now (Zero Fee)</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onBookConsultationClick();
+            }}
+            className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <i className="fa-regular fa-calendar-check"></i>
+            <span>Book Free Consultation</span>
+          </button>
         </div>
       )}
     </header>

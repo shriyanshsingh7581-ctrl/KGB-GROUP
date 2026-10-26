@@ -1,520 +1,545 @@
 import React, { useState, useEffect } from 'react';
-import {
-  ApplicationFormData,
-  validateApplicationForm,
-  generateApplicationRef,
-  formatWhatsAppMessage,
-} from '../utils/jobValidation';
-import { submitCandidateApplication } from '../firebase';
+import { submitCandidateApplication, subscribeToDynamicJobs, DynamicJobRecord } from '../firebase';
 
 interface ApplicationFormProps {
-  selectedRoleFromCard?: string;
-  onClearSelectedRole?: () => void;
+  selectedRoleFromCard: string;
+  onClearSelectedRole: () => void;
 }
 
-const QUICK_CITIES = ['Bhopal', 'Indore', 'Jabalpur', 'Gwalior', 'Raipur', 'Ujjain'];
-
-const QUICK_QUALIFICATIONS = [
-  { label: '10th / 12th Pass', value: '10th / 12th Pass' },
-  { label: 'Graduate', value: 'Graduate' },
-  { label: 'Post Graduate', value: 'Post Graduate' },
-  { label: 'B.Tech / B.E', value: 'B.Tech / B.E' },
-  { label: 'MBA / BBA', value: 'MBA / BBA' },
+const STREAM_OPTIONS = [
+  '12th PCM (Mathematics / Science)',
+  '12th PCB (Biology / Medical)',
+  '12th Commerce / Arts / Humanities',
+  'Undergraduate Final Year (B.Tech / BBA / B.Com / B.Sc / BCA)',
+  'Graduate Seeking MBA / PGDM / Law / Placement',
+  '10th Pass (Seeking Polytechnic / ITI / Skill Stream)',
+  'Parent / Guardian Enquiring for Ward',
 ];
+
+const TARGET_COURSE_OPTIONS = [
+  'B.Tech / B.E. (CS, AI/ML, Data Science, Core Engineering)',
+  'MBA / PGDM (Marketing, Finance, HR, Business Analytics)',
+  'MBBS / B.Sc Nursing / B.Pharm / D.Pharm / Paramedical',
+  'BA LLB / BBA LLB / LLB (Law Admission)',
+  'BBA / B.Com (Hons) / BCA / MCA',
+  'B.Ed / M.Ed / B.Sc Agriculture',
+  'Career Counseling & Psychometric Assessment',
+  'Direct College Placement Tie-ups & Training',
+  'Scholarship & Financial Guidance (MMVY / Post-Matric / Loan)',
+  'Work From Home / Corporate Job Placement',
+];
+
+const TIME_SLOTS = [
+  '10:30 AM – 12:00 PM (Morning Slot)',
+  '12:30 PM – 02:00 PM (Mid-Day Slot)',
+  '03:00 PM – 04:30 PM (Afternoon Slot)',
+  '05:00 PM – 06:30 PM (Evening Slot)',
+];
+
+function getTomorrowDateString(): string {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().split('T')[0];
+}
 
 export const ApplicationForm: React.FC<ApplicationFormProps> = ({
   selectedRoleFromCard,
   onClearSelectedRole,
 }) => {
-  const [formData, setFormData] = useState<ApplicationFormData & { notes: string }>({
-    fullName: '',
-    phone: '',
-    email: '',
-    qualification: 'Graduate',
-    preferredRole: selectedRoleFromCard || '',
-    city: '',
-    hasLaptop: false,
-    experience: 'Fresher (No Prior Experience)',
-    notes: '',
-  });
+  const [studentName, setStudentName] = useState('');
+  const [whatsappNumber, setWhatsappNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [currentStream, setCurrentStream] = useState('');
+  const [targetCourse, setTargetCourse] = useState('');
+  const [preferredDate, setPreferredDate] = useState(getTomorrowDateString);
+  const [preferredTimeSlot, setPreferredTimeSlot] = useState(TIME_SLOTS[0]);
+  const [consultationMode, setConsultationMode] = useState<
+    'In-Office Visit at Bhopal Center' | 'Online Video Call'
+  >('In-Office Visit at Bhopal Center');
+  const [additionalNotes, setAdditionalNotes] = useState('');
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [dynamicJobs, setDynamicJobs] = useState<DynamicJobRecord[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [submittedSnapshot, setSubmittedSnapshot] = useState<{
-    ref: string;
-    data: ApplicationFormData;
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [confirmedBooking, setConfirmedBooking] = useState<{
+    name: string;
+    phone: string;
+    stream: string;
+    targetCourse: string;
+    date: string;
+    timeSlot: string;
+    mode: string;
   } | null>(null);
 
   useEffect(() => {
+    const unsub = subscribeToDynamicJobs((jobs) => setDynamicJobs(jobs));
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
     if (selectedRoleFromCard) {
-      setFormData((prev) => ({
-        ...prev,
-        preferredRole: selectedRoleFromCard,
-        hasLaptop: selectedRoleFromCard.toLowerCase().includes('data entry') ? true : prev.hasLaptop,
-      }));
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next.preferredRole;
-        return next;
-      });
+      setTargetCourse(selectedRoleFromCard);
     }
   }, [selectedRoleFromCard]);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const target = e.target as HTMLInputElement;
-      setFormData((prev) => ({ ...prev, [name]: target.checked }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-      if (errors[name]) {
-        setErrors((prev) => {
-          const next = { ...prev };
-          delete next[name];
-          return next;
-        });
-      }
-    }
-  };
-
-  const handleQuickQualification = (val: string) => {
-    setFormData((prev) => ({ ...prev, qualification: val }));
-    if (errors.qualification) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next.qualification;
-        return next;
-      });
-    }
-  };
-
-  const handleQuickCity = (city: string) => {
-    setFormData((prev) => ({ ...prev, city }));
-  };
+  const allCourseOptions = Array.from(
+    new Set([
+      ...TARGET_COURSE_OPTIONS,
+      ...dynamicJobs.map((j) => `${j.title} (${j.jobType})`),
+      ...(selectedRoleFromCard ? [selectedRoleFromCard] : []),
+    ])
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = validateApplicationForm(formData);
-    if (!result.isValid) {
-      setErrors(result.errors);
+    setErrorMessage(null);
+
+    const cleanPhone = whatsappNumber.replace(/\D/g, '');
+    if (!studentName.trim() || cleanPhone.length < 10 || !currentStream || !targetCourse) {
+      setErrorMessage(
+        'Please enter Student/Parent Name, a valid 10-digit WhatsApp Mobile Number, Current Education/Stream, and Target Course/College.'
+      );
       return;
     }
 
     setIsSubmitting(true);
     try {
+      const formattedSlotSummary = `Slot: ${preferredDate} (${preferredTimeSlot}) | Mode: ${consultationMode}${
+        additionalNotes.trim() ? ` | Note: ${additionalNotes.trim()}` : ''
+      }`;
+
       await submitCandidateApplication({
-        fullName: formData.fullName,
-        phone: formData.phone,
-        email: formData.email,
-        city: formData.city || 'Bhopal',
-        qualification: formData.qualification,
-        role: formData.preferredRole,
-        notes: formData.notes || formData.experience,
+        fullName: studentName.trim(),
+        phone: whatsappNumber.trim(),
+        email: email.trim(),
+        city:
+          consultationMode === 'In-Office Visit at Bhopal Center'
+            ? 'In-Office Visit (Zone-2, MP Nagar, Bhopal)'
+            : 'Online Video Call Consultation',
+        qualification: currentStream,
+        role: targetCourse,
+        notes: formattedSlotSummary,
       });
 
-      const ref = generateApplicationRef(formData.fullName);
-      setSubmittedSnapshot({ ref, data: { ...formData } });
-      setShowSuccessModal(true);
-
-      // Reset form fields automatically
-      setFormData({
-        fullName: '',
-        phone: '',
-        email: '',
-        qualification: 'Graduate',
-        preferredRole: '',
-        city: '',
-        hasLaptop: false,
-        experience: 'Fresher (No Prior Experience)',
-        notes: '',
+      setConfirmedBooking({
+        name: studentName.trim(),
+        phone: cleanPhone.slice(-10),
+        stream: currentStream,
+        targetCourse,
+        date: preferredDate,
+        timeSlot: preferredTimeSlot,
+        mode: consultationMode,
       });
-      setErrors({});
-      if (onClearSelectedRole) {
-        onClearSelectedRole();
-      }
-    } catch (error) {
-      console.error('Error submitting application:', error);
+
+      setStudentName('');
+      setWhatsappNumber('');
+      setEmail('');
+      setCurrentStream('');
+      setAdditionalNotes('');
+      onClearSelectedRole();
+    } catch (err) {
+      console.error('Booking submission error:', err);
+      setErrorMessage(
+        'Could not complete booking at the moment. Please try again or message us directly on WhatsApp (+91 7987683263).'
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const whatsAppUrl = submittedSnapshot
-    ? `https://wa.me/917987683263?text=${formatWhatsAppMessage(
-        submittedSnapshot.data,
-        submittedSnapshot.ref
-      )}`
-    : `https://wa.me/917987683263?text=${encodeURIComponent(
-        'Hi KGB Group Bhopal, I want to submit my candidate profile for open vacancies.'
-      )}`;
+  const buildWhatsAppConfirmationUrl = () => {
+    if (!confirmedBooking) return 'https://wa.me/917987683263';
+    const message = [
+      `Hello KGB Group (Knowledge Gurukul Bhopal),`,
+      `I have booked a Free Counseling / Admission Consultation slot:`,
+      `• Student/Parent Name: ${confirmedBooking.name}`,
+      `• WhatsApp Number: ${confirmedBooking.phone}`,
+      `• Current Education/Stream: ${confirmedBooking.stream}`,
+      `• Target Course/College: ${confirmedBooking.targetCourse}`,
+      `• Preferred Date: ${confirmedBooking.date}`,
+      `• Time Slot: ${confirmedBooking.timeSlot}`,
+      `• Mode: ${confirmedBooking.mode}`,
+      `Please confirm my appointment slot.`,
+    ].join('\n');
+
+    return `https://wa.me/917987683263?text=${encodeURIComponent(message)}`;
+  };
 
   return (
-    <section id="apply" className="scroll-mt-24 py-12 sm:py-16 lg:py-24 bg-white relative">
-      <div className="max-w-3xl mx-auto px-3.5 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="text-center mb-6 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 font-bold text-[11px] sm:text-xs uppercase tracking-wider border border-amber-300 mb-2.5">
-            <i className="fa-solid fa-bolt text-xs text-amber-600"></i>
-            <span>Real-Time HR Database &bull; Zero Registration Fee</span>
-          </div>
-          <h2 className="font-display text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Candidate Registration &amp; Job Application Form
-          </h2>
-          <p className="mt-2 text-slate-600 text-xs sm:text-base max-w-xl mx-auto">
-            Fill in your details below. Your application is synced directly with Knowledge Gurukul Bhopal&apos;s HR team for 24-hour interview scheduling.
-          </p>
-        </div>
+    <section
+      id="book-consultation"
+      className="py-16 sm:py-20 bg-slate-900 text-white border-b border-slate-800 relative"
+    >
+      {/* Secondary anchor alias for #apply */}
+      <div id="apply" className="absolute -top-20"></div>
 
-        {/* Application Form Card */}
-        <div className="bg-slate-50 rounded-3xl p-4 sm:p-8 lg:p-10 border border-slate-200/90 shadow-lg">
-          {/* Pre-selected Role Banner */}
-          {selectedRoleFromCard && (
-            <div className="mb-4 p-3 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2 min-w-0">
-                <i className="fa-solid fa-circle-check text-blue-600 text-sm shrink-0"></i>
-                <span className="text-xs text-blue-950 font-semibold truncate">
-                  Applying for: <strong className="font-extrabold">{selectedRoleFromCard}</strong>
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={onClearSelectedRole}
-                className="cursor-pointer text-[11px] text-blue-700 hover:text-blue-900 underline font-bold shrink-0"
-              >
-                Change
-              </button>
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" noValidate>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Full Name */}
-              <div>
-                <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Full Name <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <i className="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                  <input
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    maxLength={100}
-                    placeholder="Enter your full name"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    className={`w-full pl-9 pr-3 py-3.5 rounded-xl bg-white border text-sm text-slate-900 placeholder-slate-400 focus:outline-hidden focus:ring-2 ${
-                      errors.fullName
-                        ? 'border-red-400 focus:ring-red-200'
-                        : 'border-slate-300 focus:ring-amber-400/25 focus:border-amber-500'
-                    }`}
-                  />
-                </div>
-                {errors.fullName && (
-                  <p className="text-[11px] text-red-600 mt-1 font-semibold">{errors.fullName}</p>
-                )}
-              </div>
-
-              {/* WhatsApp / Phone Number */}
-              <div>
-                <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  WhatsApp / Phone Number <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-extrabold text-slate-500">
-                    +91
-                  </span>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    inputMode="numeric"
-                    autoComplete="tel"
-                    required
-                    maxLength={14}
-                    placeholder="10-digit mobile number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className={`w-full pl-12 pr-3 py-3.5 rounded-xl bg-white border text-sm text-slate-900 placeholder-slate-400 focus:outline-hidden focus:ring-2 ${
-                      errors.phone
-                        ? 'border-red-400 focus:ring-red-200'
-                        : 'border-slate-300 focus:ring-amber-400/25 focus:border-amber-500'
-                    }`}
-                  />
-                </div>
-                {errors.phone && (
-                  <p className="text-[11px] text-red-600 mt-1 font-semibold">{errors.phone}</p>
-                )}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Email Address */}
-              <div>
-                <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <i className="fa-solid fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    maxLength={150}
-                    placeholder="you@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full pl-9 pr-3 py-3.5 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-amber-400/25 focus:border-amber-500"
-                  />
-                </div>
-              </div>
-
-              {/* City / Location */}
-              <div>
-                <label htmlFor="city" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  City / Location
-                </label>
-                <div className="relative">
-                  <i className="fa-solid fa-location-dot absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                  <input
-                    id="city"
-                    name="city"
-                    type="text"
-                    maxLength={100}
-                    placeholder="Bhopal, Indore, Jabalpur..."
-                    value={formData.city}
-                    onChange={handleChange}
-                    className="w-full pl-9 pr-3 py-3.5 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-amber-400/25 focus:border-amber-500"
-                  />
-                </div>
-                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1.5">
-                  {QUICK_CITIES.map((c) => (
-                    <button
-                      key={c}
-                      type="button"
-                      onClick={() => handleQuickCity(c)}
-                      className={`cursor-pointer shrink-0 px-2.5 py-0.5 rounded-md text-[10px] font-bold border transition-colors ${
-                        formData.city === c
-                          ? 'bg-amber-400 text-slate-950 border-amber-500'
-                          : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-100'
-                      }`}
-                    >
-                      {c}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Highest Qualification */}
-              <div>
-                <label htmlFor="qualification" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Highest Qualification <span className="text-red-500">*</span>
-                </label>
-                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2">
-                  {QUICK_QUALIFICATIONS.map((q) => (
-                    <button
-                      key={q.value}
-                      type="button"
-                      onClick={() => handleQuickQualification(q.value)}
-                      className={`cursor-pointer shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all ${
-                        formData.qualification === q.value
-                          ? 'bg-slate-900 text-amber-400 border-slate-900'
-                          : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                      }`}
-                    >
-                      {q.label}
-                    </button>
-                  ))}
-                </div>
-                <div className="relative">
-                  <i className="fa-solid fa-graduation-cap absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                  <select
-                    id="qualification"
-                    name="qualification"
-                    required
-                    value={formData.qualification}
-                    onChange={handleChange}
-                    className={`w-full pl-9 pr-8 py-3.5 rounded-xl bg-white border text-sm text-slate-900 focus:outline-hidden focus:ring-2 appearance-none ${
-                      errors.qualification
-                        ? 'border-red-400 focus:ring-red-200'
-                        : 'border-slate-300 focus:ring-amber-400/25 focus:border-amber-500'
-                    }`}
-                  >
-                    <option value="">-- Select Qualification --</option>
-                    <option value="10th / 12th Pass">10th / 12th Pass</option>
-                    <option value="Graduate">Graduate (BA / B.Com / B.Sc / BBA / BCA)</option>
-                    <option value="Post Graduate">Post Graduate (MBA / MCA / M.Com / M.Sc)</option>
-                    <option value="B.Tech / B.E">B.Tech / B.E (Engineering)</option>
-                    <option value="MBA / BBA">MBA / BBA (Management)</option>
-                    <option value="Diploma / Polytechnic">Diploma / Polytechnic / ITI</option>
-                  </select>
-                  <i className="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
-                </div>
-                {errors.qualification && (
-                  <p className="text-[11px] text-red-600 mt-1 font-semibold">{errors.qualification}</p>
-                )}
-              </div>
-
-              {/* Desired Job Role */}
-              <div>
-                <label htmlFor="preferredRole" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Desired Job Role <span className="text-red-500">*</span>
-                </label>
-                <div className="hidden sm:block h-[30px]"></div>
-                <div className="relative">
-                  <i className="fa-solid fa-briefcase absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                  <select
-                    id="preferredRole"
-                    name="preferredRole"
-                    required
-                    value={formData.preferredRole}
-                    onChange={handleChange}
-                    className={`w-full pl-9 pr-8 py-3.5 rounded-xl bg-white border text-sm text-slate-900 focus:outline-hidden focus:ring-2 appearance-none ${
-                      errors.preferredRole
-                        ? 'border-red-400 focus:ring-red-200'
-                        : 'border-slate-300 focus:ring-amber-400/25 focus:border-amber-500'
-                    }`}
-                  >
-                    <option value="">-- Select Desired Job Role --</option>
-                    <option value="Work From Home Tele-Caller">
-                      Work From Home Tele-Caller (Fixed Salary + High Incentive)
-                    </option>
-                    <option value="Data Entry Operator">
-                      Data Entry Operator (Rs. 25,000/mo - Laptop Required)
-                    </option>
-                    <option value="Customer Support Executive">
-                      Customer Support Executive (Rs. 23,000 - 30,000/mo)
-                    </option>
-                    <option value="Campus Drive Coordinator & Invigilator">
-                      Campus Drive Coordinator &amp; Invigilator (Rs. 18,000 - 25,000/mo)
-                    </option>
-                    <option value="Warehouse Associate & Logistics Supervisor">
-                      Warehouse Associate &amp; Logistics Supervisor
-                    </option>
-                    <option value="Junior IT Desktop & Network Support">
-                      Junior IT Desktop &amp; Network Support
-                    </option>
-                  </select>
-                  <i className="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
-                </div>
-                {errors.preferredRole && (
-                  <p className="text-[11px] text-red-600 mt-1 font-semibold">{errors.preferredRole}</p>
-                )}
-              </div>
-            </div>
-
-            {/* Additional Notes / Experience */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left Column: Why Book & Office Info */}
+          <div className="lg:col-span-5 space-y-6">
             <div>
-              <label htmlFor="notes" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Additional Notes / Experience
-              </label>
-              <textarea
-                id="notes"
-                name="notes"
-                rows={2}
-                maxLength={500}
-                placeholder="Mention prior experience, typing speed, laptop availability, or preferred interview shift..."
-                value={formData.notes}
-                onChange={handleChange}
-                className="w-full px-3.5 py-3 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-amber-400/25 focus:border-amber-500"
-              ></textarea>
-            </div>
-
-            {/* Submit Button with Loading Spinner */}
-            <div className="pt-1">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full cursor-pointer py-4 px-6 rounded-2xl bg-linear-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-500 hover:to-amber-600 active:scale-[0.99] text-slate-950 font-display font-black text-sm sm:text-base tracking-wide shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2.5 disabled:opacity-70"
+              <div className="text-xs font-bold text-amber-400 mb-2">
+                Free 1-on-1 Academic &amp; Career Consultation · Zone-2, MP Nagar, Bhopal
+              </div>
+              <h2
+                className="font-display font-extrabold text-2xl sm:text-4xl text-white tracking-tight leading-tight"
+                style={{ textWrap: 'balance' }}
               >
-                {isSubmitting ? (
-                  <>
-                    <i className="fa-solid fa-circle-notch fa-spin text-base"></i>
-                    <span>Saving Application to Database...</span>
-                  </>
-                ) : (
-                  <>
-                    <i className="fa-solid fa-paper-plane text-slate-950"></i>
-                    <span>Submit Free Application &amp; Get HR Call</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            <p className="text-center text-[11px] text-slate-500 flex items-center justify-center gap-1.5 pt-1">
-              <i className="fa-solid fa-shield-halved text-emerald-600"></i>
-              <span>100% Genuine Drives &bull; Zero Registration Fee &bull; Safe &amp; Confidential</span>
-            </p>
-          </form>
-        </div>
-      </div>
-
-      {/* Modern Tailwind Success Modal / Popup */}
-      {showSuccessModal && submittedSnapshot && (
-        <div
-          className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setShowSuccessModal(false)}
-        >
-          <div
-            className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl border-2 border-emerald-400 space-y-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="w-16 h-16 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mx-auto text-3xl shadow-md">
-              <i className="fa-solid fa-circle-check"></i>
-            </div>
-
-            <div className="space-y-1.5">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">
-                Ref ID: {submittedSnapshot.ref}
-              </span>
-              <h3 className="font-display font-black text-xl sm:text-2xl text-slate-900 pt-1">
-                Application Submitted Successfully!
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Application Submitted Successfully! Our HR team will contact you within 24 hours.
+                Book Your Personal Counseling Slot Today
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
+                Meet our senior admission &amp; career experts either via <strong className="text-white">Online Video Call</strong> or by visiting our <strong className="text-white">Bhopal Center at Zone-2, MP Nagar</strong>. Get unbiased college comparisons, scholarship eligibility checks, and guaranteed placement roadmaps.
               </p>
             </div>
 
-            <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-left text-xs space-y-1">
-              <div>
-                <span className="text-slate-400">Candidate:</span>{' '}
-                <strong className="text-slate-800">{submittedSnapshot.data.fullName}</strong>
+            {/* What You Receive in a 30-Min Session */}
+            <div className="bg-slate-800/80 border border-slate-700/90 rounded-2xl p-5 space-y-3.5">
+              <h3 className="font-display font-bold text-base text-white">
+                What’s Included in Your Free Session:
+              </h3>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-200">
+                <li className="flex items-start gap-2.5">
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
+                  <span>Shortlist of Top 5 NAAC-accredited colleges matching your rank &amp; budget</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
+                  <span>Complete fee breakdown, hostel details &amp; hidden-cost transparency</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
+                  <span>MP Govt. Scholarship (Medhavi / Post-Matric) &amp; Education Loan checklist</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
+                  <span>Direct campus placement guarantee &amp; internship registration</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Center Address & Helpline Card */}
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-3 text-xs sm:text-sm">
+              <div className="flex items-start gap-3">
+                <i className="fa-solid fa-location-dot text-amber-400 mt-1 shrink-0"></i>
+                <div>
+                  <span className="font-bold text-white block">Bhopal Counseling Center:</span>
+                  <span className="text-slate-300">
+                    Zone-2, MP Nagar, Bhopal, Madhya Pradesh - 462011
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <i className="fa-solid fa-phone-volume text-emerald-400 mt-1 shrink-0"></i>
+                <div>
+                  <span className="font-bold text-white block">Direct Admission Helpline:</span>
+                  <a href="tel:+917987683263" className="text-amber-400 font-bold hover:underline tabular-nums">
+                    +91 7987683263
+                  </a>{' '}
+                  <span className="text-slate-400">(Mon–Sat, 10:00 AM – 7:00 PM)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Appointment Booking Engine */}
+          <div className="lg:col-span-7">
+            <div className="bg-white text-slate-900 rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200">
+              <div className="pb-5 mb-6 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-slate-900">
+                    Schedule Counseling Appointment
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Zero consultation charges · Instant WhatsApp slot confirmation
+                  </p>
+                </div>
+                <span className="text-xs font-bold text-emerald-700">
+                  100% Genuine Guidance
+                </span>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                {/* Row 1: Student/Parent Name & WhatsApp Mobile Number */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="booking-student-name"
+                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                    >
+                      Student / Parent Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="booking-student-name"
+                      type="text"
+                      required
+                      placeholder="Enter full name"
+                      value={studentName}
+                      onChange={(e) => setStudentName(e.target.value)}
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="booking-whatsapp"
+                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                    >
+                      WhatsApp Mobile Number <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="booking-whatsapp"
+                      type="tel"
+                      required
+                      placeholder="10-digit WhatsApp number"
+                      value={whatsappNumber}
+                      onChange={(e) => setWhatsappNumber(e.target.value)}
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden tabular-nums"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 2: Current Education / Stream & Target Course / College */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="booking-stream"
+                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                    >
+                      Current Education / Stream <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="booking-stream"
+                      required
+                      value={currentStream}
+                      onChange={(e) => setCurrentStream(e.target.value)}
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm bg-white text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                    >
+                      <option value="">Select Current Education / Stream</option>
+                      {STREAM_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="booking-target-course"
+                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                    >
+                      Target Course / College <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="booking-target-course"
+                      required
+                      value={targetCourse}
+                      onChange={(e) => setTargetCourse(e.target.value)}
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm bg-white text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                    >
+                      <option value="">Select Target Course / Service</option>
+                      {allCourseOptions.map((course) => (
+                        <option key={course} value={course}>
+                          {course}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Row 3: Preferred Date & Preferred Time Slot */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="booking-date"
+                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                    >
+                      Preferred Date <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="booking-date"
+                      type="date"
+                      required
+                      min={new Date().toISOString().split('T')[0]}
+                      value={preferredDate}
+                      onChange={(e) => setPreferredDate(e.target.value)}
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm bg-white text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden tabular-nums"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="booking-time-slot"
+                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                    >
+                      Preferred Time Slot <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="booking-time-slot"
+                      required
+                      value={preferredTimeSlot}
+                      onChange={(e) => setPreferredTimeSlot(e.target.value)}
+                      className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm bg-white text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden tabular-nums"
+                    >
+                      {TIME_SLOTS.map((slot) => (
+                        <option key={slot} value={slot}>
+                          {slot}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Row 4: Consultation Mode Selector */}
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-2">
+                    Preferred Consultation Mode <span className="text-red-500">*</span>
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setConsultationMode('In-Office Visit at Bhopal Center')}
+                      className={`p-3.5 rounded-xl border text-left transition-all flex items-center gap-3 cursor-pointer ${
+                        consultationMode === 'In-Office Visit at Bhopal Center'
+                          ? 'border-blue-900 bg-blue-50/70 text-slate-900 ring-2 ring-blue-900/15'
+                          : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                      }`}
+                    >
+                      <div className="w-9 h-9 rounded-lg bg-blue-900 text-amber-400 flex items-center justify-center shrink-0">
+                        <i className="fa-solid fa-building-user"></i>
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold">In-Office Visit at Bhopal Center</div>
+                        <div className="text-[11px] text-slate-500">Zone-2, MP Nagar, Bhopal</div>
+                      </div>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setConsultationMode('Online Video Call')}
+                      className={`p-3.5 rounded-xl border text-left transition-all flex items-center gap-3 cursor-pointer ${
+                        consultationMode === 'Online Video Call'
+                          ? 'border-blue-900 bg-blue-50/70 text-slate-900 ring-2 ring-blue-900/15'
+                          : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                      }`}
+                    >
+                      <div className="w-9 h-9 rounded-lg bg-emerald-700 text-white flex items-center justify-center shrink-0">
+                        <i className="fa-solid fa-video"></i>
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold">Online Video Call</div>
+                        <div className="text-[11px] text-slate-500">Google Meet / WhatsApp Video</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Row 5: Optional Questions / Specific College Preference */}
+                <div>
+                  <label
+                    htmlFor="booking-notes"
+                    className="block text-xs font-bold text-slate-700 mb-1.5"
+                  >
+                    Specific College Preference / Questions (Optional)
+                  </label>
+                  <input
+                    id="booking-notes"
+                    type="text"
+                    placeholder="e.g., Looking for B.Tech CS in Bhopal with MMVY scholarship or MBA placement details"
+                    value={additionalNotes}
+                    onChange={(e) => setAdditionalNotes(e.target.value)}
+                    className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                  />
+                </div>
+
+                {errorMessage && (
+                  <div className="rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold px-4 py-3">
+                    {errorMessage}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-4 px-6 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm sm:text-base shadow-md transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <i className="fa-solid fa-circle-notch fa-spin"></i>
+                      <span>Confirming Your Counseling Slot...</span>
+                    </>
+                  ) : (
+                    <>
+                      <i className="fa-regular fa-calendar-check"></i>
+                      <span>Confirm Free Counseling Slot</span>
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Booking Confirmation Modal with Instant WhatsApp Redirection */}
+      {confirmedBooking && (
+        <div
+          className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm p-4 flex items-center justify-center"
+          onClick={() => setConfirmedBooking(null)}
+        >
+          <div
+            className="bg-white text-slate-900 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shrink-0">
+                <i className="fa-solid fa-circle-check"></i>
               </div>
               <div>
-                <span className="text-slate-400">Applied Role:</span>{' '}
-                <strong className="text-slate-800">{submittedSnapshot.data.preferredRole}</strong>
-              </div>
-              <div>
-                <span className="text-slate-400">Status:</span>{' '}
-                <strong className="text-emerald-700">New (Logged in HR Portal)</strong>
+                <span className="text-xs font-bold text-emerald-700">
+                  Appointment Registered
+                </span>
+                <h3 className="font-display font-extrabold text-xl text-slate-900">
+                  Counseling Slot Confirmed!
+                </h3>
               </div>
             </div>
 
-            <div className="flex flex-col gap-2 pt-1">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Thank you, <strong>{confirmedBooking.name}</strong>. Your consultation request with <strong>KGB Group (Knowledge Gurukul)</strong> has been logged. Our senior counselor will connect with you on <strong>+91 {confirmedBooking.phone}</strong>.
+            </p>
+
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-1.5 text-xs text-slate-700">
+              <div className="flex justify-between gap-2">
+                <span className="text-slate-500">Target Course:</span>
+                <span className="font-bold text-slate-900 text-right">{confirmedBooking.targetCourse}</span>
+              </div>
+              <div className="flex justify-between gap-2">
+                <span className="text-slate-500">Preferred Slot:</span>
+                <span className="font-bold text-slate-900 tabular-nums">{confirmedBooking.date} · {confirmedBooking.timeSlot}</span>
+              </div>
+              <div className="flex justify-between gap-2">
+                <span className="text-slate-500">Consultation Mode:</span>
+                <span className="font-bold text-blue-900">{confirmedBooking.mode}</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
               <a
-                href={whatsAppUrl}
+                href={buildWhatsAppConfirmationUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-colors"
+                className="flex-1 py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm text-center inline-flex items-center justify-center gap-2 transition-colors"
               >
                 <i className="fa-brands fa-whatsapp text-base"></i>
-                <span>Instant WhatsApp Confirmation</span>
+                <span>Send Instant WhatsApp Confirmation</span>
               </a>
               <button
                 type="button"
-                onClick={() => setShowSuccessModal(false)}
-                className="cursor-pointer w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors"
+                onClick={() => setConfirmedBooking(null)}
+                className="py-3.5 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm cursor-pointer"
               >
-                Done
+                Close
               </button>
             </div>
           </div>
