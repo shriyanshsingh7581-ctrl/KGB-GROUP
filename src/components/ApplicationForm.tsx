@@ -168,19 +168,18 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
   return (
     <section
       id="book-consultation"
-      className="py-12 sm:py-18 lg:py-20 bg-slate-900 text-white border-b border-slate-800 relative"
+      className="py-14 sm:py-20 bg-[#050A15] bg-luxury-grid text-white border-b border-amber-400/15 relative"
     >
       {/* Secondary anchor alias for #apply */}
       <div id="apply" className="absolute -top-20"></div>
 
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left Column: Why Book & Office Info */}
-          <div className="lg:col-span-5 space-y-5 sm:space-y-6">
+          {/* Left Column: Executive Counseling Pass & Bhopal Center Concierge */}
+          <div className="lg:col-span-5 space-y-6">
             <div>
-              <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-amber-400 bg-amber-400/10 border border-amber-400/30 px-3 py-1 rounded-lg mb-2.5">
-                <i className="fa-regular fa-calendar-check"></i>
-                <span>Free 1-on-1 Consultation · Zone-2, MP Nagar</span>
+              <div className="text-xs font-semibold text-amber-300 mb-2">
+                Free 1-on-1 Consultation · Zone-2, MP Nagar, Bhopal
               </div>
               <h2
                 className="font-display font-extrabold text-2xl sm:text-4xl text-white tracking-tight leading-tight"
@@ -188,39 +187,43 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
               >
                 Book Your Personal Counseling Slot Today
               </h2>
-              <p className="text-slate-300 text-xs sm:text-base mt-2.5 leading-relaxed">
+              <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
                 Meet our senior admission &amp; career experts either via <strong className="text-white">Online Video Call</strong> or by visiting our <strong className="text-white">Bhopal Center at Zone-2, MP Nagar</strong>. Get unbiased college comparisons, scholarship eligibility checks, and guaranteed placement roadmaps.
               </p>
             </div>
 
             {/* What You Receive in a 30-Min Session */}
-            <div className="bg-slate-800/80 border border-slate-700/90 rounded-2xl p-4 sm:p-5 space-y-3">
-              <h3 className="font-display font-bold text-sm sm:text-base text-white flex items-center gap-2">
-                <i className="fa-solid fa-gift text-amber-400"></i>
-                <span>What’s Included in Your Free Session:</span>
-              </h3>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-200">
+            <div className="bg-[#0A1326] border border-amber-400/25 rounded-3xl p-5 sm:p-6 space-y-3.5 shadow-xl">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 className="font-display font-bold text-sm sm:text-base text-white">
+                  What’s Included in Your Free Session
+                </h3>
+                <span className="text-xs font-mono font-bold text-amber-300">
+                  ₹0 Fee
+                </span>
+              </div>
+              <ul className="space-y-3 text-xs sm:text-sm text-slate-200">
                 <li className="flex items-start gap-2.5">
-                  <i className="fa-solid fa-circle-check text-amber-400 mt-0.5 text-xs shrink-0"></i>
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
                   <span>Shortlist of Top 5 NAAC-accredited colleges matching your rank &amp; budget</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <i className="fa-solid fa-circle-check text-amber-400 mt-0.5 text-xs shrink-0"></i>
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
                   <span>Complete fee breakdown, hostel details &amp; hidden-cost transparency</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <i className="fa-solid fa-circle-check text-amber-400 mt-0.5 text-xs shrink-0"></i>
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
                   <span>MP Govt. Scholarship (Medhavi / Post-Matric) &amp; Education Loan checklist</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <i className="fa-solid fa-circle-check text-amber-400 mt-0.5 text-xs shrink-0"></i>
+                  <i className="fa-solid fa-check text-amber-400 mt-1 text-xs shrink-0"></i>
                   <span>Direct campus placement guarantee &amp; internship registration</span>
                 </li>
               </ul>
             </div>
 
             {/* Center Address & Helpline Card */}
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-3 text-xs sm:text-sm">
+            <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-5 space-y-3.5 text-xs sm:text-sm">
               <div className="flex items-start gap-3">
                 <i className="fa-solid fa-location-dot text-amber-400 mt-1 shrink-0"></i>
                 <div>
@@ -234,7 +237,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                 <i className="fa-solid fa-phone-volume text-emerald-400 mt-1 shrink-0"></i>
                 <div>
                   <span className="font-bold text-white block">Direct Admission Helpline:</span>
-                  <a href="tel:+917987683263" className="text-amber-400 font-bold hover:underline tabular-nums">
+                  <a href="tel:+917987683263" className="text-amber-300 font-bold hover:underline tabular-nums">
                     +91 7987683263
                   </a>{' '}
                   <span className="text-slate-400">(Mon–Sat, 10:00 AM – 7:00 PM)</span>
@@ -245,28 +248,28 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
 
           {/* Right Column: Interactive Appointment Booking Engine */}
           <div className="lg:col-span-7">
-            <div className="bg-white text-slate-900 rounded-3xl p-4 sm:p-8 shadow-2xl border border-slate-200">
+            <div className="bg-white text-slate-900 rounded-3xl p-5 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.5)] border border-amber-400/30">
               <div className="pb-4 mb-5 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
                 <div>
-                  <h3 className="font-display font-extrabold text-lg sm:text-2xl text-slate-900">
+                  <h3 className="font-display font-extrabold text-lg sm:text-2xl text-slate-950">
                     Schedule Counseling Appointment
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
                     Zero consultation charges · Instant WhatsApp slot confirmation
                   </p>
                 </div>
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
-                  <i className="fa-solid fa-shield-check"></i> 100% Free Guidance
+                <span className="text-xs font-bold text-emerald-700">
+                  100% Free Guidance
                 </span>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 {/* Row 1: Student/Parent Name & WhatsApp Mobile Number */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="booking-student-name"
-                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1.5"
                     >
                       Student / Parent Name <span className="text-red-500">*</span>
                     </label>
@@ -277,14 +280,14 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                       placeholder="Enter full name"
                       value={studentName}
                       onChange={(e) => setStudentName(e.target.value)}
-                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                      className="w-full min-h-[48px] rounded-xl border border-slate-300 bg-[#FAF8F4]/60 focus:bg-white px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 outline-hidden transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="booking-whatsapp"
-                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1.5"
                     >
                       WhatsApp Mobile Number <span className="text-red-500">*</span>
                     </label>
@@ -295,17 +298,17 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                       placeholder="10-digit WhatsApp number"
                       value={whatsappNumber}
                       onChange={(e) => setWhatsappNumber(e.target.value)}
-                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden tabular-nums"
+                      className="w-full min-h-[48px] rounded-xl border border-slate-300 bg-[#FAF8F4]/60 focus:bg-white px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 outline-hidden tabular-nums transition-colors"
                     />
                   </div>
                 </div>
 
                 {/* Row 2: Current Education / Stream & Target Course / College */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="booking-stream"
-                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1.5"
                     >
                       Current Education / Stream <span className="text-red-500">*</span>
                     </label>
@@ -314,7 +317,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                       required
                       value={currentStream}
                       onChange={(e) => setCurrentStream(e.target.value)}
-                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm bg-white text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm bg-[#FAF8F4]/60 focus:bg-white text-slate-900 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 outline-hidden transition-colors"
                     >
                       <option value="">Select Current Education / Stream</option>
                       {STREAM_OPTIONS.map((opt) => (
@@ -328,7 +331,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                   <div>
                     <label
                       htmlFor="booking-target-course"
-                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1.5"
                     >
                       Target Course / College <span className="text-red-500">*</span>
                     </label>
@@ -337,7 +340,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                       required
                       value={targetCourse}
                       onChange={(e) => setTargetCourse(e.target.value)}
-                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm bg-white text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm bg-[#FAF8F4]/60 focus:bg-white text-slate-900 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 outline-hidden transition-colors"
                     >
                       <option value="">Select Target Course / Service</option>
                       {allCourseOptions.map((course) => (
@@ -354,7 +357,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                   <div>
                     <label
                       htmlFor="booking-date"
-                      className="block text-xs font-bold text-slate-700 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1.5"
                     >
                       Preferred Date <span className="text-red-500">*</span>
                     </label>
@@ -365,12 +368,12 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                       min={new Date().toISOString().split('T')[0]}
                       value={preferredDate}
                       onChange={(e) => setPreferredDate(e.target.value)}
-                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm bg-white text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden tabular-nums"
+                      className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm bg-[#FAF8F4]/60 focus:bg-white text-slate-900 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 outline-hidden tabular-nums transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 mb-1.5">
                       Select Preferred Time Slot <span className="text-red-500">*</span>
                     </label>
                     <div className="grid grid-cols-2 gap-2.5">
@@ -381,14 +384,14 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                             key={slot.value}
                             type="button"
                             onClick={() => setPreferredTimeSlot(slot.value)}
-                            className={`min-h-[46px] p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                            className={`min-h-[48px] p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                               active
-                                ? 'border-blue-900 bg-blue-50/90 text-slate-900 ring-2 ring-blue-900/15'
-                                : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                                ? 'border-amber-500 bg-amber-50/70 text-slate-950 ring-2 ring-amber-500/20'
+                                : 'border-slate-200 bg-[#FAF8F4] text-slate-700 hover:bg-slate-100'
                             }`}
                           >
-                            <div className="text-[11px] font-bold text-blue-900">{slot.tag}</div>
-                            <div className="text-xs font-extrabold tabular-nums text-slate-900">
+                            <div className="text-[11px] font-bold text-amber-800">{slot.tag}</div>
+                            <div className="text-xs font-extrabold tabular-nums text-slate-950">
                               {slot.label}
                             </div>
                           </button>
@@ -400,20 +403,20 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
 
                 {/* Row 4: Consultation Mode Selector */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-2">
+                  <label className="block text-xs font-bold text-slate-800 mb-2">
                     Preferred Consultation Mode <span className="text-red-500">*</span>
                   </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button
                       type="button"
                       onClick={() => setConsultationMode('In-Office Visit at Bhopal Center')}
-                      className={`min-h-[52px] p-3 rounded-xl border text-left transition-all flex items-center gap-3 cursor-pointer ${
+                      className={`min-h-[54px] p-3 rounded-xl border text-left transition-all flex items-center gap-3 cursor-pointer ${
                         consultationMode === 'In-Office Visit at Bhopal Center'
-                          ? 'border-blue-900 bg-blue-50/80 text-slate-900 ring-2 ring-blue-900/15'
-                          : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                          ? 'border-amber-500 bg-amber-50/70 text-slate-950 ring-2 ring-amber-500/20'
+                          : 'border-slate-200 bg-[#FAF8F4] text-slate-700 hover:bg-slate-100'
                       }`}
                     >
-                      <div className="w-9 h-9 rounded-lg bg-blue-900 text-amber-400 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-lg bg-[#050A15] text-amber-400 flex items-center justify-center shrink-0">
                         <i className="fa-solid fa-building-user"></i>
                       </div>
                       <div>
@@ -425,10 +428,10 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                     <button
                       type="button"
                       onClick={() => setConsultationMode('Online Video Call')}
-                      className={`min-h-[52px] p-3 rounded-xl border text-left transition-all flex items-center gap-3 cursor-pointer ${
+                      className={`min-h-[54px] p-3 rounded-xl border text-left transition-all flex items-center gap-3 cursor-pointer ${
                         consultationMode === 'Online Video Call'
-                          ? 'border-blue-900 bg-blue-50/80 text-slate-900 ring-2 ring-blue-900/15'
-                          : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                          ? 'border-amber-500 bg-amber-50/70 text-slate-950 ring-2 ring-amber-500/20'
+                          : 'border-slate-200 bg-[#FAF8F4] text-slate-700 hover:bg-slate-100'
                       }`}
                     >
                       <div className="w-9 h-9 rounded-lg bg-emerald-700 text-white flex items-center justify-center shrink-0">
@@ -446,7 +449,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                 <div>
                   <label
                     htmlFor="booking-notes"
-                    className="block text-xs font-bold text-slate-700 mb-1.5"
+                    className="block text-xs font-bold text-slate-800 mb-1.5"
                   >
                     Specific College Preference / Questions (Optional)
                   </label>
@@ -456,7 +459,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                     placeholder="e.g., B.Tech CS in Bhopal with MMVY scholarship or MBA placement"
                     value={additionalNotes}
                     onChange={(e) => setAdditionalNotes(e.target.value)}
-                    className="w-full min-h-[48px] rounded-xl border border-slate-300 px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-900/15 outline-hidden"
+                    className="w-full min-h-[48px] rounded-xl border border-slate-300 bg-[#FAF8F4]/60 focus:bg-white px-3.5 py-2.5 text-base sm:text-sm text-slate-900 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/15 outline-hidden transition-colors"
                   />
                 </div>
 
@@ -469,7 +472,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full min-h-[52px] py-4 px-6 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-display font-extrabold text-sm sm:text-base shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                  className="w-full min-h-[52px] py-4 px-6 rounded-xl bg-gold-foil text-slate-950 font-display font-extrabold text-sm sm:text-base transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                 >
                   {isSubmitting ? (
                     <>
@@ -517,7 +520,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
               Thank you, <strong>{confirmedBooking.name}</strong>. Your consultation request with <strong>KGB Group (Knowledge Gurukul)</strong> has been logged. Our senior counselor will connect with you on <strong>+91 {confirmedBooking.phone}</strong>.
             </p>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-1.5 text-xs text-slate-700">
+            <div className="bg-[#FAF8F4] border border-slate-200 rounded-2xl p-4 space-y-1.5 text-xs text-slate-700">
               <div className="flex justify-between gap-2">
                 <span className="text-slate-500">Target Course:</span>
                 <span className="font-bold text-slate-900 text-right">{confirmedBooking.targetCourse}</span>
@@ -528,7 +531,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
               </div>
               <div className="flex justify-between gap-2">
                 <span className="text-slate-500">Consultation Mode:</span>
-                <span className="font-bold text-blue-900">{confirmedBooking.mode}</span>
+                <span className="font-bold text-amber-800">{confirmedBooking.mode}</span>
               </div>
             </div>
 
@@ -545,7 +548,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
               <button
                 type="button"
                 onClick={() => setConfirmedBooking(null)}
-                className="min-h-[48px] py-3.5 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm cursor-pointer"
+                className="min-h-[48px] py-3.5 px-5 rounded-xl bg-[#050A15] hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm cursor-pointer"
               >
                 Close
               </button>

@@ -6,32 +6,32 @@ interface ContactMapSectionProps {
 
 export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlotClick }) => {
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12">
-          <div className="text-xs font-bold text-blue-900 mb-2">
+    <section id="contact" className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-10 sm:mb-12">
+          <div className="text-xs font-bold text-amber-700 mb-2">
             Visit Our Counseling Center · Bhopal Headquarters
           </div>
           <h2
-            className="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight"
+            className="font-display font-extrabold text-2xl sm:text-4xl text-slate-950 tracking-tight"
             style={{ textWrap: 'balance' }}
           >
             Connect With Our Academic Advisors at Zone-2, MP Nagar
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base mt-2.5 leading-relaxed">
+          <p className="text-slate-600 text-xs sm:text-base mt-2.5 leading-relaxed">
             Walk in for a face-to-face counseling session with parents or connect directly over phone and WhatsApp for admission guidance, scholarship verification, and placement support.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Address, Contact Details & Trust Highlights */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-slate-900 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div className="lg:col-span-5 flex flex-col justify-between bg-[#050A15] bg-luxury-grid text-white rounded-3xl p-6 sm:p-8 border border-amber-400/25 shadow-2xl space-y-6">
             <div className="space-y-6">
               <div>
-                <div className="text-xs font-semibold text-amber-400">
+                <div className="text-xs font-semibold text-amber-300">
                   Official Registered Counseling Center
                 </div>
-                <h3 className="font-display font-bold text-xl sm:text-2xl text-white mt-1">
+                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white mt-1">
                   KGB Group (Knowledge Gurukul)
                 </h3>
                 <p className="text-xs text-slate-400 mt-0.5">
@@ -40,9 +40,9 @@ export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlot
               </div>
 
               {/* Address & Contact Blocks */}
-              <div className="space-y-4 pt-2 border-t border-slate-800 text-xs sm:text-sm">
+              <div className="space-y-4 pt-3 border-t border-white/10 text-xs sm:text-sm">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 text-amber-400 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-400/15 border border-amber-400/30 text-amber-300 flex items-center justify-center shrink-0">
                     <i className="fa-solid fa-location-dot"></i>
                   </div>
                   <div>
@@ -57,14 +57,14 @@ export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlot
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 text-amber-400 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-400/15 border border-amber-400/30 text-amber-300 flex items-center justify-center shrink-0">
                     <i className="fa-solid fa-phone-volume"></i>
                   </div>
                   <div>
                     <span className="font-bold text-white block">Counseling &amp; Admission Helpline:</span>
                     <a
                       href="tel:+917987683263"
-                      className="text-amber-400 font-bold text-base hover:underline tabular-nums block mt-0.5"
+                      className="text-amber-300 font-bold text-base hover:underline tabular-nums block mt-0.5"
                     >
                       +91 7987683263
                     </a>
@@ -72,7 +72,7 @@ export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlot
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 text-emerald-400 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
                     <i className="fa-brands fa-whatsapp text-lg"></i>
                   </div>
                   <div>
@@ -89,14 +89,14 @@ export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlot
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-slate-800 text-blue-400 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 text-amber-300 flex items-center justify-center shrink-0">
                     <i className="fa-solid fa-envelope"></i>
                   </div>
                   <div>
                     <span className="font-bold text-white block">Official Email:</span>
                     <a
                       href="mailto:kgbbhopal01@gmail.com"
-                      className="text-slate-200 hover:text-amber-400 hover:underline block mt-0.5"
+                      className="text-slate-200 hover:text-amber-300 hover:underline block mt-0.5"
                     >
                       kgbbhopal01@gmail.com
                     </a>
@@ -105,27 +105,27 @@ export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlot
               </div>
 
               {/* Trust Highlights */}
-              <div className="pt-4 border-t border-slate-800 grid grid-cols-2 gap-3 text-xs">
-                <div className="bg-slate-800/70 rounded-xl p-3 border border-slate-700/80">
-                  <div className="font-bold text-amber-400">100% Genuine Guidance</div>
+              <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-3 text-xs">
+                <div className="bg-[#0A1326] rounded-2xl p-3.5 border border-white/10">
+                  <div className="font-bold text-amber-300">100% Genuine Guidance</div>
                   <div className="text-[11px] text-slate-300 mt-0.5">
                     Transparent fee &amp; college verification
                   </div>
                 </div>
-                <div className="bg-slate-800/70 rounded-xl p-3 border border-slate-700/80">
-                  <div className="font-bold text-emerald-400">10+ Years Excellence</div>
+                <div className="bg-[#0A1326] rounded-2xl p-3.5 border border-white/10">
+                  <div className="font-bold text-emerald-400">ISO &amp; MSME Certified</div>
                   <div className="text-[11px] text-slate-300 mt-0.5">
-                    ISO 9001 &amp; Govt. MSME Certified
+                    15 Lakh+ Students Guided
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
               <button
                 type="button"
                 onClick={onBookSlotClick}
-                className="flex-1 py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm transition-colors cursor-pointer"
+                className="flex-1 py-3.5 px-4 rounded-xl bg-gold-foil text-slate-950 font-display font-extrabold text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap"
               >
                 Book Center Visit Slot
               </button>
@@ -133,7 +133,7 @@ export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlot
                 href="https://www.google.com/maps/search/?api=1&query=Zone+2+MP+Nagar+Bhopal+Madhya+Pradesh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold text-xs sm:text-sm text-center transition-colors inline-flex items-center justify-center gap-1.5"
+                className="py-3.5 px-4 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/15 font-semibold text-xs sm:text-sm text-center transition-colors inline-flex items-center justify-center gap-1.5 whitespace-nowrap"
               >
                 <i className="fa-solid fa-diamond-turn-right text-amber-400"></i>
                 <span>Open Maps</span>
@@ -142,10 +142,10 @@ export const ContactMapSection: React.FC<ContactMapSectionProps> = ({ onBookSlot
           </div>
 
           {/* Right Column: Integrated Google Map Embed Container for Zone-2, MP Nagar, Bhopal */}
-          <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 flex flex-col min-h-[380px] sm:min-h-[440px]">
-            <div className="bg-slate-50 px-5 py-3.5 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <div className="font-bold text-slate-800">
-                <i className="fa-solid fa-map-location-dot text-blue-900 mr-1.5"></i>
+          <div className="lg:col-span-7 rounded-3xl overflow-hidden border border-slate-200/90 bg-[#FAF8F4] flex flex-col min-h-[380px] sm:min-h-[440px] shadow-md">
+            <div className="bg-white px-5 py-4 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div className="font-bold text-slate-900">
+                <i className="fa-solid fa-map-location-dot text-amber-600 mr-1.5"></i>
                 Location Map: Zone-2, MP Nagar, Bhopal, Madhya Pradesh
               </div>
               <span className="text-slate-500">

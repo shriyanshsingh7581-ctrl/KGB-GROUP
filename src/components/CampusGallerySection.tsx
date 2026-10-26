@@ -197,18 +197,17 @@ export const CampusGallerySection: React.FC = () => {
   return (
     <section
       id="campus-drives"
-      className="py-12 sm:py-18 lg:py-20 bg-slate-50 border-b border-slate-200"
+      className="py-14 sm:py-20 bg-[#FAF8F4] border-b border-slate-200/80"
     >
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         {/* Header & Category Filter Controls */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mb-7 sm:mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-blue-900 bg-blue-100/80 border border-blue-200 px-3 py-1 rounded-lg mb-2.5">
-              <i className="fa-solid fa-camera-retro text-amber-600"></i>
-              <span>Real On-Ground Legacy · 15 Lakh+ Students Served</span>
+            <div className="text-xs font-bold text-amber-700 mb-2">
+              Real On-Ground Legacy · 15 Lakh+ Students Served
             </div>
             <h2
-              className="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight"
+              className="font-display font-extrabold text-2xl sm:text-4xl text-slate-950 tracking-tight"
               style={{ textWrap: 'balance' }}
             >
               Moments of Mentorship &amp; Campus Drives
@@ -218,8 +217,8 @@ export const CampusGallerySection: React.FC = () => {
             </p>
           </div>
 
-          {/* Mobile Horizontal Swipeable Filter Tabs */}
-          <div className="flex overflow-x-auto no-scrollbar gap-1.5 bg-slate-200/80 p-1.5 rounded-2xl w-full lg:w-auto">
+          {/* Interactive Category Filter Tabs */}
+          <div className="flex overflow-x-auto no-scrollbar gap-1.5 bg-white p-1.5 rounded-2xl border border-slate-200/90 shadow-2xs w-full lg:w-auto">
             {CATEGORIES.map((category) => (
               <button
                 key={category}
@@ -230,8 +229,8 @@ export const CampusGallerySection: React.FC = () => {
                 }}
                 className={`min-h-[38px] px-3.5 py-2 rounded-xl text-xs font-bold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                   selectedCategory === category
-                    ? 'bg-slate-900 text-amber-400 shadow-xs'
-                    : 'text-slate-700 hover:text-slate-950'
+                    ? 'bg-[#050A15] text-amber-300 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-950'
                 }`}
               >
                 {category}
@@ -241,14 +240,14 @@ export const CampusGallerySection: React.FC = () => {
         </div>
 
         {/* Aesthetic Photo Showcase Grid (Featured Spotlight + 2-Column Mobile Grid) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-6">
           {filteredItems.map((item, idx) => {
             const isMobileSpotlight = idx === 0;
             return (
               <div
                 key={item.id}
                 onClick={() => setLightboxIndex(idx)}
-                className={`group rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white hover:border-amber-400/80 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                className={`card-luxury group rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white hover:border-amber-500/60 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                   isMobileSpotlight ? 'col-span-2 sm:col-span-1' : 'col-span-1'
                 }`}
               >
@@ -256,7 +255,7 @@ export const CampusGallerySection: React.FC = () => {
                   <div
                     className={`relative ${
                       isMobileSpotlight ? 'aspect-[16/10] sm:aspect-[4/3]' : 'aspect-[4/3]'
-                    } bg-slate-900 overflow-hidden border-b border-slate-100`}
+                    } bg-[#050A15] overflow-hidden border-b border-slate-100`}
                   >
                     <img
                       src={item.image}
@@ -265,25 +264,19 @@ export const CampusGallerySection: React.FC = () => {
                       style={{ objectPosition: item.objectPosition || 'center center' }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
-                    <div className="absolute top-2.5 left-2.5">
-                      <span className="bg-slate-950/80 backdrop-blur-xs text-amber-300 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md border border-white/10">
-                        {item.category}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-2 right-2 sm:inset-0 sm:bg-linear-to-t sm:from-slate-950/75 sm:via-transparent sm:to-transparent sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end sm:p-3">
-                      <span className="bg-slate-950/75 sm:bg-white/95 text-white sm:text-slate-900 text-[10px] sm:text-[11px] font-bold px-2 py-1 rounded-lg shadow-xs">
+                    <div className="absolute bottom-2.5 right-2.5 sm:inset-0 sm:bg-linear-to-t sm:from-[#050A15]/80 sm:via-transparent sm:to-transparent sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 flex items-end justify-end sm:p-3">
+                      <span className="bg-[#050A15]/85 sm:bg-white/95 text-amber-300 sm:text-slate-950 text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-xs">
                         <i className="fa-solid fa-expand sm:mr-1"></i>
-                        <span className="hidden sm:inline">View Photo</span>
+                        <span className="hidden sm:inline">Inspect</span>
                       </span>
                     </div>
                   </div>
 
-                  <div className="p-3 sm:p-4">
-                    <div className="text-[10px] sm:text-[11px] font-semibold text-blue-900 flex items-center gap-1 truncate">
-                      <i className="fa-solid fa-location-dot text-amber-500 shrink-0"></i>
-                      <span className="truncate">{item.location}</span>
+                  <div className="p-3.5 sm:p-4">
+                    <div className="text-[10px] sm:text-[11px] font-semibold text-amber-800 truncate">
+                      {item.category} · {item.location}
                     </div>
-                    <h3 className="font-display font-bold text-xs sm:text-sm text-slate-900 mt-1 leading-snug group-hover:text-blue-950 transition-colors line-clamp-2">
+                    <h3 className="font-display font-bold text-xs sm:text-sm text-slate-950 mt-1 leading-snug group-hover:text-amber-700 transition-colors line-clamp-2">
                       {item.title}
                     </h3>
                     <p
@@ -308,12 +301,12 @@ export const CampusGallerySection: React.FC = () => {
           onClick={() => setLightboxIndex(null)}
         >
           <div
-            className="max-w-4xl w-full bg-slate-900 border border-slate-700 rounded-3xl overflow-hidden shadow-2xl"
+            className="max-w-4xl w-full bg-[#080F20] border border-white/15 rounded-3xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="px-4 sm:px-5 py-3.5 border-b border-slate-800 flex items-center justify-between gap-3">
+            <div className="px-4 sm:px-5 py-3.5 border-b border-white/10 flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <div className="text-[11px] font-semibold text-amber-400 truncate">
+                <div className="text-[11px] font-semibold text-amber-300 truncate">
                   {activeLightboxItem.category} · {activeLightboxItem.location}
                 </div>
                 <h3 className="font-display font-bold text-xs sm:text-base text-white truncate">
@@ -323,14 +316,14 @@ export const CampusGallerySection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLightboxIndex(null)}
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center justify-center shrink-0 cursor-pointer"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 flex items-center justify-center shrink-0 cursor-pointer"
                 aria-label="Close photo preview"
               >
                 <i className="fa-solid fa-xmark"></i>
               </button>
             </div>
 
-            <div className="relative p-3 sm:p-4 bg-slate-950 flex items-center justify-center max-h-[72vh] overflow-auto">
+            <div className="relative p-3 sm:p-4 bg-[#050A15] flex items-center justify-center max-h-[72vh] overflow-auto">
               <img
                 src={activeLightboxItem.image}
                 alt={activeLightboxItem.title}
@@ -347,7 +340,7 @@ export const CampusGallerySection: React.FC = () => {
                   )
                 }
                 aria-label="Previous photo"
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-slate-900/85 hover:bg-slate-800 text-white border border-slate-700 flex items-center justify-center cursor-pointer"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-[#050A15]/85 hover:bg-slate-800 text-white border border-white/15 flex items-center justify-center cursor-pointer"
               >
                 <i className="fa-solid fa-chevron-left text-xs"></i>
               </button>
@@ -355,15 +348,15 @@ export const CampusGallerySection: React.FC = () => {
                 type="button"
                 onClick={() => setLightboxIndex((lightboxIndex + 1) % filteredItems.length)}
                 aria-label="Next photo"
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-slate-900/85 hover:bg-slate-800 text-white border border-slate-700 flex items-center justify-center cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-[#050A15]/85 hover:bg-slate-800 text-white border border-white/15 flex items-center justify-center cursor-pointer"
               >
                 <i className="fa-solid fa-chevron-right text-xs"></i>
               </button>
             </div>
 
-            <div className="px-4 sm:px-5 py-3 bg-slate-900 border-t border-slate-800 flex items-center justify-between gap-3 text-xs text-slate-300">
+            <div className="px-4 sm:px-5 py-3 bg-[#080F20] border-t border-white/10 flex items-center justify-between gap-3 text-xs text-slate-300">
               <p className="line-clamp-2">{activeLightboxItem.caption}</p>
-              <span className="text-[11px] font-bold text-amber-400 shrink-0 tabular-nums">
+              <span className="text-[11px] font-mono font-bold text-amber-300 shrink-0 tabular-nums">
                 {lightboxIndex + 1} / {filteredItems.length}
               </span>
             </div>

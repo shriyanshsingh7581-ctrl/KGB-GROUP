@@ -2,13 +2,13 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800 pb-6 sm:pb-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <footer className="bg-[#050A15] text-slate-400 text-xs border-t border-amber-400/15 pb-6 sm:pb-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10">
           {/* Brand Info */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-white p-0.5 overflow-hidden shrink-0 border border-amber-400/40">
+              <div className="w-11 h-11 rounded-xl bg-white p-0.5 overflow-hidden shrink-0 border border-amber-400/50 shadow-sm">
                 <img
                   src="/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png"
                   alt="KGB Group (Knowledge Gurukul) Logo"
@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <span className="font-display font-extrabold text-lg text-white tracking-tight block">
-                  KGB Group <span className="text-amber-400">(Knowledge Gurukul)</span>
+                  KGB Group <span className="text-gold-foil">(Knowledge Gurukul)</span>
                 </span>
                 <p className="text-[11px] text-amber-300 font-semibold">
                   Empowering Students, Enabling Careers
@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-300 font-semibold">
-              <span className="text-amber-400">15 Lakh+ Students Guided</span>
+              <span className="text-amber-300">15 Lakh+ Students Guided</span>
               <span aria-hidden="true">·</span>
               <span className="text-emerald-400">Former T&amp;P Officers</span>
               <span aria-hidden="true">·</span>
@@ -54,37 +54,37 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-2 text-xs">
                 <li>
-                  <a href="#home" className="hover:text-amber-400 transition-colors">
+                  <a href="#home" className="hover:text-amber-300 transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="hover:text-amber-400 transition-colors">
+                  <a href="#about" className="hover:text-amber-300 transition-colors">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                  <a href="#services" className="hover:text-amber-300 transition-colors">
                     Our Services
                   </a>
                 </li>
                 <li>
-                  <a href="#campus-drives" className="hover:text-amber-400 transition-colors">
+                  <a href="#campus-drives" className="hover:text-amber-300 transition-colors">
                     Seminars &amp; Gallery
                   </a>
                 </li>
                 <li>
-                  <a href="#success-stories" className="hover:text-amber-400 transition-colors">
+                  <a href="#success-stories" className="hover:text-amber-300 transition-colors">
                     Success Stories
                   </a>
                 </li>
                 <li>
-                  <a href="#book-consultation" className="hover:text-amber-400 transition-colors">
+                  <a href="#book-consultation" className="hover:text-amber-300 transition-colors">
                     Book Consultation
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-amber-400 transition-colors">
+                  <a href="#contact" className="hover:text-amber-300 transition-colors">
                     Contact Us
                   </a>
                 </li>
@@ -98,32 +98,32 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-2 text-xs">
                 <li>
-                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                  <a href="#services" className="hover:text-amber-300 transition-colors">
                     Engineering &amp; MBA Admissions
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                  <a href="#services" className="hover:text-amber-300 transition-colors">
                     Medical, Nursing &amp; Pharmacy
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                  <a href="#services" className="hover:text-amber-300 transition-colors">
                     Law (BA LLB / BBA LLB)
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                  <a href="#services" className="hover:text-amber-300 transition-colors">
                     Psychometric Career Counseling
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-amber-400 transition-colors">
+                  <a href="#services" className="hover:text-amber-300 transition-colors">
                     Scholarship &amp; Loan Support
                   </a>
                 </li>
                 <li>
-                  <a href="#jobs" className="hover:text-amber-400 transition-colors">
+                  <a href="#jobs" className="hover:text-amber-300 transition-colors">
                     Placement Tie-ups &amp; Jobs
                   </a>
                 </li>
@@ -149,7 +149,7 @@ export const Footer: React.FC = () => {
                 <i className="fa-solid fa-phone text-amber-400 shrink-0"></i>
                 <a
                   href="tel:+917987683263"
-                  className="font-bold text-white hover:text-amber-400 transition-colors tabular-nums"
+                  className="font-bold text-white hover:text-amber-300 transition-colors tabular-nums"
                 >
                   +91 7987683263
                 </a>
@@ -181,7 +181,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright Bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-[11px] text-slate-500">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-[11px] text-slate-500">
           <p>
             &copy; {new Date().getFullYear()} KGB Group (Knowledge Gurukul), Bhopal. All Rights Reserved.
           </p>
