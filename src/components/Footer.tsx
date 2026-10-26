@@ -8,15 +8,15 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-white p-0.5 overflow-hidden shrink-0 border border-amber-400/50 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-white p-0.5 overflow-hidden shrink-0 border border-amber-400/60 shadow-[0_0_20px_rgba(245,158,11,0.2)]">
                 <img
-                  src="/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png"
+                  src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg"
                   alt="KGB Group (Knowledge Gurukul) Logo"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.currentTarget;
-                    if (!target.src.includes('/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg')) {
-                      target.src = '/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg';
+                    if (!target.src.includes('/kgb-logo.jpg')) {
+                      target.src = '/kgb-logo.jpg';
                     }
                   }}
                   className="w-full h-full object-contain"

@@ -26,15 +26,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookConsultationClick }) => {
           href="#home"
           className="flex items-center gap-3 group shrink-0 min-w-0"
         >
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-amber-400/50 bg-white p-0.5 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(245,158,11,0.18)] group-hover:border-amber-300 transition-colors">
+          <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-xl overflow-hidden border border-amber-400/60 bg-white p-0.5 flex items-center justify-center shrink-0 shadow-[0_0_24px_rgba(245,158,11,0.22)] group-hover:border-amber-300 transition-colors">
             <img
-              src="/assets/aistudio/Picsart_26-10-24_18-22-58-239_1405d4be.png"
+              src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg"
               alt="KGB Group (Knowledge Gurukul)"
               referrerPolicy="no-referrer"
               onError={(e) => {
                 const target = e.currentTarget;
-                if (!target.src.includes('/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg')) {
-                  target.src = '/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg';
+                if (!target.src.includes('/kgb-logo.jpg')) {
+                  target.src = '/kgb-logo.jpg';
                 }
               }}
               className="w-full h-full object-contain"

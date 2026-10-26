@@ -212,8 +212,12 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
         >
           <div className="bg-slate-900 px-6 py-5 text-white flex items-center justify-between border-b border-slate-800">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-400 flex items-center justify-center">
-                <i className="fa-solid fa-user-shield text-lg"></i>
+              <div className="w-10 h-10 rounded-xl bg-white p-0.5 border border-amber-400/50 flex items-center justify-center overflow-hidden shrink-0">
+                <img
+                  src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg"
+                  alt="Knowledge Gurukul Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">
@@ -305,8 +309,12 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
           {/* Dashboard Header */}
           <div className="bg-slate-900 text-white px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 shrink-0">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-display font-black text-sm shrink-0">
-                KGB
+              <div className="w-11 h-11 rounded-xl bg-white p-0.5 border border-amber-400/50 flex items-center justify-center overflow-hidden shrink-0">
+                <img
+                  src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg"
+                  alt="Knowledge Gurukul Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-2">
