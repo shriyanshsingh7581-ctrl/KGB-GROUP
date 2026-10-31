@@ -153,7 +153,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 <div className="relative h-48 sm:h-56 bg-[#050A15] overflow-hidden border-b border-slate-200/80">
                   <img
                     src={service.image}
-                    alt={service.title}
+                    alt={`${service.title} - Knowledge Gurukul Bhopal`}
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />

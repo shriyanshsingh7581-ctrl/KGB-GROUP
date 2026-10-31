@@ -79,6 +79,8 @@ export const FeaturedJobs: React.FC<FeaturedJobsProps> = ({ onSelectRoleForApply
               <img
                 src={featuredTelecaller.posterImage || 'telecaller-hiring.jpg'}
                 alt="Work From Home Tele-Caller Job Opening Poster - KGB Bhopal"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   const target = e.currentTarget;

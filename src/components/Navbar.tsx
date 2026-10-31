@@ -29,7 +29,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookConsultationClick }) => {
           <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-xl overflow-hidden border border-amber-400/60 bg-white p-0.5 flex items-center justify-center shrink-0 shadow-[0_0_24px_rgba(245,158,11,0.22)] group-hover:border-amber-300 transition-colors">
             <img
               src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg"
-              alt="KGB Group (Knowledge Gurukul)"
+              alt="KGB Group (Knowledge Gurukul) Official Logo"
+              decoding="async"
+              fetchPriority="high"
               referrerPolicy="no-referrer"
               onError={(e) => {
                 const target = e.currentTarget;
@@ -134,19 +136,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookConsultationClick }) => {
 
         {/* Zone 3: Primary Action & Mobile Controls */}
         <div className="flex items-center gap-2 shrink-0">
-          {/* Quick Call Icon on Mobile */}
+          {/* Quick WhatsApp Inquiry Icon on Mobile */}
           <a
-            href="tel:+917987683263"
-            aria-label="Call Helpline +91 7987683263"
-            className="sm:hidden inline-flex items-center justify-center min-w-[44px] min-h-[44px] rounded-xl bg-amber-400/12 text-amber-300 border border-amber-400/30 active:scale-95 transition-transform"
+            href="https://wa.me/917987683263?text=Hello%20Knowledge%20Gurukul%20(KGB%20Group)%2C%20I%20would%20like%20to%20inquire%20about%20Job-Ready%20Training%2C%20Resume%20Building%2C%20and%20Direct%20Placement%20Drives."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp for Instant Job & Training Inquiry"
+            className="sm:hidden inline-flex items-center justify-center min-w-[44px] min-h-[44px] rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 active:scale-95 transition-transform"
           >
-            <i className="fa-solid fa-phone text-sm"></i>
+            <i className="fa-brands fa-whatsapp text-base"></i>
+          </a>
+
+          {/* Primary Header WhatsApp CTA: Replace href below with your custom WhatsApp inquiry URL if needed */}
+          <a
+            href="https://wa.me/917987683263?text=Hello%20Knowledge%20Gurukul%20(KGB%20Group)%2C%20I%20would%20like%20to%20inquire%20about%20Job-Ready%20Training%2C%20Resume%20Building%2C%20and%20Direct%20Placement%20Drives."
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Chat on WhatsApp for Instant Job & Training Inquiry"
+            className="hidden xl:inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-display font-extrabold text-white bg-emerald-600 hover:bg-emerald-500 transition-all whitespace-nowrap shrink-0 shadow-xs active:scale-[0.99]"
+          >
+            <i className="fa-brands fa-whatsapp text-base"></i>
+            <span>Chat on WhatsApp for Instant Job &amp; Training Inquiry</span>
           </a>
 
           <button
             type="button"
             onClick={() => onBookConsultationClick()}
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-display font-extrabold text-slate-950 bg-gold-foil transition-all whitespace-nowrap shrink-0 cursor-pointer active:scale-[0.99]"
+            className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-display font-extrabold text-slate-950 bg-gold-foil transition-all whitespace-nowrap shrink-0 cursor-pointer active:scale-[0.99]"
           >
             <i className="fa-regular fa-calendar-check"></i>
             <span>Book Free Consultation</span>
@@ -183,6 +199,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookConsultationClick }) => {
               <span>Home</span>
             </a>
             <a
+              href="#campus-drives"
+              onClick={() => setMobileMenuOpen(false)}
+              className="min-h-[46px] px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-amber-400/40 flex items-center gap-2.5"
+            >
+              <i className="fa-solid fa-camera-retro text-amber-400 w-4 text-center"></i>
+              <span>Track Record Gallery</span>
+            </a>
+            <a
               href="#about"
               onClick={() => setMobileMenuOpen(false)}
               className="min-h-[46px] px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-amber-400/40 flex items-center gap-2.5"
@@ -197,14 +221,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookConsultationClick }) => {
             >
               <i className="fa-solid fa-graduation-cap text-amber-400 w-4 text-center"></i>
               <span>Services &amp; Colleges</span>
-            </a>
-            <a
-              href="#campus-drives"
-              onClick={() => setMobileMenuOpen(false)}
-              className="min-h-[46px] px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-amber-400/40 flex items-center gap-2.5"
-            >
-              <i className="fa-solid fa-camera-retro text-amber-400 w-4 text-center"></i>
-              <span>Photo Gallery</span>
             </a>
             <a
               href="#certifications"
@@ -242,6 +258,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookConsultationClick }) => {
 
           {/* Direct Action Row */}
           <div className="pt-1 flex flex-col gap-2.5">
+            {/* Primary Mobile Drawer WhatsApp Inquiry CTA */}
+            <a
+              href="https://wa.me/917987683263?text=Hello%20Knowledge%20Gurukul%20(KGB%20Group)%2C%20I%20would%20like%20to%20inquire%20about%20Job-Ready%20Training%2C%20Resume%20Building%2C%20and%20Direct%20Placement%20Drives."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full min-h-[48px] py-3 px-4 rounded-xl bg-emerald-500 text-slate-950 font-display font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2"
+            >
+              <i className="fa-brands fa-whatsapp text-base"></i>
+              <span>Chat on WhatsApp for Instant Job &amp; Training Inquiry</span>
+            </a>
+
             <button
               type="button"
               onClick={() => {

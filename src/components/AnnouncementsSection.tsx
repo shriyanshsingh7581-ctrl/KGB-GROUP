@@ -67,6 +67,8 @@ export const AnnouncementsSection: React.FC<AnnouncementsSectionProps> = ({ onAp
                     <img
                       src={poster.imageUrl}
                       alt={poster.title}
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />

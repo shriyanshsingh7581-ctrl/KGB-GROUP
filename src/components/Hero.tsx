@@ -193,6 +193,9 @@ export const Hero: React.FC<HeroProps> = ({ onBookSlotClick, onExploreCollegesCl
                     <img
                       src={slide.src}
                       alt={slide.caption}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      fetchPriority={index === 0 ? 'high' : 'auto'}
+                      decoding="async"
                       referrerPolicy="no-referrer"
                       style={{ objectPosition: slide.objectPosition }}
                       className="w-full h-full object-cover"
@@ -252,6 +255,8 @@ export const Hero: React.FC<HeroProps> = ({ onBookSlotClick, onExploreCollegesCl
                     <img
                       src={s.src}
                       alt={s.tag}
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                       style={{ objectPosition: s.objectPosition }}
                       className="w-full h-full object-cover"

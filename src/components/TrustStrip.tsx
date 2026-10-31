@@ -61,6 +61,8 @@ export const TrustStrip: React.FC = () => {
                 <img
                   src="/assets/aistudio/IMG-20261026-WA0024_9f825f44.jpg"
                   alt="Knowledge Gurukul Leadership Addressing College Faculty & Students"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -100,6 +102,8 @@ export const TrustStrip: React.FC = () => {
                 <img
                   src="/assets/aistudio/IMG-20261026-WA0026_6a62f7b5.jpg"
                   alt="With Hon'ble Technical Education & Skill Development Minister at PMKVY Fair"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   style={{ objectPosition: 'center 85%' }}
                   className="w-20 h-16 rounded-xl object-cover shrink-0 border border-slate-200"
@@ -129,6 +133,8 @@ export const TrustStrip: React.FC = () => {
                 <img
                   src="/assets/aistudio/IMG-20261026-WA0025_338fadf7.jpg"
                   alt="Nutan College Bhopal Career Counselling Seminar"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   style={{ objectPosition: 'center 80%' }}
                   className="w-20 h-16 rounded-xl object-cover shrink-0 border border-slate-200"

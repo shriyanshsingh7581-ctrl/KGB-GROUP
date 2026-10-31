@@ -53,6 +53,35 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const robotsMeta = document.querySelector('meta[name="robots"]');
+    const googlebotMeta = document.querySelector('meta[name="googlebot"]');
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+
+    if (isAdminRoute) {
+      document.title = 'KGB Group — Staff & HR Admin Portal | Knowledge Gurukul Bhopal';
+      if (robotsMeta) robotsMeta.setAttribute('content', 'noindex, nofollow');
+      if (googlebotMeta) googlebotMeta.setAttribute('content', 'noindex, nofollow');
+      if (canonicalLink) canonicalLink.setAttribute('href', 'https://knowledgegurukul.online/admin');
+    } else {
+      document.title =
+        'Knowledge Gurukul (KGB Group) | Educational & Admission Consultancy, Career Guidance & Placement in Bhopal';
+      if (robotsMeta) {
+        robotsMeta.setAttribute(
+          'content',
+          'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        );
+      }
+      if (googlebotMeta) {
+        googlebotMeta.setAttribute(
+          'content',
+          'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        );
+      }
+      if (canonicalLink) canonicalLink.setAttribute('href', 'https://knowledgegurukul.online/');
+    }
+  }, [isAdminRoute]);
+
   // Dedicated Separate Admin Link (/admin or /#admin)
   if (isAdminRoute) {
     return (
@@ -108,22 +137,22 @@ export default function App() {
           onExploreCollegesClick={scrollToColleges}
         />
 
-        {/* 4. About Us & 10+ Years Excellence Strip */}
+        {/* 4. TOP PRIORITY PLACEMENT: Our Proven Placement & Training Track Record + "We Make You Job-Ready" Banner + 11-Card Photo Gallery + Direct WhatsApp & Channel CTAs */}
+        <CampusGallerySection />
+
+        {/* 5. About Us & 10+ Years Excellence Strip */}
         <div id="about">
           <TrustStrip />
         </div>
 
-        {/* 5. Key Services (Card Layout) & Explore Top Colleges */}
+        {/* 6. Key Services (Card Layout) & Explore Top Colleges */}
         <ServicesSection onSelectServiceForBooking={handleBookWithPrefilledCourse} />
 
-        {/* 6. Complete Interactive Booking & Consultation Engine */}
+        {/* 7. Complete Interactive Booking & Consultation Engine */}
         <ApplicationForm
           selectedRoleFromCard={selectedRoleForForm}
           onClearSelectedRole={handleClearSelectedRole}
         />
-
-        {/* 7. Image Gallery & Real Proof Section ("Our Seminars, College Drives & Student Achievements") */}
-        <CampusGallerySection />
 
         {/* 8. Student & Parent Success Stories */}
         <TestimonialsSection />

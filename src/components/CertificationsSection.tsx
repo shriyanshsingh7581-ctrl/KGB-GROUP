@@ -113,7 +113,9 @@ export const CertificationsSection: React.FC = () => {
                     >
                       <img
                         src={cert.imageSrc}
-                        alt={`${cert.title} - ${cert.regNumber}`}
+                        alt={`${cert.title} - ${cert.regNumber} | Knowledge Gurukul Bhopal`}
+                        loading="lazy"
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       />

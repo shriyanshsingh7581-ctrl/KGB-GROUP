@@ -12,6 +12,8 @@ export const Footer: React.FC = () => {
                 <img
                   src="/assets/aistudio/IMG-20261024-WA0017_3feb77f8.jpg"
                   alt="KGB Group (Knowledge Gurukul) Logo"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.currentTarget;
